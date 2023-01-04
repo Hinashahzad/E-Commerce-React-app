@@ -6,4 +6,8 @@
 `npm install semantic-ui-react semantic-ui-css`
 `npm install react-router-dom`
 `npm install axios`
+`npm install redux react-redux`
+
+## Folder structure
+
 
