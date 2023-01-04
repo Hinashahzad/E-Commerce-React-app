@@ -1,2 +1,5 @@
-# REdux2
- Project(Shopping cart)
+# React App
+
+## Installation dependancy
+´npm install semantic-ui-react semantic-ui-css´
+
