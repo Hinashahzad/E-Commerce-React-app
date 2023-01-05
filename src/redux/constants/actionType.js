@@ -1,6 +1,6 @@
 //HERE I HAVE DEFINED THE CONSTANTS WHICH WILL BE USED IN ACTIONS
 
-export const actioTypes = {
+export const actionTypes = {
     SET_PRODUCT: "SET_PRODUCT",
     SELECTED_PRODUCT:"SELECTED_PRODUCT", 
 }

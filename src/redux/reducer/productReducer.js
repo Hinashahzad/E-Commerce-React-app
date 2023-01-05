@@ -4,21 +4,22 @@
  *  It takes two arguments : Initial state and actions
  */
 import { actionTypes } from '../constants/actionType';
-export const initialState = {
+
+const initialState = {
     products: [ {
         id: "1", 
         productName: "Hina Shahazad", 
         productCatagory:"Human being"
     }]
 }
-export const prodctReducer = (state=initialState,action) =>
+export const prodctReducer = (state=initialState,{type, payload}) =>
 {
-    switch ( action.type )
+    switch ( type )
     {
         case actionTypes.SET_PRODUCT:
             return state;
         default:
             return state;
     }
-    
+
 }
