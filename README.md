@@ -1,4 +1,4 @@
-# React App
+# React App (Online Shopping for Bridal)
 
 `npx create-react-app REDUX2`
 
