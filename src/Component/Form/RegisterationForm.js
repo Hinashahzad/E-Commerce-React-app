@@ -1,21 +1,21 @@
 import React from 'react'
 import { Button, Form, Segment } from 'semantic-ui-react'
-
-
+import { useDispatch } from 'react-redux';
+import { registerUsers } from '../../redux/action/formAction';
 class RegistrationForm extends React.Component
 {
     state = {
-        firstName: "", 
+      firstName: "", 
       lastName: "",
       email: "",
-        password:""
+      password:""
   };
    addUser = (e, props) => {
        e.preventDefault();
        if (this.state.firstName === "" || this.state.lastName === ""|| this.state.email === "" || this.state.password === ""){
        alert ("Both fields are mandatory!");
        return;
-    }
+     }
      this.props.registerUser( this.state );
      console.log( this.props.activeButton );
        console.log(this.state);

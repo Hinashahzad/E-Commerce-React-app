@@ -1,6 +1,6 @@
 // Parent Functional Component
 import React,{useState} from "react";
-import { BrowserRouter as Router, Route, Switch, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Component/UserInterface/Home";
 import { Segment } from "semantic-ui-react";
 import LocalStorage from "./Component/Code/LocalStorage";
@@ -17,13 +17,13 @@ function App ()
     //Receiving state from child component to Parent component
     return (
         <Segment>
-            <Router>
+         <Router>
                 <Routes>
                     <Route path="/" exact element={ <Home receiveData={ receiveData} /> } />
                     <Route path="/Home" element={ <Home receiveData={ receiveData}/> } />
                     <Route path="/loginForm" element={ <LocalStorage value={ value} />  } /> 
                     <Route path="/registrationForm" element={ <LocalStorage value={ value} /> } /> 
-                </Routes>       
+                </Routes>     
     </Router>
         </Segment>
     );
