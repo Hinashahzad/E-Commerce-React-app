@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Segment, Card, Icon, Image, Button, Placeholder } from 'semantic-ui-react'
-const src = '../../images/bridal.jpg'
+import { Link } from 'react-router-dom';
 
 /**
  * 
@@ -14,29 +14,29 @@ const CardComponent = ()=>
     const extra = (
         <a>
             <Button> Add to Cart</Button>
-            
         </a>
     )
     
     const renderList = products.map( ( product ) =>
     {
         //Destructuring the products array
-        const { image, title, price, catagory } = product;
+        const { id, image, title, price, catagory } = product;
         return (
             <Segment color="purple" padded="very">
-                <Card link>
+                <Link to={`/product/${id}`}>
+                <Card link key={ id } >
                     <Image src={image} wrapped ui={false}></Image>
                     <Card.Content>
                         <Card.Header>{ title }</Card.Header>
-                        <Card.Description> { price }</Card.Description>
+                        <Card.Description> ${ price } </Card.Description>
                         </Card.Content>
                     <Card.Content extra>
                         <a>
-                            <Icon name="plus cart"/>
-                         Add to cart
+                                <Button onClick={ () => { console.log( "Button clicked" ); } }> Add to Cart</Button>
                         </a>
                     </Card.Content>
-                </Card>
+                    </Card>
+                    </Link>
                 
         </Segment>)
         
