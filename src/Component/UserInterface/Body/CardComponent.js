@@ -1,20 +1,42 @@
+import { render } from "@testing-library/react";
 import React from "react";
-import { Segment, Card, Placeholder, Image } from 'semantic-ui-react'
+import { useSelector } from "react-redux";
+import { Segment, Card, Icon } from 'semantic-ui-react'
 const src = '../../images/bridal.jpg'
+
 /**
  * 
  * @returns Parent Component: BodyComponent
  */
 const CardComponent = ()=>
 {
-    return (
-        <Segment>
-            <Card.Group itemsPerRow={1}>
-            <Card color='red' image={src} />
-            </Card.Group>
-        </Segment>
+    const products = useSelector( ( state ) => state.allProducts.products );
+    const extra = (
+        <a>
+            <Icon name='user' />
+            16 Friends
+        </a>
     )
     
+    const renderList = products.map( ( product ) =>
+    {
+        //Destructuring the products array
+        const { image, title, description } = product;
+        return(<Segment color="purple">
+                <Card
+                    image={image}
+                    header={title}
+                    meta='Product'
+                    description={description}
+                    extra={extra}
+  />
+        </Segment>)
+        
+    })
+    return (
+        <>
+            { renderList }</>
+    ) 
 }
 
 export default CardComponent;

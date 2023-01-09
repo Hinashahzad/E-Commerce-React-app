@@ -1,23 +1,19 @@
 /**
  * This files describe HOW to perform the actions
  * IMPORTANT:
- *  It takes two arguments : Initial state and actions
+ *  It takes two arguments : Initial state and actions(JAVASCRRIPT object {type, payload})
  */
 import { actionTypes } from '../constants/actionType';
 
 const initialState = {
-    products: [ {
-        id: "1", 
-        productName: "Hina Shahazad", 
-        productCatagory:"Human being"
-    }]
+    products: []
 }
 export const prodctReducer = (state=initialState,{type, payload}) =>
 {
     switch ( type )
     {
         case actionTypes.SET_PRODUCT:
-            return state;
+            return { ...state, products:payload };
         default:
             return state;
     }

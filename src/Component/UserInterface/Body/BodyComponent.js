@@ -1,7 +1,8 @@
 import React from "react";
 import CardComponent from "./CardComponent";
-import { Grid, Segment } from 'semantic-ui-react'
+import { Card, Container, Grid, Segment } from 'semantic-ui-react'
 import FrontBanner from "./FrontBanner";
+import ProductApi from "../../Code/ProductApi";
 
 /**
  * 
@@ -11,22 +12,13 @@ const BodyComponent = () =>
 {
     return (
         <div>
+            <ProductApi />
             <FrontBanner/>
-            <Segment>
-        <Grid columns={3} divided>
-            <Grid.Row>
-                <Grid.Column>
+            <Segment color="green">
+                <Grid>
                     <CardComponent />
-                </Grid.Column>
-                <Grid.Column>
-                    <CardComponent />
-                </Grid.Column>
-                <Grid.Column>
-                    <CardComponent />
-                </Grid.Column>
-            </Grid.Row>
                 </Grid>
-                </Segment>
+            </Segment>
         </div>
     )
     

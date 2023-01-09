@@ -1,11 +1,10 @@
 import { actionTypes } from '../constants/actionType';
-/**
- * User Reducer takes action and initial state
+/**-----------REDUCER: HOW TO DO--------------- 
+ * User Reducer takes action (distructure the type and payload) and initial state
  */
 const initialState = {
     user: [ ]
 };
-
 export const userReducer = (state=initialState, {type, payload}) =>
 {
     switch ( type )
