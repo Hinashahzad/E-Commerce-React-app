@@ -13,15 +13,16 @@ const BodyComponent = () =>
     return (
         <div>
             <ProductApi />
-            <FrontBanner/>
-            <Segment color="green">
-                <Grid>
+            <FrontBanner />
+            <Segment color="blue">
+                <h2 >Choose Product by Catagory</h2>
+            </Segment>
+            <Segment color="green" >
+                <Grid centered >
                     <CardComponent />
                 </Grid>
             </Segment>
         </div>
     )
-    
 }
-
 export default BodyComponent;

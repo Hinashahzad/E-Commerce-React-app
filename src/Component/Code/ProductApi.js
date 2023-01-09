@@ -13,7 +13,7 @@ const ProductApi = () =>
     const fetchProducts = async () =>
     {
         const response = await axios
-            .get( 'https://fakestoreapi.com/products/category/jewelery' )
+            .get( 'https://fakestoreapi.com/products/' )
             .catch( ( error ) =>  {
                 console.log("Error", error );
             } )
