@@ -8,7 +8,7 @@ import ProductDetails from "./Component/Code/ProductDetails";
 
 function App ()
 {
-    const [value, setValue] = useState("")
+    const [ value, setValue ] = useState( "" )
     //Function to receive (Sign-in and Register from MenuRight (Child Component))
     const receiveData = (status) =>
     {
@@ -24,7 +24,7 @@ function App ()
                     <Route path="/Home" element={ <Home receiveData={ receiveData}/> } />
                     <Route path="/loginForm" element={ <LocalStorage value={ value} />  } /> 
                     <Route path="/registrationForm" element={ <LocalStorage value={ value } /> } /> 
-                    <Route path="/product/1" element={ <ProductDetails/> } /> 
+                    <Route path="/product/:productId" element={ <ProductDetails /> } />
                 </Routes>     
     </Router>
         </Segment>
