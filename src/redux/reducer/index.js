@@ -1,4 +1,4 @@
-import { prodctReducer } from '../reducer/productReducer';
+import { prodctReducer, selectedProductReducer } from '../reducer/productReducer';
 import { userReducer } from '../reducer/userReducer';
 import { combineReducers } from 'redux';
 /**
@@ -7,5 +7,6 @@ import { combineReducers } from 'redux';
  */
 export const reducers = combineReducers( {
     allProducts: prodctReducer,
+    product: selectedProductReducer,
     allRegisterUsers:userReducer,
 } );

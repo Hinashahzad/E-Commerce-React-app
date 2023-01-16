@@ -23,11 +23,11 @@ export const setProduct = ( products ) =>
  * 
  * ACTION 2
  */
-export const selectProduct = ( products ) =>
+export const selectProduct = ( product ) =>
 {
     return {
         type: actionTypes.SELECTED_PRODUCT,
-        payload:products
+        payload:product
 
     }
 }
