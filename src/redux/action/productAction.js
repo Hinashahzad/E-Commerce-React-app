@@ -28,6 +28,5 @@ export const selectProduct = ( product ) =>
     return {
         type: actionTypes.SELECTED_PRODUCT,
         payload:product
-
     }
 }

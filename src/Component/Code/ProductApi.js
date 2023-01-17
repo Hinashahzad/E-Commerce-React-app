@@ -14,9 +14,10 @@ const ProductApi = () =>
     {
         const response = await axios
             .get( 'https://fakestoreapi.com/products/' )
-            .catch( ( error ) =>  {
-                console.log("Error", error );
-            } )
+            .catch( ( error ) =>
+            {
+                console.log( "Error", error );
+            } );
         dispatch(setProduct( ( response.data ))) ;
     }
     useEffect( () =>
