@@ -13,24 +13,24 @@
     It contains all the component
 2. Redux
     - Actions (Can b more than one action)
-            ACTION: What to do 
-            Action name: registerUsers
-            Action always return the Javascript object containing type and payload
-            REGISTER_USER is action type and payload contain the data
+        * ACTION: What to do 
+        * Action name: registerUsers
+        * Action always return the Javascript object containing type and payload
+        * REGISTER_USER is action type and payload contain the data
     - reducer
-            index.js
+        * index.js
                 /**
                 * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
                 * REDUCERS can be multiple
                 */
-            reducer1 
+        * reducer1 
             /**
             * This files describe HOW to perform the actions
             * IMPORTANT:
             *  It takes two arguments : Initial state and actions(JAVASCRRIPT object {type, payload})
             */
-            reducer2
-            reducer3
+        * reducer2
+        * reducer3
               .
               .
               .
