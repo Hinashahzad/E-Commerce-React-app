@@ -29,4 +29,15 @@ export const selectProduct = ( product ) =>
         type: actionTypes.SELECTED_PRODUCT,
         payload:product
     }
+};
+
+/**
+ * ACTION 3
+ */
+
+export const removeSelectedProduct = () =>
+{
+    return {
+        type: actionTypes.REMOVE_SELECTED_PRODUCT
+    }
 }
