@@ -40,7 +40,7 @@ const ProductDetailCard = () =>
                                 </Button.Group >
                               
                  <pre><Button.Group basic size='large' padded="very">
-                        <Button icon='cart'>   Add to bag </Button >
+                        <Button icon='cart' content="Add to Bag"/>
                                 </Button.Group>
                 </pre>
                 </div>            

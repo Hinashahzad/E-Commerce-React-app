@@ -18,4 +18,14 @@ export const UserReducer = (state=initialstate, {type, payload}) =>
     }
 };
 
+export const activeUserReducer = (state={}, {type, payload}) =>
+{
+    switch ( type )
+    {
+        case actionTypes.ACTIVE_USER:
+            return { ...state, ...payload }
+        default:
+            return state
+    }
+}
 

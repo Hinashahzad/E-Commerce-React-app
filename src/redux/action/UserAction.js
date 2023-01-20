@@ -8,3 +8,15 @@ export const UserAction = ( user ) =>
         payload:user
     }
 };
+/**
+ * 
+ * @param {activeUser} activeUser 
+ * @returns activeUser 
+ */
+export const ActiveUser = ( activeUser ) =>
+{
+    return {
+        type: actionTypes.ACTIVE_USER,
+        payload:activeUser
+    }
+}

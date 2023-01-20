@@ -3,12 +3,15 @@ import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from "react-redux";
 import LocalStorage from "../Code/LocalStorage";
+import { ActiveUser } from "../../redux/action/UserAction";
+import Home from "../UserInterface/Home";
 
 const LoginForm = () =>
 {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const registerUser = useSelector( ( state ) => state.allUser.user );
- 
+    const dispatch = useDispatch();
+    var active=null;
     const onSubmit = (data) =>
     {
         console.log( data );
@@ -18,8 +21,11 @@ const LoginForm = () =>
             if ( data.email === user.email && data.password === user.password )
             {
                 console.log( "USER HAS FOUND" );
-
+                dispatch( ActiveUser( user ) );
+                active = <Home />
+                console.log(active)
             }
+
         })
     }
     return ( <>
@@ -55,7 +61,7 @@ const LoginForm = () =>
       <p>{errors?.password && (
         <span color="red">{errors?.password?.message}</span>)}</p>
             <Button type='submit'>Login</Button>
-            </Form>
+        </Form>
         
     </> );
 };
