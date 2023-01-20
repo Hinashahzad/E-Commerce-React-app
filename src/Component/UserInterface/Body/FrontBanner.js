@@ -7,7 +7,7 @@ function FrontBanner  ()
 {
     return ( <div>
         <Segment color="black"  >
-            <img src={bridal} class="ui fluid image" />
+            <img src={bridal} className="ui fluid image" />
         </Segment>
     </div>);
     

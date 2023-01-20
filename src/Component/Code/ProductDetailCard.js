@@ -32,15 +32,21 @@ const ProductDetailCard = () =>
                         <h4>Availability: In stock  </h4> 
                     { /*<Rating maxRating={ 8 } rating={ product.rating.rate } clearable /> */ }
                 <div>
+                
                 <Button.Group basic size='large'>
                 <Button icon='plus' />
                 <Button/>
-                    <Button icon='minus' />&ensp; &ensp; &ensp;
-                    </Button.Group >
-                    <Button.Group basic  size='large' padded="very">
-                        <Button icon='cart' content="Add to bag" />
-                    </Button.Group>
-                </div>
+                    <Button icon='minus' />
+                                </Button.Group >
+                              
+                 <pre><Button.Group basic size='large' padded="very">
+                        <Button icon='cart'>   Add to bag </Button >
+                                </Button.Group>
+                </pre>
+                </div>            
+                    
+                
+                
                 <Header as='h3'>
                     <Header.Content>Details</Header.Content>   
                 </Header>

@@ -10,12 +10,7 @@ import { Link } from 'react-router-dom';
 const CardComponent = ()=>
 {
     const products = useSelector( ( state ) => state.allProducts.products );
-    const extra = (
-        <a>
-            <Button> Add to Cart</Button>
-        </a>
-    )
-    
+
     const renderList = products.map( ( product ) =>
     {
         //Destructuring the products array
@@ -23,13 +18,12 @@ const CardComponent = ()=>
         return (
             <Segment color="purple" padded="very">
                 <Link to={`/product/${id}`}>
-                <Card link key={ id } >
+                <Card key={ id } >
                     <img src={image} width={250} height={345}></img>
                     <Card.Content>
                         <Card.Header>{ catagory }</Card.Header>
                         <Card.Description> ${ price } </Card.Description>
                         </Card.Content>
-                  
                     </Card>
                     </Link>
                 
