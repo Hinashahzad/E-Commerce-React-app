@@ -1,7 +1,6 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Segment, Card, Icon, Image, Button, Placeholder } from 'semantic-ui-react'
+import { Segment, Card, Button, Placeholder } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 /**

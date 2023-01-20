@@ -11,18 +11,13 @@ import React, { useState} from "react";
  */
 const HeaderComponent = (props) =>
 {
-    //Function to receive (Sign-in and Register from MenuRight (Child Component))
-    const receiveData = (status) =>
-    {
-        //Sending status(Sign-in or Register to Home (Parent):
-        props.receiveData( status );
-    }
+    
     
     return (
          <div>
         <Segment clearing color="olive">
            <Header as='h2' floated='right'>
-                    <MenuRight receiveData={ receiveData} />
+                    <MenuRight  />
             </Header>
             <Header as='h2' floated='left'>
                 <MenuLeft />

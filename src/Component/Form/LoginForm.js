@@ -1,71 +1,63 @@
 import React from "react";
-import { Form, Button, Segment } from 'semantic-ui-react';
-import ActiveUser from "../Code/ActiveUser"
+import { Form, Button } from "semantic-ui-react";
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from "react-redux";
+import LocalStorage from "../Code/LocalStorage";
 
-//This is class Component
-class LoginForm extends React.Component
+const LoginForm = () =>
 {
-    constructor ( props )
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const registerUser = useSelector( ( state ) => state.allUser.user );
+ 
+    const onSubmit = (data) =>
     {
-        super( props );
-        this.state = {
-            email: "",
-            pass: "",
-            verifyEmail: "",
-            verifyPass: ""
-        };
+        console.log( data );
+        console.log( registerUser );
+        registerUser.map( ( user ) =>
+        {
+            if ( data.email === user.email && data.password === user.password )
+            {
+                console.log( "USER HAS FOUND" );
+
+            }
+        })
     }
-    
-    login = ( e ) =>
-    {
-       e.preventDefault();
-       if (this.state.email === "" || this.state.pass === ""){
-            alert ("Both fields are mandatory!");
-            return;
-        }
-       console.log ( this.props.activeButton );
-       this.props.user.map( ( user ) =>
-       {
-           if ( user.email === this.state.email && user.password === this.state.pass )
-           {
-               console.log( "VALID USER" );
-               this.setState( { verifyEmail: user.email } );
-               this.setState( { verifyPass: user.password } );
-               return;
-           }
-       } );
-       this.setState( { email: "", pass: ""} )
-    }
-    render(){
-        return (
-            <div>
-                {
-                    this.state.verifyEmail && this.state.verifyPass ? <ActiveUser /> :
-                        
-                    <Form onSubmit={ this.login } width="equal">
-                        <Form.Field>
-                            <label>Email</label>
-                            <input placeholder='Email'
-                                type="email"
-                                value={ this.state.email }
-                                onChange={ ( e ) => this.setState( { email: e.target.value } ) } />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Password</label>
-                            <input placeholder='Password'
-                                type="password"
-                                name="password"
-                                value={ this.state.pass }
-                                onChange={ ( e ) => this.setState( { pass: e.target.value } ) } />
-                        </Form.Field>
-                        <Button type='submit'>Login</Button>
-                        <Button>Cancel</Button>
-                    </Form>
-                }
-                </div>
-        );
-    }
-    
-}
+    return ( <>
+        <LocalStorage />
+            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Field>
+        <label>Email: </label>
+          <input
+            type="email"
+            name="email"
+            autoComplete="off"
+            placeholder='Email'
+            { ...register( 'email',//<--- This is name="email"
+              {
+                required: "Email is Required", 
+                pattern:{value:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"This is not a valid email" }
+            })}/>
+        </Form.Field>
+            <p>{errors?.email && (
+                <span color="red">{errors?.email?.message}</span>)}</p>
+           <Form.Field>
+        <label>password</label>
+          <input
+            type="password"
+            name="password"
+            autoComplete="off"
+            placeholder='Password'
+            { ...register( 'password', //<--- This is name="password"
+              {
+                required: "Password is Required"
+              } ) } />
+      </Form.Field>
+      <p>{errors?.password && (
+        <span color="red">{errors?.password?.message}</span>)}</p>
+            <Button type='submit'>Login</Button>
+            </Form>
+        
+    </> );
+};
 
 export default LoginForm;

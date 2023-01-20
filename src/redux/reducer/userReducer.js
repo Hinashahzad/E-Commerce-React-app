@@ -1,17 +1,21 @@
-import { actionTypes } from '../constants/actionType';
-/**-----------REDUCER: HOW TO DO--------------- 
- * User Reducer takes action (distructure the type and payload) and initial state
+/**
+ * How to perform Action
  */
-const initialState = {
-    user: [ ]
+import { actionTypes } from "../constants/actionType";
+
+const initialstate = {
+    user: [
+    ]
 };
-export const userReducer = (state=initialState, {type, payload}) =>
+export const UserReducer = (state=initialstate, {type, payload}) =>
 {
     switch ( type )
     {
-        case actionTypes.REGISTER_USER:
-            return { ...state, user:payload };
+        case actionTypes.SET_USER:
+            return { ...state, user:payload}
         default:
             return state
     }
-}
+};
+
+
