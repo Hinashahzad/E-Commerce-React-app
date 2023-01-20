@@ -9,48 +9,18 @@
 `npm install axios`
 `npm install redux react-redux`
 
-## Folder structure
-1. Component 
-    It contains all the component
-2. Redux
-    - Actions (Can b more than one action)
-        * ACTION: What to do 
-        * Action name: registerUsers
-        * Action always return the Javascript object containing type and payload
-        * REGISTER_USER is action type and payload contain the data
-    - reducer
-        * index.js
-                /**
-                * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
-                * REDUCERS can be multiple
-                */
-        * reducer1 
-            /**
-            * This files describe HOW to perform the actions
-            * IMPORTANT:
-            *  It takes two arguments : Initial state and actions(JAVASCRRIPT object {type, payload})
-            */
-        * reducer2
-        * reducer3
-              .
-              .
-              .
+## Modules
 
-    - store
-                /**
-        * HERE we can create a store and add the reducers to the stores
-        * 1 argument is reducers 
-        * 2 argument is empty state
-        * 3 argument is 
-        */
-        `export const store = createStore( reducers,{},
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );`
+#### Registeration 
+1. Any user can register himself/herself to the website to get excieting offers of deals.
+2. User must have a valid email address for registeration.
 
-## How can access the Store 
-    provide the store to the index.js e.g., 
-        ``ReactDom.render( 
-            <Provider store={store} >
-                <App />
-            </Provider>
+#### Login
+1. User can enter Login details to successfully Sign in to our website. 
+2. User must have registered user email and password to successfully Login to Website.
 
+#### Product
+1. User can see various products in the website.
+2. User can select the product, and see the Product details. 
+3. User can add the selected product into the shopping cart.
 
