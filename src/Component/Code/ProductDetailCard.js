@@ -8,7 +8,7 @@ const ProductDetailCard = () =>
     const [ counter, setCounter ] = useState( 1 );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
     console.log(product);
-    const card = useSelector( ( state ) => state.card.products );
+    const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     console.log(card);
     const dispatch = useDispatch();
     return ( <div>
@@ -48,7 +48,7 @@ const ProductDetailCard = () =>
                                     <Button onClick={ () =>
                                     {
                                         console.log( "Add to Bag" );
-                                        dispatch(addToCart([...card, {  quantity: counter, ...product }]))
+                                        dispatch(addToCart([...card, {  quantity: counter, ...product }])) // dispatch selected Product into the Bag
 
                                     } }> Add to Bag </Button>
                                 </Button.Group>

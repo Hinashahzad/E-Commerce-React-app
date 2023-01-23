@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
  */
 const CardComponent = ()=>
 {
-    const products = useSelector( ( state ) => state.allProducts.products );
+    const products = useSelector( ( state ) => state.allProducts.products ); //allProduct:prodctReducer
 
     const renderList = products.map( ( product ) =>
     {

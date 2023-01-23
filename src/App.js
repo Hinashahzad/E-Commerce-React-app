@@ -7,6 +7,7 @@ import Home from "./Component/UserInterface/Home";
 import LoginForm from "./Component/Form/LoginForm";
 import RegistrationForm from "./Component/Form/RegistrationForm";
 import ActiveUserHeader from "./Component/UserInterface/Header/ActiveUserHeader";
+import CardModal from "./Component/UserInterface/Body/CardModal";
 
 function App ()
 {
@@ -19,7 +20,8 @@ function App ()
                     <Route path="/Login" element={ <LoginForm /> }></Route>
                     <Route path ="/Registration" element={<RegistrationForm />}></Route>
                     <Route path="/product/:productId" element={ <ProductDetails /> } />
-                    <Route path="/activeUser" element ={<ActiveUserHeader /> } />
+                    <Route path="/activeUser" element={ <ActiveUserHeader /> } />
+                    <Route path="/ShoppingCart" element ={  <CardModal /> } />
                 </Routes>     
     </Router>
         </Segment>
