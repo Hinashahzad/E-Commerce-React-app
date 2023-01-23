@@ -4,10 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from "react-redux";
 import LocalStorage from "../Code/LocalStorage";
 import { ActiveUser } from "../../redux/action/UserAction";
-import Home from "../UserInterface/Home";
-import ActiveUserHeader from "../UserInterface/Header/ActiveUserHeader";
 import {useNavigate} from 'react-router-dom';
-import { Link } from "react-router-dom";
 
 const LoginForm = () =>
 {
@@ -27,7 +24,6 @@ const LoginForm = () =>
               alert( "VALID USER" );
               dispatch( ActiveUser( user ) );
               navigate( "/activeUser" );
-              
             }
         } )
         reset();

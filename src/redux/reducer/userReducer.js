@@ -4,8 +4,7 @@
 import { actionTypes } from "../constants/actionType";
 
 const initialstate = {
-    user: [
-    ]
+    user: []
 };
 export const UserReducer = (state=initialstate, {type, payload}) =>
 {

@@ -1,10 +1,16 @@
 import { Grid, Segment, Image, Card, Header, Rating,Dimmer, Loader, Button,  Divider } from 'semantic-ui-react';
-import React from 'react';
-import {useSelector} from 'react-redux'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../redux/action/productAction';
 
 const ProductDetailCard = () =>
 {
+    const [ counter, setCounter ] = useState( 1 );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
+    console.log(product);
+    const card = useSelector( ( state ) => state.card.products );
+    console.log(card);
+    const dispatch = useDispatch();
     return ( <div>
         <Segment textAlign="center" color="olive">
                  <h2 >Selected Product</h2>
@@ -32,21 +38,22 @@ const ProductDetailCard = () =>
                         <h4>Availability: In stock  </h4> 
                     { /*<Rating maxRating={ 8 } rating={ product.rating.rate } clearable /> */ }
                 <div>
-                
+                {/** Update the Number of items */}
                 <Button.Group basic size='large'>
-                <Button icon='plus' />
-                <Button/>
-                    <Button icon='minus' />
-                                </Button.Group >
-                              
+                <Button icon='plus' onClick={()=>{ setCounter(counter+1) }} ></Button>
+                                    <Button> { counter }</Button>
+                    <Button icon='minus' onClick={()=>{ if(counter>=1) setCounter(counter-1) }}></Button>
+                                </Button.Group >   
                  <pre><Button.Group basic size='large' padded="very">
-                        <Button icon='cart' content="Add to Bag"/>
+                                    <Button onClick={ () =>
+                                    {
+                                        console.log( "Add to Bag" );
+                                        dispatch(addToCart([...card, {  quantity: counter, ...product }]))
+
+                                    } }> Add to Bag </Button>
                                 </Button.Group>
                 </pre>
                 </div>            
-                    
-                
-                
                 <Header as='h3'>
                     <Header.Content>Details</Header.Content>   
                 </Header>

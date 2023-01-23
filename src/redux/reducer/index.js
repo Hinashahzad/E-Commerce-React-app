@@ -1,4 +1,4 @@
-import { prodctReducer, selectedProductReducer } from '../reducer/productReducer';
+import { prodctReducer, selectedProductReducer, addToBagReducer } from '../reducer/productReducer';
 import { UserReducer,activeUserReducer } from '../reducer/UserReducer';
 import { combineReducers } from 'redux';
 /**
@@ -10,4 +10,5 @@ export const reducers = combineReducers( {
     product: selectedProductReducer,
     allUser: UserReducer,
     activeUser: activeUserReducer,
+    card:addToBagReducer,
 } );

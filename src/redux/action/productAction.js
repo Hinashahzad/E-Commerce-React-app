@@ -40,4 +40,16 @@ export const removeSelectedProduct = () =>
     return {
         type: actionTypes.REMOVE_SELECTED_PRODUCT
     }
+};
+
+/*ACTION 4:
+All the Selected Product will be dispatch to the addToCart after CLicking the "ADD TO BAG" button;
+*/
+
+export const addToCart = (products) =>
+{
+    return {
+        type: actionTypes.ADD_TO_BAG,
+        payload:products
+    }
 }

@@ -30,4 +30,14 @@ export const selectedProductReducer = ( state = {}, {type, payload} ) =>
         default:
             return state;
     }
+};
+export const addToBagReducer = (state=initialState, {type, payload}) =>
+{
+    switch ( type )
+    {
+        case actionTypes.ADD_TO_BAG:
+            return { ...state, products:payload };
+        default:
+            return state;
+    }
 }
