@@ -5,28 +5,32 @@ import { useDispatch, useSelector } from "react-redux";
 import LocalStorage from "../Code/LocalStorage";
 import { ActiveUser } from "../../redux/action/UserAction";
 import Home from "../UserInterface/Home";
+import ActiveUserHeader from "../UserInterface/Header/ActiveUserHeader";
+import {useNavigate} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const LoginForm = () =>
 {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const registerUser = useSelector( ( state ) => state.allUser.user );
-    const dispatch = useDispatch();
-    var active=null;
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  
+  const registerUser = useSelector( ( state ) => state.allUser.user );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
     const onSubmit = (data) =>
     {
-        console.log( data );
         console.log( registerUser );
         registerUser.map( ( user ) =>
         {
-            if ( data.email === user.email && data.password === user.password )
-            {
-                console.log( "USER HAS FOUND" );
-                dispatch( ActiveUser( user ) );
-                active = <Home />
-                console.log(active)
+            if ( data.email === user.email && data.password === user.password ){
+              console.log( "USER HAS FOUND" );
+              alert( "VALID USER" );
+              dispatch( ActiveUser( user ) );
+              navigate( "/activeUser" );
+              
             }
-
-        })
+        } )
+        reset();
     }
     return ( <>
         <LocalStorage />
@@ -62,7 +66,8 @@ const LoginForm = () =>
         <span color="red">{errors?.password?.message}</span>)}</p>
             <Button type='submit'>Login</Button>
         </Form>
-        
+      {/**CONDITIONAL RENDERING */ }
+      
     </> );
 };
 

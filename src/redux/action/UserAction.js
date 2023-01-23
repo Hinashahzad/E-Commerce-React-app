@@ -19,4 +19,15 @@ export const ActiveUser = ( activeUser ) =>
         type: actionTypes.ACTIVE_USER,
         payload:activeUser
     }
+};
+
+/**
+ * 
+ * @returns Remove active user : LOGOUT
+ */
+export const removeActiveUser = () =>
+{
+    return {
+        type: actionTypes.REMOVE_ACTIVE_USER
+    }
 }

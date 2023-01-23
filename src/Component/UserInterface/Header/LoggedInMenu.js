@@ -1,51 +1,42 @@
 import React, { Component} from "react";
 import { Icon, Menu } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
-import LoginForm from "../../Form/LoginForm";
-import Home from "../Home";
+import { useDispatch, useSelector } from "react-redux";
+import { removeActiveUser } from "../../../redux/action/UserAction";
 
 /**
  * Child Component: MenuRight
  */
-export default class LoggedInMenu extends Component 
+const LoggedInMenu =()=>
   {
-    state = {
-        activeItem: 'Sign-out'
-    }
-    
-    handleItemClick = ( e, { name } ) =>
+
+    const activeUser = useSelector( ( state ) => state.activeUser );
+    const dispatch = useDispatch();
+    const handleItemClick = () =>
     {
-        this.setState( { activeItem: name } );
-        console.log(this.state.activeItem);
+        if ( activeUser ) { dispatch( removeActiveUser() ); }
+        else
+        {
+            return ( alert( "USER is LOGGED OUT" ) );
+        }
         
     }
-    render ()
-    {
-        const { activeItem } = this.state;
         return (
-            <div>
                 <Menu secondary>
                     <Link to="/Home">
                         <Menu.Item
                             name='Sign-out'
-                            active={ activeItem === 'Sign-out' }
-                            onClick={ this.handleItemClick }
-                                />
+                            onClick={ handleItemClick }/>
                     </Link>
                     
                 <Menu.Menu position='right'>
                     <Menu.Item>
                         <Icon name='shop'
-                            active={ activeItem === 'shop' }
                             size="large"
-                            onClick={ this.handleItemClick } />
+                             />
                     </Menu.Item>
                 </Menu.Menu>
-                </Menu>
-                {this.activeItem =="Sign-out" && <Home/> }
-                </div>  
+                </Menu>        
         );
-    
-       
-    }
 }
+export default LoggedInMenu;

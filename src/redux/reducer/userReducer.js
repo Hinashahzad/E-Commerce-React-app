@@ -24,8 +24,9 @@ export const activeUserReducer = (state={}, {type, payload}) =>
     {
         case actionTypes.ACTIVE_USER:
             return { ...state, ...payload }
+        case actionTypes.REMOVE_ACTIVE_USER:
+            return {}
         default:
             return state
     }
 }
-

@@ -3,13 +3,12 @@ import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserAction } from "../../redux/action/UserAction";
-
 import { v1 as uuidv1 } from 'uuid';
 import LocalStorage from "../Code/LocalStorage";
 
 const RegistrationForm = () =>
 { 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors },reset } = useForm();
   const users= useSelector((state)=>state.allUser.user) // Access Global state(user) from Redux store
   const dispatch = useDispatch(); //Send data to Redux store
   const LOCAL_STORAGE_KEY = "users"; //Manage Local Storage
@@ -19,6 +18,7 @@ const RegistrationForm = () =>
   {
     dispatch( UserAction( [ ...users, { id: uuidv1(), ...data } ] ) );
     localStorage.setItem( LOCAL_STORAGE_KEY, JSON.stringify( [ ...users, { id: uuidv1(), ...data } ] ) )
+    reset();
    }
   return ( <>
       <LocalStorage />
