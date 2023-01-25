@@ -6,6 +6,7 @@ import HeaderComponent from '../UserInterface/Header/HeaderComponent';
 import FooterComponent from '../UserInterface/Footer/FooterComponent';
 import { OpenModalAction } from '../../redux/action/ModalAction';
 import { CloseModalAction } from '../../redux/action/ModalAction';
+import { render } from '@testing-library/react';
 
 
 const ProductDetailCard = () =>
@@ -18,6 +19,19 @@ const ProductDetailCard = () =>
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
     const { dimmer, open } = modalState;
 
+    const renderList = card.map( ( selectedProduct ) =>
+    {
+        return ( <>
+            <Modal.Content image>
+            <Image size='small' src={selectedProduct.image} wrapped />
+                <Modal.Description>
+                    Name: <p>{ selectedProduct.title }</p>
+                    Quantity: <p>{ selectedProduct.quantity }</p>
+                    Price: <p> ${ selectedProduct.price }</p>
+                    </Modal.Description>
+            </Modal.Content>
+        </> )
+    })
     return ( <div>
         <Segment textAlign="center" color="olive">
                  <HeaderComponent />
@@ -64,17 +78,8 @@ const ProductDetailCard = () =>
                                     dimmer={dimmer}
                                     open={open}
                                     onClose={() => dispatch(CloseModalAction())}>
-                                    
                                     <Modal.Header>The following product has been added to Shopping Cart</Modal.Header>
-                                    <Modal.Content image>
-                                    <Image size='medium' src={card.image} wrapped />
-                                    <Modal.Description>
-                                            Name: <p>{ card.title }</p>
-                                            Quantity: <p>{ card.quantity }</p>
-                                            Price: <p> ${ card.price }</p>
-                                    </Modal.Description>
-                                    </Modal.Content>
-                                    
+                                    {renderList}
                                     <Modal.Actions>
                                     <Button negative onClick={() => dispatch(CloseModalAction())}>
                                         CONTINUE SHOPPING
@@ -84,6 +89,7 @@ const ProductDetailCard = () =>
                                     </Button>
                                     </Modal.Actions>
                                 </Modal>
+                               
                                     
                 
                         </div>            
