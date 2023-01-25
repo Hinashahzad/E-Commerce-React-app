@@ -1,19 +1,26 @@
-import { Grid, Segment, Image, Card, Header, Rating,Dimmer, Loader, Button,  Divider } from 'semantic-ui-react';
+import { Grid, Segment, Modal, Card, Header,Image,  Rating,Dimmer, Loader, Button,  Divider } from 'semantic-ui-react';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../redux/action/productAction';
+import HeaderComponent from '../UserInterface/Header/HeaderComponent';
+import FooterComponent from '../UserInterface/Footer/FooterComponent';
+import { OpenModalAction } from '../../redux/action/ModalAction';
+import { CloseModalAction } from '../../redux/action/ModalAction';
+
 
 const ProductDetailCard = () =>
 {
     const [ counter, setCounter ] = useState( 1 );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
-    console.log(product);
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
-    console.log(card);
+    console.log(card.title);
     const dispatch = useDispatch();
+    const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
+    const { dimmer, open } = modalState;
+
     return ( <div>
         <Segment textAlign="center" color="olive">
-                 <h2 >Selected Product</h2>
+                 <HeaderComponent />
         </Segment>
         {/** If there is no product in the website */}
         { Object.keys( product ).length === 0
@@ -48,12 +55,38 @@ const ProductDetailCard = () =>
                                     <Button onClick={ () =>
                                     {
                                         console.log( "Add to Bag" );
-                                        dispatch(addToCart([...card, {  quantity: counter, ...product }])) // dispatch selected Product into the Bag
-
+                                        dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
+                                        dispatch( OpenModalAction( "blurring" ) ) 
                                     } }> Add to Bag </Button>
                                 </Button.Group>
-                </pre>
-                </div>            
+                                    </pre>
+                                <Modal
+                                    dimmer={dimmer}
+                                    open={open}
+                                    onClose={() => dispatch(CloseModalAction())}>
+                                    
+                                    <Modal.Header>The following product has been added to Shopping Cart</Modal.Header>
+                                    <Modal.Content image>
+                                    <Image size='medium' src={card.image} wrapped />
+                                    <Modal.Description>
+                                            Name: <p>{ card.title }</p>
+                                            Quantity: <p>{ card.quantity }</p>
+                                            Price: <p> ${ card.price }</p>
+                                    </Modal.Description>
+                                    </Modal.Content>
+                                    
+                                    <Modal.Actions>
+                                    <Button negative onClick={() => dispatch(CloseModalAction())}>
+                                        CONTINUE SHOPPING
+                                    </Button>
+                                    <Button positive onClick={() => dispatch(CloseModalAction())}>
+                                        CHECK OUT
+                                    </Button>
+                                    </Modal.Actions>
+                                </Modal>
+                                    
+                
+                        </div>            
                 <Header as='h3'>
                     <Header.Content>Details</Header.Content>   
                 </Header>
@@ -64,8 +97,12 @@ const ProductDetailCard = () =>
                     <Header.Content>Catagory: </Header.Content> <p>{product.category}</p>
                 </Header>
             </Grid.Column>
-            </Grid>
-            </Segment>
+                    </Grid>
+                    <Segment>
+                        <FooterComponent />
+                    </Segment>
+                </Segment>
+                
             )}
     </div>)
 }

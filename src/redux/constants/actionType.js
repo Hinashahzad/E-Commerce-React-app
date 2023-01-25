@@ -6,6 +6,8 @@ export const actionTypes = {
     SET_USER: "SET_USER",
     ACTIVE_USER: "ACTIVE_USER",
     REMOVE_ACTIVE_USER: "REMOVE_ACTIVE_USER",
-    ADD_TO_BAG:"ADD_TO_BAG",
+    ADD_TO_BAG: "ADD_TO_BAG",
+    OPEN_MODAL: "OPEN_MODAL",
+    CLOSE_MODAL:"CLOSE_MODAL",
     
 }

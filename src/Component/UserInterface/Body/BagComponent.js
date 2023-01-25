@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Card } from 'semantic-ui-react'
+import { Card, Placeholder } from 'semantic-ui-react'
 const BagComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
@@ -17,6 +17,7 @@ const BagComponent = () =>
                 <Card.Description> Total ${ product.price * product.quantity } </Card.Description>
                 </Card.Content>
            </Card>
+           <Placeholder> { product.Description}</Placeholder>
        </> )
     })
     

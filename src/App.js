@@ -8,6 +8,7 @@ import LoginForm from "./Component/Form/LoginForm";
 import RegistrationForm from "./Component/Form/RegistrationForm";
 import ActiveUserHeader from "./Component/UserInterface/Header/ActiveUserHeader";
 import CardModal from "./Component/UserInterface/Body/CardModal";
+import ModalComponent from "./Component/UserInterface/Body/ModalComponent";
 
 function App ()
 {
@@ -21,7 +22,8 @@ function App ()
                     <Route path ="/Registration" element={<RegistrationForm />}></Route>
                     <Route path="/product/:productId" element={ <ProductDetails /> } />
                     <Route path="/activeUser" element={ <ActiveUserHeader /> } />
-                    <Route path="/ShoppingCart" element ={  <CardModal /> } />
+                    <Route path="/ShoppingCart" element={ <CardModal /> } />
+                    <Route path="/ModalComponent" element ={  <ModalComponent /> } />
                 </Routes>     
     </Router>
         </Segment>

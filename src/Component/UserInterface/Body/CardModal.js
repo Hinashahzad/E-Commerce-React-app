@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, Image, Grid, Segment } from 'semantic-ui-react'
+import {  Divider, Placeholder, Segment } from 'semantic-ui-react'
 import BagComponent from "./BagComponent";
 const CardModal = () =>
 {
@@ -8,9 +8,8 @@ const CardModal = () =>
       <>
         <h2> Card Modal</h2>
         <Segment>
-         <Grid centered >
-            <BagComponent />  
-          </Grid> 
+          <BagComponent />  
+          <Divider ></Divider>
         </Segment>
       </>)
     
