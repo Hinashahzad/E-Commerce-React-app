@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Placeholder } from 'semantic-ui-react'
-const BagComponent = () =>
+const ShoppingCartComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
     
@@ -23,4 +23,4 @@ const BagComponent = () =>
     
     return ( <>{renderList}</> );
 };
-export default BagComponent
+export default ShoppingCartComponent

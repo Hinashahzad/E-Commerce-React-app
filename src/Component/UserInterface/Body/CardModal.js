@@ -1,14 +1,16 @@
 
 import React from "react";
 import {  Divider, Placeholder, Segment } from 'semantic-ui-react'
-import BagComponent from "./BagComponent";
+import HeaderComponent from "../Header/HeaderComponent";
+import ShoppingCartComponent from "./ShoppingCartComponent";
 const CardModal = () =>
 {
     return (
       <>
-        <h2> Card Modal</h2>
+        <HeaderComponent />
+        <h2> SHOPPING BAG</h2>
         <Segment>
-          <BagComponent />  
+          <ShoppingCartComponent />  
           <Divider ></Divider>
         </Segment>
       </>)
