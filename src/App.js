@@ -8,7 +8,6 @@ import LoginForm from "./Component/Form/LoginForm";
 import RegistrationForm from "./Component/Form/RegistrationForm";
 import ActiveUserHeader from "./Component/UserInterface/Header/ActiveUserHeader";
 import CardModal from "./Component/UserInterface/Body/CardModal";
-import ModalComponent from "./Component/UserInterface/Body/ModalComponent";
 
 function App ()
 {

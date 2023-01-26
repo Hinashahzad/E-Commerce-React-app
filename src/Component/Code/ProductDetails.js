@@ -5,7 +5,6 @@ import { selectProduct, removeSelectedProduct } from './../../redux/action/produ
 import axios from "axios";
 import ProductDetailCard from "./ProductDetailCard";
 
-
 const ProductDetails = () =>
 {
     const { productId } = useParams();

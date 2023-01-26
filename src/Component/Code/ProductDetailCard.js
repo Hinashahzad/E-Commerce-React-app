@@ -1,5 +1,5 @@
 import { Grid, Segment, Modal, Card, Header,Image,  Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../redux/action/productAction';
 import HeaderComponent from '../UserInterface/Header/HeaderComponent';
@@ -8,8 +8,6 @@ import { OpenModalAction } from '../../redux/action/ModalAction';
 import { CloseModalAction } from '../../redux/action/ModalAction';
 import { increment, decrement, reset } from '../../redux/action/CounterAction';
 import { Link } from "react-router-dom";
-
-
 
 const ProductDetailCard = () =>
 {
@@ -25,8 +23,8 @@ const ProductDetailCard = () =>
             <Modal.Content image>
             <img src={selectedProduct.image} width={230} height={200}></img>
                 <Modal.Description padded="very">
-                    <div> <b>Name:</b> <p> { selectedProduct.title } </p></div>
-                    <div> <b> Quantity:</b> {selectedProduct.quantity} </div>
+                   <div> <b>Name:</b> <p> { selectedProduct.title } </p></div>
+                    <div> <b>Quantity:</b> {selectedProduct.quantity} </div>
                     <div> <b>Price: </b> ${selectedProduct.price} </div>
                 </Modal.Description>
                 </Modal.Content>
@@ -58,7 +56,6 @@ const ProductDetailCard = () =>
                     <h4> Price: ${product.price }</h4>
                     <h4>Availability: In stock  </h4> 
         { /*<Rating maxRating={ 8 } rating={ product.rating.rate } clearable /> */ }
-            
         {/** Update the Number of items */}
             <Button.Group basic size='large'>
                 <Button icon='plus' onClick={ () =>{ dispatch( increment( counter ) );} } ></Button>
