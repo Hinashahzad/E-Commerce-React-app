@@ -6,18 +6,18 @@ import HeaderComponent from '../UserInterface/Header/HeaderComponent';
 import FooterComponent from '../UserInterface/Footer/FooterComponent';
 import { OpenModalAction } from '../../redux/action/ModalAction';
 import { CloseModalAction } from '../../redux/action/ModalAction';
+import { increment, decrement, reset } from '../../redux/action/CounterAction';
+import { Link } from "react-router-dom";
 
 
 
 const ProductDetailCard = () =>
 {
-    const [ counter, setCounter ] = useState( 1 );
+    const counter = useSelector( ( state ) => state.count );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
-    console.log(card.title);
-    const dispatch = useDispatch();
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
-    const { dimmer, open } = modalState;
+    const dispatch = useDispatch();
 
     const renderList = card.map( ( selectedProduct ) =>
     {
@@ -61,9 +61,9 @@ const ProductDetailCard = () =>
             
         {/** Update the Number of items */}
             <Button.Group basic size='large'>
-                <Button icon='plus' onClick={()=>{ setCounter(counter+1) }} ></Button>
+                <Button icon='plus' onClick={ () =>{ dispatch( increment( counter ) );} } ></Button>
                 <Button> { counter }</Button>
-                <Button icon='minus' onClick={()=>{ if(counter>=1) setCounter(counter-1) }}></Button>
+                <Button icon='minus' onClick={()=>{ if(counter>=1) dispatch(decrement(counter-1))}}></Button>
             </Button.Group >   
             <pre><Button.Group basic size='large' padded="very">
                 <Button secondary content="+ ADD TO BAG" 
@@ -87,12 +87,21 @@ const ProductDetailCard = () =>
             </Segment>
             ) }
         {/**Modal Codding */}                    
-            <Modal dimmer={dimmer} open={open} onClose={() => dispatch(CloseModalAction())}>
+            <Modal dimmer={modalState.dimmer} open={modalState.open} onClose={() => dispatch(CloseModalAction())}>
                 <Modal.Header>The following product has been added to Shopping Cart</Modal.Header>
                 {renderList}
                 <Modal.Actions>
-                    <Button onClick={() => dispatch(CloseModalAction())}> CONTINUE SHOPPING </Button>
-                        <Button secondary onClick={() => dispatch(CloseModalAction())}> CHECK OUT</Button>
+                <Link to={`/` }><Button onClick={ () =>
+                {
+                    dispatch( CloseModalAction() );
+                    dispatch( reset( counter ) );
+                }
+        }> CONTINUE SHOPPING </Button></Link>
+                <Button secondary onClick={ () =>
+                {
+                    dispatch( CloseModalAction() );
+                    dispatch( reset( counter ) );
+                } }> CHECK OUT</Button>
                 </Modal.Actions>
         </Modal> 
         {/**Footer Component */}

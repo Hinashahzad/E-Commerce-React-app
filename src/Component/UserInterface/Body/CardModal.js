@@ -8,10 +8,9 @@ const CardModal = () =>
     return (
       <>
         <HeaderComponent />
-        <h2> SHOPPING BAG</h2>
+        <h2 text-align="center"> SHOPPING BAG</h2>
         <Segment>
           <ShoppingCartComponent />  
-          <Divider ></Divider>
         </Segment>
       </>)
     

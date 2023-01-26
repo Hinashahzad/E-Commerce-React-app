@@ -23,7 +23,6 @@ function App ()
                     <Route path="/product/:productId" element={ <ProductDetails /> } />
                     <Route path="/activeUser" element={ <ActiveUserHeader /> } />
                     <Route path="/ShoppingCart" element={ <CardModal /> } />
-                    <Route path="/ModalComponent" element ={  <ModalComponent /> } />
                 </Routes>     
     </Router>
         </Segment>
