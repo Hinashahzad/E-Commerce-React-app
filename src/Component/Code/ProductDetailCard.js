@@ -74,6 +74,7 @@ const ProductDetailCard = () =>
                     dispatch( OpenModalAction( "blurring" ) ) } } /> 
                             </Button.Group></pre>
                            
+           {/** Calling Details and Size  */}
             <MenuExampleTabular />
             </Grid.Column>
             </Grid>    
@@ -90,11 +91,12 @@ const ProductDetailCard = () =>
                     dispatch( reset( counter ) );
                 }
         }> CONTINUE SHOPPING </Button></Link>
+                <Link to ="/ShoppingCart">
                 <Button secondary onClick={ () =>
                 {
                     dispatch( CloseModalAction() );
                     dispatch( reset( counter ) );
-                } }> CHECK OUT</Button>
+                } }> CHECK OUT</Button></Link>
                 </Modal.Actions>
         </Modal> 
         {/**Footer Component */}
