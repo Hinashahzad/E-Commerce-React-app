@@ -5,6 +5,7 @@ import {setProduct} from './../../redux/action/productAction'
 
 /**
  * Functional Component: Callining Fake api through axios
+ * Dispatch all the Products into the Redux SetProduct
  */
 const ProductApi = () =>
 {

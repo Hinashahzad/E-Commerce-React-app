@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 import { selectProduct, removeSelectedProduct } from './../../redux/action/productAction';
 import axios from "axios";
 import ProductDetailCard from "./ProductDetailCard";
-
+/**
+ * 
+ * Product Details: Get one product detail through the API 
+ * Dispatch the selected product into the Redux
+ */
 const ProductDetails = () =>
 {
     const { productId } = useParams();
@@ -18,7 +22,6 @@ const ProductDetails = () =>
             {
                 console.log( "Error", error );
             } );
-        console.log( response.data );
         dispatch( selectProduct( response.data ) );
     };
     useEffect( () =>

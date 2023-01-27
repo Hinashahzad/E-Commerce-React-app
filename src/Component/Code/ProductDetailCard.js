@@ -1,4 +1,4 @@
-import { Grid, Segment, Modal, Card, Header,Image,  Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
+import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../redux/action/productAction';
@@ -8,32 +8,35 @@ import { OpenModalAction } from '../../redux/action/ModalAction';
 import { CloseModalAction } from '../../redux/action/ModalAction';
 import { increment, decrement, reset } from '../../redux/action/CounterAction';
 import { Link } from "react-router-dom";
+import MenuExampleTabular from './MenuExampleTabular';
 
 const ProductDetailCard = () =>
 {
-    const counter = useSelector( ( state ) => state.count );
+    const counter = useSelector( ( state ) => state.count ); //Reducer count manage the product count with the help of two actions INCREMENT AND DECREMENT
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
     const dispatch = useDispatch();
-
+    
     const renderList = card.map( ( selectedProduct ) =>
     {
+        const { image, title, quantity, price } = selectedProduct;
         return ( <>
             <Modal.Content image>
-            <img src={selectedProduct.image} width={230} height={200}></img>
+            <img src={image} width={230} height={200}></img>
                 <Modal.Description padded="very">
-                   <div> <b>Name:</b> <p> { selectedProduct.title } </p></div>
-                    <div> <b>Quantity:</b> {selectedProduct.quantity} </div>
-                    <div> <b>Price: </b> ${selectedProduct.price} </div>
+                   <div> <b>Name:</b> <p> { title } </p></div>
+                    <div> <b>Quantity:</b> {quantity} </div>
+                    <div> <b>Price: </b> ${price} </div>
                 </Modal.Description>
                 </Modal.Content>
             <Divider></Divider>
         </> )
     })
     return ( <div>
-        {/**Header Component */}
+        {/**HEADER COMPONENT */}
         <Segment textAlign="center" color="olive"><HeaderComponent /></Segment>
+        {/**BODY COMPONENT */}
         {/** If there is no product in the website */}
         { Object.keys( product ).length === 0
             ?( <Segment>
@@ -53,8 +56,9 @@ const ProductDetailCard = () =>
                 <Header as='h2'>
                 <Header.Content>{product.title}</Header.Content>
                 </Header>
-                    <h4> Price: ${product.price }</h4>
-                    <h4>Availability: In stock  </h4> 
+                    <h4 style={{color:"red"}}> Price: ${product.price }</h4>
+                            <div style={ { display: "flex" } }><pre>Availability: <h4 style={{color:"green"}}>In stock</h4> </pre>  </div>
+                        <br />
         { /*<Rating maxRating={ 8 } rating={ product.rating.rate } clearable /> */ }
         {/** Update the Number of items */}
             <Button.Group basic size='large'>
@@ -68,17 +72,9 @@ const ProductDetailCard = () =>
                     console.log( "Add to Bag" );
                     dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
                     dispatch( OpenModalAction( "blurring" ) ) } } /> 
-                </Button.Group></pre>
-              
-            <Header as='h3'>
-                <Header.Content>Details</Header.Content>   
-                </Header>
-                <Divider></Divider>
-            <Header as='h4'>
-                <Header.Content>Description: </Header.Content>
-                <p>{product.description}</p>
-                <Header.Content>Catagory: </Header.Content> <p>{product.category}</p>
-            </Header>
+                            </Button.Group></pre>
+                           
+            <MenuExampleTabular />
             </Grid.Column>
             </Grid>    
             </Segment>

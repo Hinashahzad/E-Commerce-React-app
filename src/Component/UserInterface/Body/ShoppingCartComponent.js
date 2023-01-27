@@ -1,43 +1,42 @@
 
-import React,{useState} from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Segment, Button, Table, Placeholder } from 'semantic-ui-react'
+import { Segment, Button, Table} from 'semantic-ui-react'
 import FooterComponent from "../Footer/FooterComponent";
-
+import {increment} from '././../../../redux/action/CounterAction'
 
 const ShoppingCartComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
-    const counter = useSelector( ( state ) => state.count );
+    
     const dispatch = useDispatch();
-    const [ state, setState ] = useState( counter );
-    console.log(state);
     const renderList = bagProducts.map( ( product ) =>
     {
         console.log( "Product id : "+product.id );
-        
+        const { id, image, price, quantity } = product;
        return ( <>
         
            <Table.Row>
             <Table.Cell>
-            <img src={product.image} width={100} height={100}></img>
+            <img src={image} width={100} height={100}></img>
             </Table.Cell>
-            <Table.Cell singleLine> ${ product.price}
+            <Table.Cell singleLine> ${ price}
             </Table.Cell>
             <Table.Cell>
                 <Button.Group basic size='large'>
-                           <Button icon='plus' onClick={ () =>
+                <Button icon='plus' onClick={ () =>
                        {
-                           console.log("Button clicked ");
-                           } } ></Button>
-                <Button> { product.quantity  }</Button>
+                           console.log(quantity);
+                           console.log( "Button clicked " );
+                       } } ></Button>
+                       <Button> { quantity }</Button>
                            <Button icon='minus' onClick={ () =>
                            {
                            } }></Button>
                 </Button.Group >
             </Table.Cell>
             <Table.Cell textAlign='right'>
-            ${product.price * product.quantity}
+            ${price * quantity}
             </Table.Cell>
         </Table.Row>
         
