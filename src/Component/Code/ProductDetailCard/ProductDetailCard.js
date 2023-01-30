@@ -9,6 +9,7 @@ import { CloseModalAction } from '../../../redux/action/ModalAction';
 import { increment, decrement, reset } from '../../../redux/action/CounterAction';
 import { Link } from "react-router-dom";
 import MenuExampleTabular from './../../MenuExampleTabular/MenuExampleTabular';
+import { subTotal } from '../../../redux/action/SubTotal';
 
 const ProductDetailCard = () =>
 {
@@ -17,7 +18,8 @@ const ProductDetailCard = () =>
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
     const dispatch = useDispatch();
-    
+    console.log(card);
+    var total = 0;
     const renderList = card.map( ( selectedProduct ) =>
     {
         const { image, title, quantity, price } = selectedProduct;
@@ -27,7 +29,8 @@ const ProductDetailCard = () =>
                 <Modal.Description padded="very">
                    <div> <b>Name:</b> <p> { title } </p></div>
                     <div> <b>Quantity:</b> {quantity} </div>
-                    <div> <b>Price: </b> ${price} </div>
+                    <div> <b>Price: </b> ${ price } </div>
+                    {total= total + (quantity*price)}
                 </Modal.Description>
                 </Modal.Content>
             <Divider></Divider>
@@ -95,7 +98,9 @@ const ProductDetailCard = () =>
                 <Button secondary onClick={ () =>
                 {
                     dispatch( CloseModalAction() );
-                    dispatch( reset( counter ) );
+                        dispatch( reset( counter ) );
+                        {console.log(total)}
+                        dispatch(subTotal(total))
                 } }> CHECK OUT</Button></Link>
                 </Modal.Actions>
         </Modal> 

@@ -1,10 +1,11 @@
 import { Table, Label, Divider, Button } from 'semantic-ui-react'
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 const OrderSummaryComponent = () =>
 {
   
- 
+  const subTotal = useSelector( ( state ) => state.subTotal );
+  console.log(subTotal);
     return ( <>
         
     <Table celled color='black' striped>
@@ -16,7 +17,7 @@ const OrderSummaryComponent = () =>
     <Table.Body>
       <Table.Row>
             <Table.Cell> Subtotal </Table.Cell>
-            <Table.Cell> Subtotal ki variable </Table.Cell>
+            <Table.Cell> {subTotal} </Table.Cell>
       </Table.Row>
       <Table.Row>
             <Table.Cell>FBR service charges</Table.Cell>
