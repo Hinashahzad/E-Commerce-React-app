@@ -11,6 +11,7 @@ export const actionTypes = {
     CLOSE_MODAL: "CLOSE_MODAL",
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
-    RESET:"RESET",
+    RESET: "RESET",
+    SUB_TOTAL:"SUB_TOTAL", 
     
 }

@@ -4,10 +4,12 @@ import { Segment, Button, Table, Grid, Card} from 'semantic-ui-react'
 import FooterComponent from "../../Footer/FooterComponent";
 import OrderSummaryComponent from "../OrderSummaryComponent.js/OrderSummaryComponent";
 
+
 const ShoppingCartComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
     const dispatch = useDispatch();
+    var Total = 0;
     const renderList = bagProducts.map( ( product ) =>
     {
         console.log( "Product id : "+product.id );
@@ -17,8 +19,7 @@ const ShoppingCartComponent = () =>
             <Table.Cell>
             <img src={image} width={100} height={100}></img>
             </Table.Cell>
-            <Table.Cell singleLine> ${ price}
-            </Table.Cell>
+            <Table.Cell singleLine> ${ price }</Table.Cell>
             <Table.Cell>
                 <Button.Group basic size='large'>
                 <Button icon='plus' onClick={ () =>
@@ -33,7 +34,9 @@ const ShoppingCartComponent = () =>
                 </Button.Group >
             </Table.Cell>
             <Table.Cell textAlign='right'>
-            ${price * quantity}
+                   ${ price * quantity }
+                   { Total = Total + ( price * quantity ) }
+                   {console.log(Total)}
             </Table.Cell>
         </Table.Row>
        </> )
@@ -54,19 +57,17 @@ const ShoppingCartComponent = () =>
                 <Table.Body>
                     {renderList}
                 </Table.Body>
-                </Table>
+            </Table>
     </Grid.Column>
     <Grid.Column >
-            <Segment>
-                <Card>
+            <Segment color='black' compact>
+                <Card color='black'>
                 <OrderSummaryComponent />
                 </Card>
       </Segment>
     </Grid.Column>
   </Grid>
-            
-           
-                
+            {/**FOOTER COMPONENT */}
             <Segment>
                 <FooterComponent />
             </Segment>

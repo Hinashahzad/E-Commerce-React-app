@@ -3,6 +3,7 @@ import { ModalReducer } from './ModalReducer';
 import { UserReducer, activeUserReducer } from '../reducer/UserReducer';
 import { CounterReducer } from './CounterReducer';
 import { combineReducers } from 'redux';
+import { subTotalReducer } from './subTotalReducer';
 /**
  * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
  * REDUCERS can be multiple
@@ -14,5 +15,6 @@ export const reducers = combineReducers( {
     activeUser: activeUserReducer,
     card: addToBagReducer,
     modal: ModalReducer,
-    count:CounterReducer,
+    count: CounterReducer,
+    subTotal:subTotalReducer
 } );
