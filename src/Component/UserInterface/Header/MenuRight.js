@@ -1,7 +1,7 @@
 import React, { Component, useState} from "react";
 import { Icon, Menu } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
-import CardModal from "../Body/CardModal";
+import CardModal from "../Body/ShoppingCardModal/ShoppingCardModal";
 import {useNavigate} from 'react-router-dom';
 
 /**

@@ -2,8 +2,8 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Table} from 'semantic-ui-react'
-import FooterComponent from "../Footer/FooterComponent";
-import {increment} from '././../../../redux/action/CounterAction'
+import FooterComponent from "../../Footer/FooterComponent";
+import {increment} from '../../../../redux/action/CounterAction'
 
 const ShoppingCartComponent = () =>
 {

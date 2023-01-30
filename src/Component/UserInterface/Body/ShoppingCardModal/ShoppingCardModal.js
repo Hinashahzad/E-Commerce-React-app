@@ -1,9 +1,9 @@
 
 import React from "react";
 import {  Divider, Placeholder, Segment } from 'semantic-ui-react'
-import HeaderComponent from "../Header/HeaderComponent";
-import ShoppingCartComponent from "./ShoppingCartComponent";
-const CardModal = () =>
+import HeaderComponent from "../../Header/HeaderComponent";
+import ShoppingCartComponent from "../ShoppingCartComponent/ShoppingCartComponent";
+const ShoppingCardModal = () =>
 {
     return (
       <>
@@ -15,4 +15,4 @@ const CardModal = () =>
       </>)
     
 };
-export default CardModal;
+export default ShoppingCardModal;

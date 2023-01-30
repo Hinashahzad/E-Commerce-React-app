@@ -1,11 +1,10 @@
 import React, { Component, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Menu, Segment } from 'semantic-ui-react'
-import SizeTableComponent from './SizeTableComponent';
+import SizeTableComponent from './../SizeTableComponent/SizeTableComponent';
 
 const MenuExampleTabular = () =>
 {
-
   const [activeItem, setActiveItem] = useState("Details");
   const product = useSelector( ( state ) => state.product );
   const setActiveItemOnClick = (e, { name }) => {

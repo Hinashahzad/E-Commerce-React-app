@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 /**
  * 
- * @returns Parent Component: BodyComponent
+ * 
  */
-const CardComponent = ()=>
+const ProductCardComponent = ()=>
 {
     const products = useSelector( ( state ) => state.allProducts.products ); //allProduct:prodctReducer
 
@@ -36,4 +36,4 @@ const CardComponent = ()=>
     ) 
 }
 
-export default CardComponent;
+export default ProductCardComponent;

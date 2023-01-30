@@ -2,12 +2,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
-import ProductDetails from "./Component/Code/ProductDetails";
-import Home from "./Component/UserInterface/Home";
-import LoginForm from "./Component/Form/LoginForm";
-import RegistrationForm from "./Component/Form/RegistrationForm";
+import ProductDetails from './Component/Code/ProductDetails/ProductDetails';
+import Home from "./Component/Home/Home";
+import LoginForm from "./Component/Form/LoginForm/LoginForm";
+import RegistrationForm from "./Component/Form/RegistrationForm/RegistrationForm";
 import ActiveUserHeader from "./Component/UserInterface/Header/ActiveUserHeader";
-import CardModal from "./Component/UserInterface/Body/CardModal";
+import ShoppingCardModal from './Component/UserInterface/Body/ShoppingCardModal/ShoppingCardModal';
 
 function App ()
 {
@@ -21,7 +21,7 @@ function App ()
                     <Route path ="/Registration" element={<RegistrationForm />}></Route>
                     <Route path="/product/:productId" element={ <ProductDetails /> } />
                     <Route path="/activeUser" element={ <ActiveUserHeader /> } />
-                    <Route path="/ShoppingCart" element={ <CardModal /> } />
+                    <Route path="/ShoppingCart" element={ <ShoppingCardModal /> } />
                 </Routes>     
     </Router>
         </Segment>
