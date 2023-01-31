@@ -2,7 +2,7 @@ import React from "react";
 import CardComponent from "../ProductCardComponent/ProductCardComponent";
 import { Card, Container, Grid, Segment } from 'semantic-ui-react'
 import FrontBanner from "../FrontBanner/FrontBanner";
-import ProductApi from "../../../../Services/ProductApi/ProductApi";
+import ProductsApi from "../../../../Services/Api/ProductsApi";
 
 /**
  * 
@@ -12,7 +12,7 @@ const BodyComponent = () =>
 {
     return (
         <div>
-            <ProductApi />
+            <ProductsApi />
             <FrontBanner />
             <Segment color="blue">
                 <h2 >Choose Product by Catagory</h2>

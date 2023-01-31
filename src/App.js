@@ -2,10 +2,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
-import ProductDetails from './Services/ProductDetails/ProductDetails';
+import ProductDetails from './Services/Api/SingleProductApi';
 import Home from "./Component/Home/Home";
-import LoginForm from "./Component/Form/LoginForm/LoginForm";
-import RegistrationForm from "./Component/Form/RegistrationForm/RegistrationForm";
+import LoginForm from "./Container/LoginForm";
+import RegistrationForm from "./Container/RegistrationForm";
 import ActiveUserHeader from "./Component/UserInterface/Header/ActiveUserHeader";
 import ShoppingCardModal from './Component/UserInterface/Body/ShoppingCardModal/ShoppingCardModal';
 

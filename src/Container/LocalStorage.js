@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from "react";
-import { UserAction } from './../../../Stores/action/UserAction';
+import { UserAction } from '../Stores/action/UserAction';
 
 const LocalStorage = () =>
 {

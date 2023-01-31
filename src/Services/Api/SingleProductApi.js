@@ -3,13 +3,13 @@ import {useDispatch} from 'react-redux'
 import { useParams } from "react-router-dom";
 import { selectProduct, removeSelectedProduct } from '../../Stores/action/productAction';
 import axios from "axios";
-import ProductDetailCard from "../../Component/Code/ProductDetailCard/ProductDetailCard";
+import ProductDetailCard from "../../Container/ProductDetailCard";
 /**
  * 
  * Product Details: Get one product detail through the API 
  * Dispatch the selected product into the Redux
  */
-const ProductDetails = () =>
+const SingleProductApi = () =>
 {
     const { productId } = useParams();
     const dispatch = useDispatch();
@@ -42,4 +42,4 @@ const ProductDetails = () =>
     )
 };
 
-export default ProductDetails;
+export default SingleProductApi;

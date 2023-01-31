@@ -7,7 +7,7 @@ import {setProduct} from '../../Stores/action/productAction'
  * Functional Component: Callining Fake api through axios
  * Dispatch all the Products into the Redux SetProduct
  */
-const ProductApi = () =>
+const ProductsApi = () =>
 {
     const dispatch = useDispatch();
     const fetchProducts = async () =>
@@ -26,4 +26,4 @@ const ProductApi = () =>
     }, [] );
     
 };
-export default ProductApi;
+export default ProductsApi;

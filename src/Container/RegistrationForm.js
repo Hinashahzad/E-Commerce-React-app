@@ -2,9 +2,9 @@ import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserAction } from '../../../Stores/action/UserAction';
+import { UserAction } from '../Stores/action/UserAction';
 import { v1 as uuidv1 } from 'uuid';
-import LocalStorage from './../../Code/LocalStorage/LocalStorage';
+import LocalStorage from './LocalStorage';
 
 const RegistrationForm = () =>
 { 

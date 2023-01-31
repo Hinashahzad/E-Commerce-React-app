@@ -2,8 +2,8 @@ import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from "react-redux";
-import LocalStorage from './../../Code/LocalStorage/LocalStorage';
-import { ActiveUser } from "./../../../Stores/action/UserAction";
+import LocalStorage from './LocalStorage';
+import { ActiveUser } from "../Stores/action/UserAction";
 import {useNavigate} from 'react-router-dom';
 
 const LoginForm = () =>
