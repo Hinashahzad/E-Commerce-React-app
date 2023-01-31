@@ -1,27 +1,46 @@
-# React App (Online Shopping for Bridal dresses) (E-Commerce)
 
-`npx create-react-app REDUX2`
+# E-Commerce React Application
 
-## Installation dependancy
-`npm install semantic-ui-react semantic-ui-css`
-`npm install react-router-dom`
-`npm install reack-hook-form`
-`npm install axios`
-`npm install redux react-redux`
+This is the web based application for a variety of different products. User can view the individual products by selecting the products. User can add the product into the Shopping cart to further purchase it. Additionally, User can register himself/herself on the Website and can used his/her Login credentials for this E-commerce website. 
 
-## Modules
 
-#### Registeration 
-1. Any user can register himself/herself to the website to get excieting offers of deals.
-2. User must have a valid email address for registeration.
+## API Reference
 
-#### Login
-1. User can enter Login details to successfully Sign in to our website. 
-2. User must have registered user email and password to successfully Login to Website.
+#### Get all items
 
-#### Product
-1. User can see various products in the website.
-2. User can select the product, and see the Product details. 
-3. User can add the selected product into the shopping cart.
+```http
+  GET 'https://fakestoreapi.com/products/'
+```
 
-# Directory Layout 
+
+#### Get item
+
+```http
+  GET `https://fakestoreapi.com/products/${productId}`
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+
+
+
+## Installation
+
+Install dependancy
+
+```bash
+npm install semantic-ui-react semantic-ui-css
+npm install react-router-dom
+npm install reack-hook-form
+npm install axios
+npm install redux react-redux
+```
+    
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS
+
+**Server:** Node, Express
+
