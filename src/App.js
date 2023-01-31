@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
-import ProductDetails from './Component/Code/ProductDetails/ProductDetails';
+import ProductDetails from './Services/ProductDetails/ProductDetails';
 import Home from "./Component/Home/Home";
 import LoginForm from "./Component/Form/LoginForm/LoginForm";
 import RegistrationForm from "./Component/Form/RegistrationForm/RegistrationForm";

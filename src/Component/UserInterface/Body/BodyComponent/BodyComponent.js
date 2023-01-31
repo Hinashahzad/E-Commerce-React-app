@@ -2,7 +2,7 @@ import React from "react";
 import CardComponent from "../ProductCardComponent/ProductCardComponent";
 import { Card, Container, Grid, Segment } from 'semantic-ui-react'
 import FrontBanner from "../FrontBanner/FrontBanner";
-import ProductApi from "../../../Code/ProductApi/ProductApi";
+import ProductApi from "../../../../Services/ProductApi/ProductApi";
 
 /**
  * 
