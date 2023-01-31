@@ -1,6 +1,6 @@
 import { prodctReducer, selectedProductReducer, addToBagReducer } from '../reducer/productReducer';
 import { ModalReducer } from './ModalReducer';
-import { UserReducer, activeUserReducer } from '../reducer/UserReducer';
+import { UserReducer, activeUserReducer } from './UserReducer';
 import { CounterReducer } from './CounterReducer';
 import { combineReducers } from 'redux';
 import { subTotalReducer } from './subTotalReducer';
