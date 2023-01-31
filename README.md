@@ -24,3 +24,4 @@
 2. User can select the product, and see the Product details. 
 3. User can add the selected product into the shopping cart.
 
+# Directory Layout 

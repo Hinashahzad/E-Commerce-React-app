@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { useParams } from "react-router-dom";
-import { selectProduct, removeSelectedProduct } from '../../../redux/action/productAction';
+import { selectProduct, removeSelectedProduct } from './../../../Stores/redux/action/productAction';
 import axios from "axios";
 import ProductDetailCard from "../ProductDetailCard/ProductDetailCard";
 /**
