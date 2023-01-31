@@ -8,7 +8,7 @@ const OrderSummaryComponent = () =>
   console.log(subTotal);
     return ( <>
         
-    <Table celled color='black' striped>
+    <Table celled color='black' striped size='large' padded>
      <Table.Header>
       <Table.Row>
         <Table.HeaderCell singleLine textAlign='center' colSpan='2' >ORDER SUMMARY</Table.HeaderCell>

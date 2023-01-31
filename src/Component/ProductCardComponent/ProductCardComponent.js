@@ -17,7 +17,7 @@ const ProductCardComponent = ()=>
                 <Card key={ id } >
                     <img src={image} width={250} height={345}></img>
                     <Card.Content>
-                        <Card.Header>{ title }</Card.Header>
+                        <Card.Header as="h3">{ title }</Card.Header>
                         <Card.Description> ${ price } </Card.Description>
                         </Card.Content>
                     </Card>

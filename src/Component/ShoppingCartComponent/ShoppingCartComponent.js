@@ -7,7 +7,6 @@ import OrderSummaryComponent from "../OrderSummaryComponent/OrderSummaryComponen
 const ShoppingCartComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
-    const dispatch = useDispatch();
     
     const renderList = bagProducts.map( ( product ) =>
     {
@@ -55,8 +54,9 @@ const ShoppingCartComponent = () =>
                     {renderList}
             </Table.Body>
             </Table>
-            </Grid.Column>
-            <Grid.Column >
+                </Grid.Column>
+                <Grid.Column></Grid.Column>
+            <Grid.Column width={5} >
                 <Segment color='black' compact>
                         <Card color='black'>
                         <OrderSummaryComponent />
