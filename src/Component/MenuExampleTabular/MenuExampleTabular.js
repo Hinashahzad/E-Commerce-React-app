@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Menu, Segment } from 'semantic-ui-react'
 import SizeTableComponent from './../SizeTableComponent/SizeTableComponent';
