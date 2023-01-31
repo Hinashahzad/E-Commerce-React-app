@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Table, Grid, Card} from 'semantic-ui-react'
 import FooterComponent from "../../Footer/FooterComponent";
 import OrderSummaryComponent from "../OrderSummaryComponent.js/OrderSummaryComponent";
-import { subTotal } from '../../../../Stores/redux/action/SubTotal';
+import { subTotal } from '../../../../Stores/action/SubTotal';
 
 
 const ShoppingCartComponent = () =>

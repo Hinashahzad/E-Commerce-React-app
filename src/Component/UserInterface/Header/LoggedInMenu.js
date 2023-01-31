@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import { Icon, Menu } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeActiveUser } from "../../../Stores/redux/action/UserAction";
+import { removeActiveUser } from "../../../Stores/action/UserAction";
 
 /**
  * Child Component: MenuRight

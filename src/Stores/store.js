@@ -1,5 +1,5 @@
 import { legacy_createStore as createStore } from 'redux';
-import { reducers } from '../redux/reducer/index';
+import { reducers } from '../Stores/reducer/index';
 /**
  * HERE we can create a store and add the reducers to the stores
  * 1 argument is reducers 

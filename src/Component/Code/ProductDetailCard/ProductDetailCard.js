@@ -1,14 +1,14 @@
 import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from './../../../Stores/redux/action/productAction';
+import { addToCart } from './../../../Stores/action/productAction';
 import HeaderComponent from '../../UserInterface/Header/HeaderComponent';
 import FooterComponent from '../../UserInterface/Footer/FooterComponent';
-import { OpenModalAction, CloseModalAction } from './../../../Stores/redux/action/ModalAction';
-import { increment, decrement, reset } from './../../../Stores/redux/action/CounterAction';
+import { OpenModalAction, CloseModalAction } from './../../../Stores/action/ModalAction';
+import { increment, decrement, reset } from './../../../Stores/action/CounterAction';
 import { Link } from "react-router-dom";
 import MenuExampleTabular from './../../MenuExampleTabular/MenuExampleTabular';
-import { subTotal } from './../../../Stores/redux/action/SubTotal';
+import { subTotal } from './../../../Stores/action/SubTotal';
 
 const ProductDetailCard = () =>
 {

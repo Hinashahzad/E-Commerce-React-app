@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {setProduct} from '../../Stores/redux/action/productAction'
+import {setProduct} from '../../Stores/action/productAction'
 
 /**
  * Functional Component: Callining Fake api through axios
