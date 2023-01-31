@@ -1,7 +1,7 @@
-import { Header, Icon, Segment } from 'semantic-ui-react'
+import { Header,  Segment } from 'semantic-ui-react'
 import MenuRight from './MenuRight';
 import MenuLeft from './MenuLeft';
-import React, { useState} from "react";
+import React from "react";
 
 /**
  * 

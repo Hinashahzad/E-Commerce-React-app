@@ -3,10 +3,6 @@ import { useSelector } from "react-redux";
 import { Segment, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-/**
- * 
- * 
- */
 const ProductCardComponent = ()=>
 {
     const products = useSelector( ( state ) => state.allProducts.products ); //allProduct:prodctReducer
@@ -14,7 +10,7 @@ const ProductCardComponent = ()=>
     const renderList = products.map( ( product ) =>
     {
         //Destructuring the products array
-        const { id, image, title, price, catagory } = product;
+        const { id, image, title, price} = product;
         return (
             <Segment color="purple" padded="very">
                 <Link to={`/product/${id}`}>
@@ -26,7 +22,6 @@ const ProductCardComponent = ()=>
                         </Card.Content>
                     </Card>
                     </Link>
-                
         </Segment>)
         
     })

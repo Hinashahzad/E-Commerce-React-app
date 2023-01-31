@@ -2,14 +2,11 @@ import React, { Component, useState} from "react";
 import { Icon, Menu } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
-import {useNavigate} from 'react-router-dom';
-
 /**
  * Child Component: MenuRight
  */
-const MenuRight = (props) =>
+const MenuRight = () =>
 {
-    const navigate = useNavigate();
     return (
         <div>
             <Menu secondary>

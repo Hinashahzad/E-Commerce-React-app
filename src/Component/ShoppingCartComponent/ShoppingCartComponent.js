@@ -12,7 +12,7 @@ const ShoppingCartComponent = () =>
     const renderList = bagProducts.map( ( product ) =>
     {
         console.log( "Product id :" +product.id );
-        const { id, image, price, quantity } = product;
+        const { image, price, quantity } = product;
        return ( <>
            <Table.Row>
             <Table.Cell>

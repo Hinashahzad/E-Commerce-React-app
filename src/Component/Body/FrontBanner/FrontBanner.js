@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Segment } from 'semantic-ui-react'
+import {  Segment } from 'semantic-ui-react'
 import bridal from './../../../Assets/images/bridal.jpg'
 
 

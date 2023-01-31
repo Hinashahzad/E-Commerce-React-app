@@ -41,5 +41,4 @@ const SingleProductApi = () =>
         </div>
     )
 };
-
 export default SingleProductApi;

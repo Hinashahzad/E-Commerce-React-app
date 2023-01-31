@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Segment } from 'semantic-ui-react'
+import { Segment, Header} from 'semantic-ui-react'
 import HeaderComponent from "../Header/HeaderComponent";
 import ShoppingCartComponent from "../ShoppingCartComponent/ShoppingCartComponent";
 ;
@@ -9,7 +9,7 @@ const ShoppingCardModal = () =>
     return (
       <>
         <HeaderComponent />
-        <h2 text-align="center"> SHOPPING BAG</h2>
+        <Header as='h1' textAlign="center">SHOPPING BAG</Header>
         <Segment>
           <ShoppingCartComponent />
         </Segment>
