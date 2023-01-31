@@ -1,7 +1,10 @@
 
 # E-Commerce React Application
 
-This is the web based application for a variety of different products. User can view the individual products by selecting the products. User can add the product into the Shopping cart to further purchase it. Additionally, User can register himself/herself on the Website and can used his/her Login credentials for this E-commerce website. 
+This is the web based application for a variety of different products. 
+User can view the individual products by selecting the products. 
+User can add the product into the Shopping cart and further purchase it. 
+Additionally, User can register himself/herself on the Website and can used his/her Login credentials for this E-commerce website. 
 
 
 ## API Reference
@@ -40,7 +43,7 @@ npm install redux react-redux
     
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Client:** React, Redux, HTML, CSS Framework `react.semantic-ui`
 
 **Server:** Node, Express
 
