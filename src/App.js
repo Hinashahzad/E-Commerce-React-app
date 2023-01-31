@@ -7,7 +7,7 @@ import Home from "./Component/Home/Home";
 import LoginForm from "./Container/LoginForm";
 import RegistrationForm from "./Container/RegistrationForm";
 import ActiveUserHeader from "./Component/Header/ActiveUserHeader";
-import ShoppingCardModal from './Component/Body/ShoppingCardModal/ShoppingCardModal';
+import ShoppingCardModal from './Component/ShoppingCardModal/ShoppingCardModal';
 
 function App ()
 {

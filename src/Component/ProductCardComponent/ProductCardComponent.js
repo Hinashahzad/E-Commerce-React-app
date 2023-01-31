@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Segment, Card, Button, Placeholder } from 'semantic-ui-react'
+import { Segment, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 /**
@@ -21,7 +21,7 @@ const ProductCardComponent = ()=>
                 <Card key={ id } >
                     <img src={image} width={250} height={345}></img>
                     <Card.Content>
-                        <Card.Header>{ catagory }</Card.Header>
+                        <Card.Header>{ title }</Card.Header>
                         <Card.Description> ${ price } </Card.Description>
                         </Card.Content>
                     </Card>

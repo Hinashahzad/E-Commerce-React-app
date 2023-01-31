@@ -1,6 +1,6 @@
-import { Table, Label, Divider, Button } from 'semantic-ui-react'
+import { Table,Button } from 'semantic-ui-react'
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 const OrderSummaryComponent = () =>
 {
   
