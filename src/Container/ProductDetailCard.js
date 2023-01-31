@@ -2,8 +2,8 @@ import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../Stores/action/productAction';
-import HeaderComponent from '../Component/UserInterface/Header/HeaderComponent';
-import FooterComponent from '../Component/UserInterface/Footer/FooterComponent';
+import HeaderComponent from '../Component/Header/HeaderComponent';
+import FooterComponent from '../Component/Footer/FooterComponent';
 import { OpenModalAction, CloseModalAction } from '../Stores/action/ModalAction';
 import { increment, decrement, reset } from '../Stores/action/CounterAction';
 import { Link } from "react-router-dom";

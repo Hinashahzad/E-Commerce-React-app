@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Segment } from 'semantic-ui-react'
-import bridal from '../../../../Assets/images/bridal.jpg'
+import bridal from './../../../Assets/images/bridal.jpg'
 
 
 function FrontBanner  () 
