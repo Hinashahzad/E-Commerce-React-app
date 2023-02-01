@@ -8,7 +8,7 @@ import LocalStorage from './LocalStorage';
 
 const RegistrationForm = () =>
 { 
-  const { register, handleSubmit, formState: { errors },reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const users= useSelector((state)=>state.allUser.user) // Access Global state(user) from Redux store
   const dispatch = useDispatch(); //Send data to Redux store
   const LOCAL_STORAGE_KEY = "users"; //Manage Local Storage

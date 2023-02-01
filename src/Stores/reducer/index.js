@@ -16,5 +16,6 @@ export const reducers = combineReducers( {
     card: addToBagReducer,
     modal: ModalReducer,
     count: CounterReducer,
-    subTotal:subTotalReducer
+    subTotal: subTotalReducer, 
+    
 } );

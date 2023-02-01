@@ -91,6 +91,7 @@ const ProductDetailCard = () =>
                 {
                     dispatch( CloseModalAction() );
                     dispatch( reset( counter ) );
+                    dispatch(subTotal(total))
                 }
         }> CONTINUE SHOPPING </Button></Link>
                 <Link to ="/ShoppingCart">

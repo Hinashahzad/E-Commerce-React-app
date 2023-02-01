@@ -29,7 +29,7 @@ const MenuExampleTabular = () =>
       </Menu>
       {/**CONDITIONAL RENDERING */}
       {activeItem==="Details" ?  (<Segment attached='bottom'>
-          <h4>{product.description}</h4>
+          {product.description}
       </Segment>) : (<Segment attached="bottom"> <SizeTableComponent /></Segment>) }
      
     </div>

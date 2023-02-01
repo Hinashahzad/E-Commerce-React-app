@@ -1,16 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Segment, Button, Table, Grid, Card} from 'semantic-ui-react'
+import { Segment, Button, Table, Dimmer, Loader, Grid, Card} from 'semantic-ui-react'
 import FooterComponent from "../Footer/FooterComponent";
 import OrderSummaryComponent from "../OrderSummaryComponent/OrderSummaryComponent";
 
 const ShoppingCartComponent = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
-    
+    console.log( bagProducts );
     const renderList = bagProducts.map( ( product ) =>
     {
-        console.log( "Product id :" +product.id );
         const { image, price, quantity } = product;
        return ( <>
            <Table.Row>
@@ -39,9 +38,9 @@ const ShoppingCartComponent = () =>
     })
     return ( 
         <div>
-    <Grid columns='equal'>
+    <Grid columns={2}>
             <Grid.Column width={8}>
-            <Table celled padded color="black"  >
+            <Table celled padded color="black" textAlign="center" >
                 <Table.Header>
                 <Table.Row>
                 <Table.HeaderCell>PRODUCT</Table.HeaderCell>
@@ -54,14 +53,17 @@ const ShoppingCartComponent = () =>
                     {renderList}
             </Table.Body>
             </Table>
-                </Grid.Column>
-                <Grid.Column></Grid.Column>
+            </Grid.Column>
             <Grid.Column width={5} >
-                <Segment color='black' compact>
-                        <Card color='black'>
-                        <OrderSummaryComponent />
-                    </Card>
-                </Segment>
+               
+            {/**CONDITIONAL RENDERING */}
+                    { Object.keys( bagProducts ).length === 0
+                        ? (     <Segment>
+                                <Dimmer active> ORDER SUMMARY
+                                <Loader />
+                                </Dimmer>
+                                </Segment> )
+                                : ( <OrderSummaryComponent /> ) }
     </Grid.Column>
   </Grid>
             {/**FOOTER COMPONENT */}

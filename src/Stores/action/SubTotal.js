@@ -10,4 +10,4 @@ export const subTotal = ( subTotal ) =>
         type: actionTypes.SUB_TOTAL,
         payload:subTotal
     }
-}
+};
