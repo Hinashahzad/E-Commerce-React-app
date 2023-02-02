@@ -2,6 +2,7 @@ import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../Stores/action/productAction';
+import { removeSelectedProduct } from '../Stores/action/productAction';
 import HeaderComponent from '../Component/Header/HeaderComponent';
 import FooterComponent from '../Component/Footer/FooterComponent';
 import { OpenModalAction, CloseModalAction } from '../Stores/action/ModalAction';
@@ -17,12 +18,11 @@ const ProductDetailCard = () =>
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
     const dispatch = useDispatch();
-    console.log(card);
     var total = 0;
     const renderList = card.map( ( selectedProduct ) =>
     {
-        const { image, title, quantity, price } = selectedProduct;
-        return ( <>
+        const { image, id, title, quantity, price } = selectedProduct;
+            return ( <>
             <Modal.Content image>
             <img src={image} width={230} height={200}></img>
                 <Modal.Description padded="very">
@@ -34,7 +34,42 @@ const ProductDetailCard = () =>
                 </Modal.Content>
             <Divider></Divider>
         </> )
-    })
+        
+        
+    } )
+    
+    const handleAddToBag = () =>
+    {
+        console.log( "Add to Bag" );
+        console.log( "Selected Product id" + product.id );
+        console.log(Object.keys( card ).length);
+        if ( Object.keys( card ).length > 0 )
+        {
+            console.log("COndition under big if satisfied")
+            card.map( ( selectedProduct ) =>{
+            console.log( "card Product id is " + selectedProduct.id );
+            if (product.id === selectedProduct.id )
+            {
+                console.log("COndition under if satisfied")
+                alert( "Product is already in the Cart" );
+                {/**YAHA UPDATE KARNA HAI */ }
+            }
+            else
+            {
+                console.log("COndition under else satisfied")
+                dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
+                dispatch( OpenModalAction( "blurring" ) );
+            }
+                
+            } );
+        }
+        else
+        {
+            console.log("Condition under else of big if is called");
+            dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
+            dispatch( OpenModalAction( "blurring" ) );
+        }
+    }
     return ( <div>
         {/**HEADER COMPONENT */}
         <Segment textAlign="center" color="olive"><HeaderComponent /></Segment>
@@ -66,14 +101,11 @@ const ProductDetailCard = () =>
             <Button.Group basic size='large'>
                 <Button icon='plus' onClick={ () =>{ dispatch( increment( counter ) );} } ></Button>
                 <Button> { counter }</Button>
-                <Button icon='minus' onClick={()=>{ if(counter>=1) dispatch(decrement(counter-1))}}></Button>
+                <Button icon='minus' onClick={()=>{ if(counter>1) dispatch(decrement(counter-1))}}></Button>
             </Button.Group >   
             <pre><Button.Group basic size='large' padded="very">
                 <Button secondary content="+ ADD TO BAG" 
-                    onClick={ () =>{
-                    console.log( "Add to Bag" );
-                    dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
-                    dispatch( OpenModalAction( "blurring" ) ) } } /> 
+                    onClick={ handleAddToBag } /> 
                             </Button.Group></pre>
                            
            {/** Calling Details and Size  */}
@@ -99,7 +131,6 @@ const ProductDetailCard = () =>
                 {
                     dispatch( CloseModalAction() );
                         dispatch( reset( counter ) );
-                        {console.log(total)}
                         dispatch(subTotal(total))
                 } }> CHECK OUT</Button></Link>
                 </Modal.Actions>

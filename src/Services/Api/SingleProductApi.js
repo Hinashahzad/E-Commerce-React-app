@@ -26,7 +26,6 @@ const SingleProductApi = () =>
     };
     useEffect( () =>
     {
-        console.log("ProductId is ", productId);
         if ( productId && productId !== "" )
         { fetchProductDetails(); }
         return () =>

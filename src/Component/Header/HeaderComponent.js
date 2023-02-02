@@ -11,8 +11,6 @@ import React from "react";
  */
 const HeaderComponent = (props) =>
 {
-    
-    
     return (
          <div>
         <Segment clearing color="olive">

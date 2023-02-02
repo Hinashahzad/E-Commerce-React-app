@@ -5,7 +5,7 @@
 
 import { actionTypes } from "../constants/actionType";
 
-let counter = 0;
+let counter = 1;
 
 export const CounterReducer = ( state = counter, { type, payload } ) =>
 {
@@ -16,7 +16,7 @@ export const CounterReducer = ( state = counter, { type, payload } ) =>
         case actionTypes.DECREMENT:
             return state - 1
         case actionTypes.RESET:
-            return ( state = 0 );
+            return ( state = 1 );
         default:
             return state
     }
