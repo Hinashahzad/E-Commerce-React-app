@@ -12,6 +12,7 @@ export const actionTypes = {
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
     RESET: "RESET",
-    SUB_TOTAL: "SUB_TOTAL" 
+    SUB_TOTAL: "SUB_TOTAL", 
+    DISCOUNT:"DISCOUNT"
     
 }

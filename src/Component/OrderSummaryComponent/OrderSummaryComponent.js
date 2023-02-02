@@ -6,6 +6,8 @@ const OrderSummaryComponent = () =>
 {
   
   const subTotal = useSelector( ( state ) => state.subTotal );
+  const discount = useSelector( ( state ) => state.discount );
+  
   return ( <>
       {/**APPLY DISCOUNT COMPONENT */}
           <ApplyDiscountComponent />
@@ -29,8 +31,12 @@ const OrderSummaryComponent = () =>
             <Table.Cell>4%</Table.Cell>
         </Table.Row>
         <Table.Row>
+            <Table.Cell>Discount</Table.Cell>
+          <Table.Cell>{ discount}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
             <Table.Cell singleLine><b>ORDER TOTAL</b></Table.Cell>
-            <Table.Cell>{ subTotal+1+(subTotal *4)/100 }</Table.Cell>
+            <Table.Cell>{ subTotal+1+(subTotal *4)/100 - discount}</Table.Cell>
         </Table.Row>
         <Table.Row>
             <Table.Cell colSpan='2'><Button secondary fluid > CHECKOUT</Button></Table.Cell>

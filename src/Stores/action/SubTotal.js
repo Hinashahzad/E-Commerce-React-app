@@ -11,3 +11,10 @@ export const subTotal = ( subTotal ) =>
         payload:subTotal
     }
 };
+export const discount = ( discount ) =>
+{
+    return {
+        type: actionTypes.DISCOUNT,
+        payload: discount
+    }
+};

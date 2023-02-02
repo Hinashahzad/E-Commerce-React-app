@@ -1,23 +1,34 @@
-import React,{useState} from 'react';
-import { Table, Input,Message, Segment, Placeholder } from 'semantic-ui-react'
-import MessageComponent from '../Message/MessageComponent';
+import React from 'react';
+import { Table, Input, Segment } from 'semantic-ui-react'
+import { discount } from './../../Stores/action/SubTotal';
+import { useDispatch, useSelector } from 'react-redux'
 
 export const ApplyDiscountComponent = () =>
 {
     const discountCode = "DISCOUNT";
-    const [Value, setValue] = useState("")
+    const Value = useSelector( ( state ) => state.discount );
+    const dispatch = useDispatch();
     
+    console.log(Value);
     const handleClick = () =>
     {
+        if ( Value === discountCode )
         {
-            ( Value == discountCode ) ?
-            ( alert("DIsCOUNT has been applied to your ORDER") ) :
+            alert( "DIsCOUNT has been applied to your ORDER" );
+            dispatch( discount( ( 0.05 ) ) );
+        }
+        else
+        {
             alert( "INVALID CODE" );
-            setValue( "" );  }
+            dispatch( discount( ( 0 ) ) );
+
+        }
     }
     const handleInputChange = ( e ) =>
     {
-         setValue(e.target.value);
+        e.preventDefault();
+        dispatch( discount( ( e.target.value ) ) );
+        
     }
     return ( <div>
     <Segment>
@@ -31,13 +42,13 @@ export const ApplyDiscountComponent = () =>
             <Input
                 action={{
                 color: 'black',
-                labelPosition: 'right',
+                labelPosition: 'left',
                 icon: 'percent',
                 content: 'Apply Discount',
                 onClick: () => handleClick()
                 }}
                 type="text"
-                actionPosition='right'
+                actionPosition='left'
                 placeholder='Enter discount code'
                 onChange={ handleInputChange }
                 value={Value}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Segment, Button, Table, Dimmer, Loader, Grid, Card} from 'semantic-ui-react'
+import { Segment, Button, Table, Dimmer, Loader, Grid, Card, Header} from 'semantic-ui-react'
 import FooterComponent from "../Footer/FooterComponent";
 import OrderSummaryComponent from "../OrderSummaryComponent/OrderSummaryComponent";
 
@@ -58,8 +58,8 @@ const ShoppingCartComponent = () =>
                
             {/**CONDITIONAL RENDERING */}
                     { Object.keys( bagProducts ).length === 0
-                        ? (     <Segment>
-                                <Dimmer active> ORDER SUMMARY
+                        ? (     <Segment> <Header as="h4" textAlign="center"> ORDER SUMMARY </Header>
+                                <Dimmer page> 
                                 <Loader />
                                 </Dimmer>
                                 </Segment> )
