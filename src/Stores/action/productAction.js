@@ -52,4 +52,15 @@ export const addToCart = (products) =>
         type: actionTypes.ADD_TO_BAG,
         payload:products
     }
+};
+
+/**ACTION 5:
+ * UPDATE THE SELECTED PRODUCT
+ */
+export const updateSelectedProduct = ( data) =>
+{
+    return {
+        type: actionTypes.UPDATE_SELECTED_PRODUCT,
+        payload:data
+    }
 }

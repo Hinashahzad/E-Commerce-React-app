@@ -39,6 +39,7 @@ npm install react-router-dom
 npm install reack-hook-form
 npm install axios
 npm install redux react-redux
+npm install immutability-helper --save
 ```
     
 ## Tech Stack

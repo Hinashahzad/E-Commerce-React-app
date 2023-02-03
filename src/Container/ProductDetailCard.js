@@ -1,8 +1,7 @@
 import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../Stores/action/productAction';
-import { removeSelectedProduct } from '../Stores/action/productAction';
+import { addToCart, removeSelectedProduct } from '../Stores/action/productAction';
 import HeaderComponent from '../Component/Header/HeaderComponent';
 import FooterComponent from '../Component/Footer/FooterComponent';
 import { OpenModalAction, CloseModalAction } from '../Stores/action/ModalAction';
@@ -14,6 +13,7 @@ import { subTotal } from '../Stores/action/SubTotal';
 const ProductDetailCard = () =>
 {
     const counter = useSelector( ( state ) => state.count ); //Reducer count manage the product count with the help of two actions INCREMENT AND DECREMENT
+    const updatedProduct = useSelector( ( state ) => state.updateProduct );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
@@ -34,38 +34,43 @@ const ProductDetailCard = () =>
                 </Modal.Content>
             <Divider></Divider>
         </> )
-        
-        
     } )
+
+    const updateCard = (value) =>
+    {
+        console.log( "The new value is", value );
+        console.log( card );
+        card.map( ( selectedProduct ) =>
+        {
+            if ( selectedProduct.id === product.id )
+            {
+                console.log( "selectedProductid and product id is", selectedProduct.id, product.id );
+                dispatch( removeSelectedProduct() );
+                dispatch(addToCart(...card, [ {quantity:selectedProduct.quantity+value, ...product} ]))
+                
+            }
+        })
+    }
     
     const handleAddToBag = () =>
-    {
-        console.log( "Add to Bag" );
-        console.log( "Selected Product id" + product.id );
-        console.log(Object.keys( card ).length);
+    {      
         if ( Object.keys( card ).length > 0 )
         {
-            console.log("COndition under big if satisfied")
-            card.map( ( selectedProduct ) =>{
-            console.log( "card Product id is " + selectedProduct.id );
-            if (product.id === selectedProduct.id )
+            const result = card.filter( ( cardItems ) => product.id === cardItems.id );
+            if (Object.keys( result ).length === 0 )
             {
-                console.log("COndition under if satisfied")
-                alert( "Product is already in the Cart" );
-                {/**YAHA UPDATE KARNA HAI */ }
-            }
-            else
-            {
-                console.log("COndition under else satisfied")
                 dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
                 dispatch( OpenModalAction( "blurring" ) );
             }
-                
-            } );
+            else
+            {
+                console.log( counter );
+                alert( "This product is already in the cart " );
+                updateCard(counter);
+            }
         }
         else
         {
-            console.log("Condition under else of big if is called");
             dispatch( addToCart( [ ...card, { quantity: counter, ...product } ] ) ); // dispatch selected Product into the Bag 
             dispatch( OpenModalAction( "blurring" ) );
         }
