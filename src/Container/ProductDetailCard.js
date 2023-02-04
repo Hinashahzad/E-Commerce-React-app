@@ -55,7 +55,6 @@ const ProductDetailCard = () =>
                     return cardProduct.id !== selectedProduct.id;
                 })
                 dispatch(addToCart([ ...updatedCard,{quantity:selectedProduct.quantity+value, ...product} ]))
-                
             }
         })
     }
@@ -141,8 +140,8 @@ const ProductDetailCard = () =>
                 <Button secondary onClick={ () =>
                 {
                     dispatch( CloseModalAction() );
-                        dispatch( reset( counter ) );
-                        dispatch(subTotal(total))
+                    dispatch( reset( counter ) );
+                    dispatch( subTotal( total ) );
                 } }> CHECK OUT</Button></Link>
                 </Modal.Actions>
         </Modal> 

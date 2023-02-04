@@ -8,6 +8,7 @@ import LoginForm from "./Container/LoginForm";
 import RegistrationForm from "./Container/RegistrationForm";
 import ActiveUserHeader from "./Component/Header/ActiveUserHeader";
 import ShoppingCardModal from './Component/ShoppingCardModal/ShoppingCardModal';
+import CheckoutComponent from "./Component/CheckoutComponent/CheckoutComponent";
 
 function App ()
 {
@@ -22,6 +23,7 @@ function App ()
                     <Route path="/product/:productId" element={ <ProductDetails /> } />
                     <Route path="/activeUser" element={ <ActiveUserHeader /> } />
                     <Route path="/ShoppingCart" element={ <ShoppingCardModal /> } />
+                    <Route path="/ShoppingCart/Checkout" element={ <CheckoutComponent /> } />
                 </Routes>     
     </Router>
         </Segment>

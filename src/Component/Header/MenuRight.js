@@ -3,13 +3,9 @@ import { Icon, Menu, Label } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-/**
- * Child Component: MenuRight
- */
 const MenuRight = () =>
 {
-    const bagProducts = useSelector( ( state ) => state.card.products );
-    console.log(bagProducts);
+    const shoppingCart = useSelector( ( state ) => state.card.products );
     return (
         <div>
             <Menu secondary>
@@ -22,9 +18,7 @@ const MenuRight = () =>
                 <Link to={`/Registration`}>
                     <Menu.Item
                         name='Register'
-                        content='Register'
-                        
-                    />
+                        content='Register'/>
                 </Link>
                 <Menu.Menu position='right'>
                     <Link to ={`/ShoppingCart`}>
@@ -33,13 +27,12 @@ const MenuRight = () =>
                                 name='shop'
                                 size="large"/>
                             <Label color='red' floating>
-                            {Object.keys(bagProducts).length}
+                            {Object.keys(shoppingCart).length}
                             </Label>
                         </Menu.Item>
                         </Link>
                 </Menu.Menu>
             </Menu>
-            
         </div>
     );
 };

@@ -1,13 +1,12 @@
 import { Table,Button } from 'semantic-ui-react'
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { ApplyDiscountComponent } from '../ApplyDiscountComponent/ApplyDiscountComponent';
 const OrderSummaryComponent = () =>
 {
-  
   const subTotal = useSelector( ( state ) => state.subTotal );
   const discount = useSelector( ( state ) => state.discount );
-  
   return ( <>
       {/**APPLY DISCOUNT COMPONENT */}
           <ApplyDiscountComponent />
@@ -39,7 +38,11 @@ const OrderSummaryComponent = () =>
             <Table.Cell>{ subTotal+1+(subTotal *4)/100 - discount}</Table.Cell>
         </Table.Row>
         <Table.Row>
-            <Table.Cell colSpan='2'><Button secondary fluid > CHECKOUT</Button></Table.Cell>
+          <Table.Cell colSpan='2'>
+            <Link to ={`Checkout`}>
+              <Button secondary fluid > CHECKOUT</Button>
+            </Link>
+          </Table.Cell>
         </Table.Row>
     </Table.Body>
       </Table>
