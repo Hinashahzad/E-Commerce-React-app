@@ -1,7 +1,7 @@
 import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeSelectedProduct } from '../Stores/action/productAction';
+import { addToCart, updateSelectedProduct } from '../Stores/action/productAction';
 import HeaderComponent from '../Component/Header/HeaderComponent';
 import FooterComponent from '../Component/Footer/FooterComponent';
 import { OpenModalAction, CloseModalAction } from '../Stores/action/ModalAction';
@@ -36,22 +36,30 @@ const ProductDetailCard = () =>
         </> )
     } )
 
+    /**
+     * 
+     * This function checks that if the item is already in the shopping bag then 
+     * rather to add the item again in the bag it update the quantity of the items which 
+     * is already in the bag
+     */
     const updateCard = (value) =>
     {
-        console.log( "The new value is", value );
-        console.log( card );
         card.map( ( selectedProduct ) =>
         {
             if ( selectedProduct.id === product.id )
             {
-                console.log( "selectedProductid and product id is", selectedProduct.id, product.id );
-                dispatch( removeSelectedProduct() );
-                dispatch(addToCart(...card, [ {quantity:selectedProduct.quantity+value, ...product} ]))
+                /**
+                 * Remove the previous item in the bag
+                 */
+                const updatedCard = card.filter( ( cardProduct ) =>
+                {
+                    return cardProduct.id !== selectedProduct.id;
+                })
+                dispatch(addToCart([ ...updatedCard,{quantity:selectedProduct.quantity+value, ...product} ]))
                 
             }
         })
     }
-    
     const handleAddToBag = () =>
     {      
         if ( Object.keys( card ).length > 0 )
@@ -65,7 +73,7 @@ const ProductDetailCard = () =>
             else
             {
                 console.log( counter );
-                alert( "This product is already in the cart " );
+                alert("This product is already in the cart ");
                 updateCard(counter);
             }
         }

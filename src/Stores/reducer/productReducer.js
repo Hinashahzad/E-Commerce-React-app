@@ -4,8 +4,6 @@
  *  It takes two arguments : Initial state and actions(JAVASCRRIPT object {type, payload})
  */
 import { actionTypes } from '../constants/actionType';
-import update from 'immutability-helper';
-import { useDispatch, useSelector } from 'react-redux'
 const initialState = {
     products: []
 }
@@ -41,14 +39,4 @@ export const addToBagReducer = (state=initialState, {type, payload}) =>
         default:
             return state;
     }
-};
-export const updateSelectedProductReducer = ( state=initialState,{ type, payload }) =>
-{
-    switch(type) {
-		case actionTypes.UPDATE_SELECTED_PRODUCT:
-			return {...state, ...payload} 
-			
-		default:
-			return state;
-	}
 };

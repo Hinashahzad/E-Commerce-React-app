@@ -19,6 +19,5 @@ export const reducers = combineReducers( {
     modal: ModalReducer,
     count: CounterReducer,
     subTotal: subTotalReducer, 
-    discount: discountReducer,
-    updateProduct:updateSelectedProductReducer,
+    discount: discountReducer
 } );

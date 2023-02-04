@@ -34,7 +34,6 @@ export const selectProduct = ( product ) =>
 /**
  * ACTION 3
  */
-
 export const removeSelectedProduct = () =>
 {
     return {
@@ -45,7 +44,6 @@ export const removeSelectedProduct = () =>
 /*ACTION 4:
 All the Selected Product will be dispatch to the addToCart after CLicking the "ADD TO BAG" button;
 */
-
 export const addToCart = (products) =>
 {
     return {
@@ -53,14 +51,3 @@ export const addToCart = (products) =>
         payload:products
     }
 };
-
-/**ACTION 5:
- * UPDATE THE SELECTED PRODUCT
- */
-export const updateSelectedProduct = ( data) =>
-{
-    return {
-        type: actionTypes.UPDATE_SELECTED_PRODUCT,
-        payload:data
-    }
-}
