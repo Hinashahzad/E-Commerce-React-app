@@ -1,7 +1,7 @@
-import { Grid, Segment, Modal, Card, Header,Image, Menu, Rating,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
+import { Grid, Segment, Modal, Card, Header,Dimmer, Loader, Divider, Button } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, updateSelectedProduct } from '../Stores/action/productAction';
+import { addToCart } from '../Stores/action/productAction';
 import HeaderComponent from '../Component/Header/HeaderComponent';
 import FooterComponent from '../Component/Footer/FooterComponent';
 import { OpenModalAction, CloseModalAction } from '../Stores/action/ModalAction';
@@ -13,7 +13,6 @@ import { subTotal } from '../Stores/action/SubTotal';
 const ProductDetailCard = () =>
 {
     const counter = useSelector( ( state ) => state.count ); //Reducer count manage the product count with the help of two actions INCREMENT AND DECREMENT
-    const updatedProduct = useSelector( ( state ) => state.updateProduct );
     const product = useSelector( ( state ) => state.product ); // Reducer--> product: selectedProductReducer,
     const card = useSelector( ( state ) => state.card.products );   // card is the reducer inside index.js and const initialState = { products: [] }
     const modalState = useSelector( ( state ) => state.modal );  // modal is the reducer inside index.js and this select the state to display the Modal
@@ -72,8 +71,7 @@ const ProductDetailCard = () =>
             }
             else
             {
-                console.log( counter );
-                alert("This product is already in the cart ");
+                alert("This product is already in the cart and your shopping bag is updated ");
                 updateCard(counter);
             }
         }

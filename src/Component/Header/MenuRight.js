@@ -9,16 +9,7 @@ import { useSelector } from "react-redux";
 const MenuRight = () =>
 {
     const bagProducts = useSelector( ( state ) => state.card.products );
-
-    const renderList = bagProducts.map( ( product ) =>
-    {
-        const { quantity } = product
-        return ( <>
-            <Label color='red' floating>
-                            {quantity}
-                            </Label>
-            </> )
-    })
+    console.log(bagProducts);
     return (
         <div>
             <Menu secondary>
@@ -41,7 +32,9 @@ const MenuRight = () =>
                              <Icon
                                 name='shop'
                                 size="large"/>
-                           {renderList}
+                            <Label color='red' floating>
+                            {Object.keys(bagProducts).length}
+                            </Label>
                         </Menu.Item>
                         </Link>
                 </Menu.Menu>
