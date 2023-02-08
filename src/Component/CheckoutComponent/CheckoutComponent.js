@@ -32,7 +32,8 @@ const CheckoutComponent = () =>
     </Step>
             </Step.Group>
 
-            <Segment>
+        <Segment >
+          {/**Calling checkout grid */}
                 <CheckoutGridComponent />
             </Segment>
             

@@ -5,6 +5,7 @@ import { CounterReducer } from './CounterReducer';
 import { combineReducers } from 'redux';
 import { subTotalReducer } from './subTotalReducer';
 import { discountReducer } from './discountReducer';
+import { countryNameReducer } from './CountryNameReducer';
 
 /**
  * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
@@ -19,5 +20,6 @@ export const reducers = combineReducers( {
     modal: ModalReducer,
     count: CounterReducer,
     subTotal: subTotalReducer, 
-    discount: discountReducer
+    discount: discountReducer, 
+    countryName: countryNameReducer
 } );

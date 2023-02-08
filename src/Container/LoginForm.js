@@ -16,6 +16,7 @@ const LoginForm = () =>
   
     const onSubmit = (data) =>
     {
+      
         console.log( registerUser );
         registerUser.map( ( user ) =>
         {
@@ -23,7 +24,7 @@ const LoginForm = () =>
               console.log( "USER HAS FOUND" );
               alert( "VALID USER" );
               dispatch( ActiveUser( user ) );
-              navigate( "/activeUser" );
+              //navigate( "/activeUser" );
             }
         } )
         reset();

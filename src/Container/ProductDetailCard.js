@@ -24,7 +24,7 @@ const ProductDetailCard = () =>
             return ( <>
             <Modal.Content image>
             <img src={image} width={230} height={200}></img>
-                <Modal.Description padded="very">
+                <Modal.Description>
                    <div> <b>Name:</b> <p> { title } </p></div>
                     <div> <b>Quantity:</b> {quantity} </div>
                     <div> <b>Price: </b> ${ price } </div>
@@ -54,7 +54,8 @@ const ProductDetailCard = () =>
                 {
                     return cardProduct.id !== selectedProduct.id;
                 })
-                dispatch(addToCart([ ...updatedCard,{quantity:selectedProduct.quantity+value, ...product} ]))
+                dispatch( addToCart( [ ...updatedCard, { quantity: selectedProduct.quantity + value, ...product } ] ) )
+                dispatch( OpenModalAction( "blurring" ) );
             }
         })
     }
@@ -70,7 +71,6 @@ const ProductDetailCard = () =>
             }
             else
             {
-                alert("This product is already in the cart and your shopping bag is updated ");
                 updateCard(counter);
             }
         }
@@ -109,12 +109,14 @@ const ProductDetailCard = () =>
         { /*<Rating maxRating={ 8 } rating={ product.rating.rate } clearable /> */ }
         {/** Update the Number of items */}
             <Button.Group basic size='large'>
-                <Button icon='plus' onClick={ () =>{ dispatch( increment( counter ) );} } ></Button>
+                                <Button icon='plus'
+                                    onClick={ () => { dispatch( increment( counter ) ); } } />
                 <Button> { counter }</Button>
-                <Button icon='minus' onClick={()=>{ if(counter>1) dispatch(decrement(counter-1))}}></Button>
+                                <Button icon='minus'
+                                    onClick={ () => { if ( counter > 1 ) dispatch( decrement( counter - 1 ) ); } } ></Button>
             </Button.Group >   
             <pre><Button.Group basic size='large' padded="very">
-                <Button secondary content="+ ADD TO BAG" 
+                <Button secondary content="+ ADD TO BAG" fluid 
                     onClick={ handleAddToBag } /> 
                             </Button.Group></pre>
                            
