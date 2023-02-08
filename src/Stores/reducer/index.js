@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import { subTotalReducer } from './subTotalReducer';
 import { discountReducer } from './discountReducer';
 import { countryNameReducer } from './CountryNameReducer';
+import { ShowLoginReducer } from './ShowLoginReducer';
 
 /**
  * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
@@ -21,5 +22,6 @@ export const reducers = combineReducers( {
     count: CounterReducer,
     subTotal: subTotalReducer, 
     discount: discountReducer, 
-    countryName: countryNameReducer
+    countryName: countryNameReducer, 
+    showLogin: ShowLoginReducer,
 } );

@@ -10,8 +10,6 @@ export const ShippingAddressForm = () =>
     const value = useSelector( ( state ) => state.countryName );
     const dispatch = useDispatch();
     const activeUser = useSelector( ( state ) => state.activeUser );
-    console.log( activeUser.firstName );
-    console.log(activeUser.lastName);
     const changeHandler = (value) =>
     {
         //setValue(value)

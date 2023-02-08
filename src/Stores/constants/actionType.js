@@ -15,5 +15,6 @@ export const actionTypes = {
     SUB_TOTAL: "SUB_TOTAL", 
     DISCOUNT: "DISCOUNT", 
     COUNTRY_NAME: "COUNTRY_NAME",
+    SHOW_LOGIN :"SHOW_LOGIN",
     
 }
