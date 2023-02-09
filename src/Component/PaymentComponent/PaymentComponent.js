@@ -1,25 +1,22 @@
-import React,{useState} from 'react'
-import { Icon, Segment, Step } from 'semantic-ui-react'
-import { CheckoutGridComponent } from '../CheckoutGridComponent/CheckoutGridComponent';
-import FooterComponent from '../Footer/FooterComponent';
+import React from 'react';
+import { Step, Icon, Button, Loader, Segment, Container } from 'semantic-ui-react'
 import HeaderComponent from '../Header/HeaderComponent';
-
-const CheckoutComponent = () =>
-{
-  
-    return ( <>
-        
-        {/**Attached Header Component */}
+import FooterComponent from '../Footer/FooterComponent';
+import { CompleteOrderComponent } from '../CompleteOrderComponent/CompleteOrderComponent';
+export const PaymentComponent = () => {
+    return (
+        <>
+            {/**Attached Header Component */}
         <HeaderComponent />
         <Segment>
     <Step.Group widths={ 3 }>
-    <Step active>
+    <Step >
       <Icon name='truck' />
       <Step.Content>
         <Step.Title>Shipping</Step.Title>
       </Step.Content>
     </Step>
-    <Step >
+    <Step active>
       <Icon name='credit card' />
       <Step.Content>
         <Step.Title>Billing</Step.Title>
@@ -32,17 +29,16 @@ const CheckoutComponent = () =>
       </Step.Content>
     </Step>
             </Step.Group>
-
         <Segment >
-          {/**Calling checkout grid */}
-                <CheckoutGridComponent />
-            </Segment>
+          {/*Payment details*/}
+              <CompleteOrderComponent />
+        </Segment>
             
         </Segment>
         {/**Attached Footer Component */ }
         <Segment>
             <FooterComponent />
         </Segment>
-    </> );
-}
-export default CheckoutComponent;
+        </>
+    );
+};

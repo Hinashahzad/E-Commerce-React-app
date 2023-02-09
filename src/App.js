@@ -9,6 +9,7 @@ import RegistrationForm from "./Container/RegistrationForm";
 import ActiveUserHeader from "./Component/Header/ActiveUserHeader";
 import ShoppingCardModal from './Component/ShoppingCardModal/ShoppingCardModal';
 import CheckoutComponent from "./Component/CheckoutComponent/CheckoutComponent";
+import { PaymentComponent } from "./Component/PaymentComponent/PaymentComponent";
 
 function App ()
 {
@@ -24,6 +25,7 @@ function App ()
                     <Route path="/activeUser" element={ <ActiveUserHeader /> } />
                     <Route path="/ShoppingCart" element={ <ShoppingCardModal /> } />
                     <Route path="/ShoppingCart/Checkout" element={ <CheckoutComponent /> } />
+                    <Route path="/Payment" element={ <PaymentComponent /> } />
                 </Routes>     
     </Router>
         </Segment>

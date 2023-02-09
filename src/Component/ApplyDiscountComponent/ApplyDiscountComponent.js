@@ -8,8 +8,6 @@ export const ApplyDiscountComponent = () =>
     const discountCode = "DISCOUNT";
     const Value = useSelector( ( state ) => state.discount );
     const dispatch = useDispatch();
-    
-    console.log(Value);
     const handleClick = () =>
     {
         if ( Value === discountCode )

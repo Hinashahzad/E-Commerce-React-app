@@ -21,7 +21,7 @@ const RegistrationForm = () =>
     reset();
    }
   return ( <>
-      <LocalStorage />
+    <LocalStorage />
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Field>
         <label>First Name</label>
