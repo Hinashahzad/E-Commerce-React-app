@@ -45,8 +45,7 @@ const LoginForm = () =>
                 pattern:{value:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"This is not a valid email" }
             })}/>
         </Form.Field>
-            <p>{errors?.email && (
-                <span color="red">{errors?.email?.message}</span>)}</p>
+            
            <Form.Field>
         <label>password</label>
           <input
@@ -59,8 +58,7 @@ const LoginForm = () =>
                 required: "Password is Required"
               } ) } />
       </Form.Field>
-      <p>{errors?.password && (
-        <span color="red">{errors?.password?.message}</span>)}</p>
+      
             <Button type='submit'>Login</Button>
         </Form>
       

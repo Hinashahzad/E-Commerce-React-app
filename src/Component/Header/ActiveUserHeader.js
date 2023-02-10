@@ -2,7 +2,7 @@ import { Header, Icon, Segment } from 'semantic-ui-react'
 import MenuRight from './MenuRight';
 import MenuLeft from './MenuLeft';
 import LoggedInMenu from './LoggedInMenu';
-
+import React, { Component }  from 'react';
 /**
  * 
  * @returns Parent Component: HeaderComponent

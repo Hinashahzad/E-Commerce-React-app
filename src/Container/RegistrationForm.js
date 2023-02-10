@@ -33,8 +33,7 @@ const RegistrationForm = () =>
           
             { ...register( 'firstname', //<--- This is name="firstname"
               {required:"First Name is required"} ) } />
-        <p color="red">{errors?.firstname && (
-        <span color="red">{errors?.firstname?.message}</span>)}</p>
+       
         </Form.Field>
         <Form.Field>
         <label>Last Name</label>
@@ -47,8 +46,7 @@ const RegistrationForm = () =>
                 required:"Last Name is required"
             })}/>
         </Form.Field>
-        <p>{errors?.lastname && (
-        <span color="red">{errors?.lastname?.message}</span>)}</p>
+       
         <Form.Field>
         <label>Email: </label>
           <input
@@ -62,8 +60,7 @@ const RegistrationForm = () =>
                 pattern:{value:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"This is not a valid email" }
             })}/>
         </Form.Field>
-        <p>{errors?.email && (
-        <span color="red">{errors?.email?.message}</span>)}</p>
+        
         <Form.Field>
         <label>password</label>
           <input
@@ -78,8 +75,7 @@ const RegistrationForm = () =>
                 minLength: { value: 4, message: "Password must be more than four characters" }
               } ) } />
       </Form.Field>
-      <p>{errors?.password && (
-        <span color="red">{errors?.password?.message}</span>)}</p>
+      
       <Button type='submit'>Submit</Button>
     </Form>
     </>

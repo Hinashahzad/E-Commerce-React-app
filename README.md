@@ -42,6 +42,8 @@ npm install redux react-redux
 npm install immutability-helper --save
 npm install react-select-country-list --save
 npm install --save @types/react-select
+npm install @hookform/resolvers
+npm install yup
 ```
     
 ## Tech Stack

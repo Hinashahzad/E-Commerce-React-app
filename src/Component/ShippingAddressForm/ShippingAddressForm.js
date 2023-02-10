@@ -1,21 +1,26 @@
 import React,{useMemo} from 'react';
-import { Divider, Form, Header, Button, Loader, Segment, Container} from 'semantic-ui-react'
+import { Divider, Form, Header, Button, Loader, Segment, Container, Message} from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import { countryValue } from '../../Stores/action/CountryValue';
 import { Link } from "react-router-dom";
-import { useForm } from 'react-hook-form';
+import { useForm, Controller  } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {userSchema} from '../../Validations/Validation'
+
 export const ShippingAddressForm = () =>
 {
-     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    
+    const { register, handleSubmit, formState: { errors }, reset, control } = useForm({
+    resolver: yupResolver(userSchema)
+    } );
     const options = useMemo( () => countryList().getData(), [] )
     const value = useSelector( ( state ) => state.countryName );
     const dispatch = useDispatch();
     const activeUser = useSelector( ( state ) => state.activeUser );
-      const navigate = useNavigate();
-   
+    const navigate = useNavigate();
     const changeHandler = (value) =>
     {
         //setValue(value)
@@ -32,63 +37,75 @@ export const ShippingAddressForm = () =>
             <Header as="h3">
                 <Form onSubmit={ handleSubmit(onSubmit)} >
                 <Container fluid><Header as="h5"> Select Country: </Header></Container>
-                <Select options={ options } value={ value } placeholder="Select Country" onChange={ changeHandler } />
-                <Divider />
+                <Select  options={ options } value={ value } placeholder="Select Country" onChange={ changeHandler } />
+                    <Controller
+                        name="select"
+                    control={control}
+                     render={({ field }) => (
+                        <Select
+              // defaultValue={options[0]}
+                            {...field}
+                            isClearable // enable isClearable to demonstrate extra error handling
+                            isSearchable={false}
+                            className="react-dropdown"
+                            classNamePrefix="dropdown"
+                            options={options}/>)}></Controller>
+                    <Divider />
                 <Form.Group widths='equal'>
                         <input fluid
                             placeholder='First name'
                             type='text'
                             name="firstname"
-                            { ...register( "firstname", { required: "First Name is required" } ) } />
-                                <p color="red">{errors?.firstname && (
-                                <span color="red">{errors?.firstname?.message}</span>)}</p>
+                            { ...register( "firstname" ) } />
+                        {errors.firstname &&(<span style={ {
+                        color:"red"} } >{errors.firstname.message}</span>) }
+                               
                         <input fluid
                             placeholder='Last name'
                             type='text'
                             name="lastname"
-                            { ...register( "lastname", { required: "Last Name is required" } ) } />
-                                <p color="red">{errors?.lastname && (
-                                <span color="red">{errors?.lastname?.message}</span>)}</p>
+                            { ...register( "lastname" ) } />
+                        {errors.lasttname &&(<span style={ {
+                        color:"red"} } >{errors.lastname.message}</span>) }   
                 </Form.Group>
                     <input fluid
                         placeholder='Street and house number'
                         name="streetHosueNo"
                         type="text"
-                        { ...register( "streetHosueNo", { required:"Street and House number is required"})}
-                    />
-                     <p color="red">{errors?.streetHosueNo && (
-                                <span color="red">{errors?.streetHosueNo?.message}</span>)}</p>
+                        { ...register( "streetHosueNo")}/>
+                       {errors.streetHosueNo &&(<span style={ {
+                        color:"red"} } >{errors.streetHosueNo.message}</span>) }  
                     <input fluid
                         placeholder='Apartment, suit, etc. (optional)'
                         type="text"
                         name="apartment"
-                        {...register("apartment")}
-                    />
+                        {...register("apartment")}/>
+                    
                 <Form.Group widths='equal'>
                         <input fluid
                             placeholder='Postal Code'
                             name="postalCode"
                             type="text"
-                            { ...register( "postalCode", { required: "PostalCode is required" } ) } />
-                        <p color="red">{errors?.postalCode && (
-                                <span color="red">{errors?.postalCode?.message}</span>)}</p>
+                            { ...register( "postalCode") } />
+                    { errors.postalCode &&(<span style={ {
+                        color:"red"} }>{errors.postalCode.message}</span>) }  
                         <input fluid
                             placeholder='City'
                             name="city"
                             type="text"
-                            { ...register( "city", { required: "City is required" } ) } />
-                        <p color="red">{errors?.city && (
-                                <span color="red">{errors?.city?.message}</span>)}</p>
+                            { ...register( "city") } />
+                    { errors.city &&(<span style={ {
+                        color:"red"} }>{errors.city.message}</span>) }  
                 </Form.Group>
                     <input fluid
                         placeholder='Phone number'
                         type='number'
                         name="phoneNo"
-                        { ...register( "phoneNo", { required: "Phone number is required" } ) } />
-                    <p color="red">{errors?.phoneNo && (
-                                <span color="red">{errors?.phoneNo?.message}</span>)}</p>
+                        { ...register( "phoneNo" ) } />
+                    { errors.phoneNo && ( <span  style={ {
+                        color:"red"} }>{ errors.phoneNo.message }</span> ) }  
                 <div>
-                        { /*<Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } /></Link>*/ }
+                    <Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } /></Link>
                     
                     <Button type='submit'> Continue to payment</Button>
                     

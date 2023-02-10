@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { UserAction } from '../Stores/action/UserAction';
 
 const LocalStorage = () =>
@@ -18,10 +18,6 @@ const LocalStorage = () =>
           dispatch( UserAction( ( retrieve_registerUser ) ) );
         }
         }, []);
-  
-  
-    return ( <>
-    </> );
 };
 
 export default LocalStorage;
