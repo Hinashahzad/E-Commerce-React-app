@@ -9,15 +9,15 @@ import {useNavigate} from 'react-router-dom';
 const LoginForm = () =>
 {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  
+  const activeUser = useSelector( ( state ) => state.activeUser );
   const registerUser = useSelector( ( state ) => state.allUser.user );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
+
+
     const onSubmit = (data) =>
     {
-      
-        console.log( registerUser );
         registerUser.map( ( user ) =>
         {
             if ( data.email === user.email && data.password === user.password ){

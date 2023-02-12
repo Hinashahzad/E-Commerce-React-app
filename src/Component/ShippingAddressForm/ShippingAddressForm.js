@@ -1,5 +1,5 @@
 import React,{useMemo} from 'react';
-import { Divider, Form, Header, Button, Loader, Segment, Container, Message} from 'semantic-ui-react'
+import { Divider, Form, Header, Button, Loader, Segment, Container, Message, Input} from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
@@ -12,7 +12,6 @@ import {userSchema} from '../../Validations/Validation'
 
 export const ShippingAddressForm = () =>
 {
-    
     const { register, handleSubmit, formState: { errors }, reset, control } = useForm({
     resolver: yupResolver(userSchema)
     } );
@@ -20,6 +19,7 @@ export const ShippingAddressForm = () =>
     const value = useSelector( ( state ) => state.countryName );
     const dispatch = useDispatch();
     const activeUser = useSelector( ( state ) => state.activeUser );
+    console.log("Continue as guest",Object.keys( activeUser ).length);
     const navigate = useNavigate();
     const changeHandler = (value) =>
     {
@@ -32,27 +32,38 @@ export const ShippingAddressForm = () =>
         navigate("/Payment")
     }
     return ( <>
-        {/**Continue as Guest */}
-        { Object.keys( activeUser ).length === 0 ? ( <Segment>
-            <Header as="h3">
-                <Form onSubmit={ handleSubmit(onSubmit)} >
-                <Container fluid><Header as="h5"> Select Country: </Header></Container>
-                <Select  options={ options } value={ value } placeholder="Select Country" onChange={ changeHandler } />
-                    <Controller
-                        name="select"
+         <Header as="h2"> SHIPPING ADDRESS</Header>
+        <Divider />
+        {/**Continue as Guest */ }
+        
+        { Object.keys( activeUser ).length === 0 ? (
+        <Form onSubmit={ handleSubmit( onSubmit ) } >
+            
+            <Form.Input 
+                placeholder='Email'
+                type='email'
+                name="email"
+                { ...register( "email" ) } />
+                { errors.email && ( <span style={ { color: "red" } } >{ errors.email.message }</span> ) }
+            <Form.Field>
+            <Controller
+                    name="select"
                     control={control}
-                     render={({ field }) => (
-                        <Select
+                    render={({ field }) => (
+                    <Select
               // defaultValue={options[0]}
-                            {...field}
-                            isClearable // enable isClearable to demonstrate extra error handling
-                            isSearchable={false}
-                            className="react-dropdown"
-                            classNamePrefix="dropdown"
-                            options={options}/>)}></Controller>
-                    <Divider />
-                <Form.Group widths='equal'>
-                        <input fluid
+                        {...field}
+                        isClearable // enable isClearable to demonstrate extra error handling
+                        isSearchable={false}
+                        className="react-dropdown"
+                        classNamePrefix="dropdown"
+                        placeholder="Select country"
+                        options={ options } /> ) }
+                        value={ value }
+                        onChange={ changeHandler } ></Controller>
+            </Form.Field>    
+                <Form.Group widths='equal' >
+                        <Form.Input fluid
                             placeholder='First name'
                             type='text'
                             name="firstname"
@@ -60,7 +71,7 @@ export const ShippingAddressForm = () =>
                         {errors.firstname &&(<span style={ {
                         color:"red"} } >{errors.firstname.message}</span>) }
                                
-                        <input fluid
+                        <Form.Input fluid
                             placeholder='Last name'
                             type='text'
                             name="lastname"
@@ -68,28 +79,28 @@ export const ShippingAddressForm = () =>
                         {errors.lasttname &&(<span style={ {
                         color:"red"} } >{errors.lastname.message}</span>) }   
                 </Form.Group>
-                    <input fluid
+                    <Form.Input fluid
                         placeholder='Street and house number'
                         name="streetHosueNo"
                         type="text"
                         { ...register( "streetHosueNo")}/>
                        {errors.streetHosueNo &&(<span style={ {
                         color:"red"} } >{errors.streetHosueNo.message}</span>) }  
-                    <input fluid
+                    <Form.Input fluid
                         placeholder='Apartment, suit, etc. (optional)'
                         type="text"
                         name="apartment"
                         {...register("apartment")}/>
                     
                 <Form.Group widths='equal'>
-                        <input fluid
+                        <Form.Input fluid
                             placeholder='Postal Code'
                             name="postalCode"
                             type="text"
                             { ...register( "postalCode") } />
                     { errors.postalCode &&(<span style={ {
                         color:"red"} }>{errors.postalCode.message}</span>) }  
-                        <input fluid
+                        <Form.Input fluid
                             placeholder='City'
                             name="city"
                             type="text"
@@ -97,7 +108,7 @@ export const ShippingAddressForm = () =>
                     { errors.city &&(<span style={ {
                         color:"red"} }>{errors.city.message}</span>) }  
                 </Form.Group>
-                    <input fluid
+                    <Form.Input fluid
                         placeholder='Phone number'
                         type='number'
                         name="phoneNo"
@@ -106,14 +117,24 @@ export const ShippingAddressForm = () =>
                         color:"red"} }>{ errors.phoneNo.message }</span> ) }  
                 <div>
                     <Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } /></Link>
-                    
-                    <Button type='submit'> Continue to payment</Button>
+                    <Link to={ `/Payment` }>
+                    <Button type="submit" content='Continue to payment' icon='right arrow' labelPosition='right'  />
+                    </Link>
                     
                 </div>
             </Form> 
-            </Header>
-        </Segment> ) :
+            
+         ) :
+            {/**If user has successfully logged in */}
             ( <Form >
+                <input fluid
+                    placeholder='Email'
+                    type='email'
+                    name="email"
+                    value={ activeUser.email }
+                        { ...register( "email" ) } />
+                    {errors.email &&(<span style={ {
+                        color:"red"} } >{errors.email.message}</span>) }
                 <Header as="h5"> Select Country: </Header>
                 <Select options={ options } value={ value } placeholder="Select Country" onChange={ changeHandler } />
                 <Divider />
@@ -133,7 +154,7 @@ export const ShippingAddressForm = () =>
                         <Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } />
                     </Link>
                     <Link to={ `/Payment` }>
-                        <Button content='Continue to payment' icon='right arrow' labelPosition='right' onClick={ () => { console.log( "Continue to payment is clicked" ); } } />
+                    <Button type="submit" content='Continue to payment' icon='right arrow' labelPosition='right' />
                     </Link>
                 </div>
             </Form> ) }

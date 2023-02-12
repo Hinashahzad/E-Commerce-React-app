@@ -8,6 +8,7 @@ import { showLogin } from '../../Stores/action/ShowLogin';
 
 export const CheckoutGridComponent = () =>
 {
+  
   const show = useSelector( ( state ) => state.showLogin );
   const dispatch = useDispatch();
   const handLoginClick = () =>
@@ -22,21 +23,15 @@ export const CheckoutGridComponent = () =>
               <Header as='h3' floated='left'>Contact information</Header>
               <Header as='h5' floated='right'> 
               <Label as='a' pointing onClick={ handLoginClick }>  <Icon size= "large" name='sign in' />{ show ? 'Continue as guest' : 'Log in'}</Label></Header>
-            </Segment>
-              { show ? ( <div><LoginForm /></div> )
-                : ( <div >
-                  <Segment>
-                  <Segment.Group >
-                    <Input type="email" placeholder="Email" fluid size='large'></Input>
-                    </Segment.Group>
-                    </Segment>
+        </Segment>
+            { show ? ( <div> <LoginForm /><ShippingAddress />
+            </div> )
+              : ( <div >
+               
+                  <Segment><ShippingAddress /></Segment>
                 </div> )
             }
-        
-            <Header as="h2"> SHIPPING ADDRESS</Header>
-            <Divider />
-        <Segment><ShippingAddress /></Segment>
-        
+
       </Grid.Column>
       <Grid.Column  >
             { /**Calling Order summary Component */}<OrderSummaryComponent /> </Grid.Column>

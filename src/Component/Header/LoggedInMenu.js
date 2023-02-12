@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Menu } from 'semantic-ui-react';
+import { Icon, Menu, Label } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeActiveUser } from "../../Stores/action/UserAction";
@@ -9,7 +9,7 @@ import { removeActiveUser } from "../../Stores/action/UserAction";
  */
 const LoggedInMenu =()=>
   {
-
+    const shoppingCart = useSelector( ( state ) => state.card.products );
     const activeUser = useSelector( ( state ) => state.activeUser );
     const dispatch = useDispatch();
     const handleItemClick = () =>
@@ -30,11 +30,16 @@ const LoggedInMenu =()=>
                     </Link>
                     
                 <Menu.Menu position='right'>
-                    <Menu.Item>
-                        <Icon name='shop'
-                            size="large"
-                             />
-                    </Menu.Item>
+                    <Link to ={`/ShoppingCart`}>
+                    <Menu.Item as='a'>
+                             <Icon
+                                name='shop'
+                                size="large"/>
+                            <Label color='red' floating>
+                            {Object.keys(shoppingCart).length}
+                            </Label>
+                        </Menu.Item>
+                        </Link>
                 </Menu.Menu>
                 </Menu>        
         );
