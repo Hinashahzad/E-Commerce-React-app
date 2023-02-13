@@ -5,7 +5,6 @@ import { CounterReducer } from './CounterReducer';
 import { combineReducers } from 'redux';
 import { subTotalReducer } from './subTotalReducer';
 import { discountReducer } from './discountReducer';
-import { countryNameReducer } from './CountryNameReducer';
 import { ShowLoginReducer } from './ShowLoginReducer';
 
 /**
@@ -22,6 +21,5 @@ export const reducers = combineReducers( {
     count: CounterReducer,
     subTotal: subTotalReducer, 
     discount: discountReducer, 
-    countryName: countryNameReducer, 
     showLogin: ShowLoginReducer,
 } );

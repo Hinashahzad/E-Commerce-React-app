@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UserAction } from '../Stores/action/UserAction';
 import { v1 as uuidv1 } from 'uuid';
 import LocalStorage from './LocalStorage';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { UserRegistrationSchema } from "../Validations/Validation";
 
 const RegistrationForm = () =>
 { 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm(
+    { resolver: yupResolver( UserRegistrationSchema ) } );
   const users= useSelector((state)=>state.allUser.user) // Access Global state(user) from Redux store
   const dispatch = useDispatch(); //Send data to Redux store
   const LOCAL_STORAGE_KEY = "users"; //Manage Local Storage
@@ -31,9 +34,9 @@ const RegistrationForm = () =>
             autoComplete="off"
             placeholder='FirstName'
           
-            { ...register( 'firstname', //<--- This is name="firstname"
-              {required:"First Name is required"} ) } />
-       
+            { ...register( 'firstname' ) } />
+             {errors.firstname &&(<span style={ {
+                        color:"red"} } >{errors.firstname.message}</span>) }   
         </Form.Field>
         <Form.Field>
         <label>Last Name</label>
@@ -41,10 +44,9 @@ const RegistrationForm = () =>
             name="lastname"
             autoComplete="off"
             placeholder='LastName'
-            { ...register( 'lastname',//<--- This is name="lastname"
-              {
-                required:"Last Name is required"
-            })}/>
+          { ...register( 'lastname' ) } />
+         {errors.lastname &&(<span style={ {
+                        color:"red"} } >{errors.lastname.message}</span>) }   
         </Form.Field>
        
         <Form.Field>
@@ -54,11 +56,9 @@ const RegistrationForm = () =>
             name="email"
             autoComplete="off"
             placeholder='Email'
-            { ...register( 'email',//<--- This is name="email"
-              {
-                required: "Email is Required", 
-                pattern:{value:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"This is not a valid email" }
-            })}/>
+          { ...register( 'email' ) } />
+         {errors.email &&(<span style={ {
+                        color:"red"} } >{errors.email.message}</span>) }   
         </Form.Field>
         
         <Form.Field>
@@ -68,12 +68,9 @@ const RegistrationForm = () =>
             name="password"
             autoComplete="off"
             placeholder='Password'
-            { ...register( 'password', //<--- This is name="password"
-              {
-                required: "Password is Required",
-                maxLength:{value: 10, message:"Password cannot exceed more than 10 characters"},
-                minLength: { value: 4, message: "Password must be more than four characters" }
-              } ) } />
+          { ...register( 'password' ) } />
+         {errors.password &&(<span style={ {
+                        color:"red"} } >{errors.password.message}</span>) }   
       </Form.Field>
       
       <Button type='submit'>Submit</Button>

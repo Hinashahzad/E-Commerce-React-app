@@ -5,10 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import LocalStorage from './LocalStorage';
 import { ActiveUser } from "../Stores/action/UserAction";
 import {useNavigate} from 'react-router-dom';
+import { LoginSchema } from "../Validations/Validation";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const LoginForm = () =>
 {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(LoginSchema)
+    });
   const activeUser = useSelector( ( state ) => state.activeUser );
   const registerUser = useSelector( ( state ) => state.allUser.user );
   const navigate = useNavigate();
@@ -39,11 +43,9 @@ const LoginForm = () =>
             name="email"
             autoComplete="off"
             placeholder='Email'
-            { ...register( 'email',//<--- This is name="email"
-              {
-                required: "Email is Required", 
-                pattern:{value:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, message:"This is not a valid email" }
-            })}/>
+            { ...register( 'email')}/> {/*//<--- This is name="email"*/}
+          {errors.email &&(<span style={ {
+                        color:"red"} } >{errors.email.message}</span>) }    
         </Form.Field>
             
            <Form.Field>
@@ -53,10 +55,9 @@ const LoginForm = () =>
             name="password"
             autoComplete="off"
             placeholder='Password'
-            { ...register( 'password', //<--- This is name="password"
-              {
-                required: "Password is Required"
-              } ) } />
+            { ...register( 'password' ) } />
+          {errors.password &&(<span style={ {
+                        color:"red"} } >{errors.password.message}</span>) }    
       </Form.Field>
       
             <Button type='submit'>Login</Button>
