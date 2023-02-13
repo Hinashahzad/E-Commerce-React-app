@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import { subTotalReducer } from './subTotalReducer';
 import { discountReducer } from './discountReducer';
 import { ShowLoginReducer } from './ShowLoginReducer';
+import { shippingDetailsReducer } from './ShippingDetailsReducer';
 
 /**
  * This is the file where all the reducers will combine through the COMBINEREDUCERS. 
@@ -22,4 +23,5 @@ export const reducers = combineReducers( {
     subTotal: subTotalReducer, 
     discount: discountReducer, 
     showLogin: ShowLoginReducer,
+    shippingDetails:shippingDetailsReducer,
 } );

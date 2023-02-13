@@ -1,5 +1,11 @@
 import React from 'react';
-export const CompleteOrderComponent = () => {
+import { useSelector } from 'react-redux';
+export const CompleteOrderComponent = () =>
+{
+    const shippingAddress = useSelector( ( state ) => state.shippingDetails );
+    console.log( shippingAddress );
+    console.log(shippingAddress.email);
     return ( <>
-    Completet Order Component</> );
+        
+    </> );
 };

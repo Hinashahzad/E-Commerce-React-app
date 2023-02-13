@@ -14,7 +14,7 @@ export const actionTypes = {
     RESET: "RESET",
     SUB_TOTAL: "SUB_TOTAL", 
     DISCOUNT: "DISCOUNT", 
-    
+    SHIPPING_DETAILS:"SHIPPING_DETAILS",
     SHOW_LOGIN :"SHOW_LOGIN",
     
 }

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Segment, Grid, Header, Divider, Input, Label, Button, Icon} from 'semantic-ui-react'
-import OrderSummaryComponent from '../OrderSummaryComponent/OrderSummaryComponent';
 import { ShippingAddress } from '../ShippingAddress/ShippingAddress';
 import LoginForm from '../../Container/LoginForm';
 import { showLogin } from '../../Stores/action/ShowLogin';
+import { CompleteOrderDetailComponent } from '../CompleteOrderDetailComponent/CompleteOrderDetailComponent';
 
 export const CheckoutGridComponent = () =>
 {
-  
   const show = useSelector( ( state ) => state.showLogin );
   const dispatch = useDispatch();
   const handLoginClick = () =>
@@ -28,13 +27,13 @@ export const CheckoutGridComponent = () =>
             </div> )
               : ( <div >
                
-                  <Segment><ShippingAddress /></Segment>
+                  <Segment> <ShippingAddress /></Segment>
                 </div> )
             }
 
       </Grid.Column>
       <Grid.Column  >
-            { /**Calling Order summary Component */}<OrderSummaryComponent /> </Grid.Column>
+            { /**Calling Order summary Component */}<CompleteOrderDetailComponent /> </Grid.Column>
         </Grid.Row>
       </Grid></>
     
