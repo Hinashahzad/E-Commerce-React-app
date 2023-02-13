@@ -1,5 +1,5 @@
 import React,{useMemo} from 'react';
-import { Divider, Form, Header, Button, Loader, Segment, Container, Message, Input} from 'semantic-ui-react'
+import { Divider, Form, Header, Button, Loader, Segment, Container, Message} from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
@@ -8,20 +8,19 @@ import { Link } from "react-router-dom";
 import { useForm, Controller  } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {userSchema} from '../../Validations/Validation'
-
+import { userSchema } from '../../Validations/Validation';
 export const ShippingAddressForm = () =>
 {
+    
     const { register, handleSubmit, formState: { errors }, reset, control } = useForm({
     resolver: yupResolver(userSchema)
     } );
     const options = useMemo( () => countryList().getData(), [] )
     const value = useSelector( ( state ) => state.countryName );
     const dispatch = useDispatch();
-    const activeUser = useSelector( ( state ) => state.activeUser );
-    console.log("Continue as guest",Object.keys( activeUser ).length);
     const navigate = useNavigate();
-    const changeHandler = (value) =>
+    
+    const changeHandler = ( value ) =>
     {
         //setValue(value)
         dispatch( countryValue( value ) );
@@ -32,21 +31,16 @@ export const ShippingAddressForm = () =>
         navigate("/Payment")
     }
     return ( <>
-         <Header as="h2"> SHIPPING ADDRESS</Header>
-        <Divider />
-        {/**Continue as Guest */ }
-        
-        { Object.keys( activeUser ).length === 0 ? ( <Segment>
-            <Header as="h3">
-                <Form onSubmit={ handleSubmit( onSubmit ) } >
-                 <Form.Group></Form.Group>
-                    <input fluid
-                    placeholder='Email'
-                    type='email'
-                    name="email"
-                    { ...register( "email" ) } />
-                    {errors.email &&(<span style={ {color:"red"} } >{errors.email.message}</span>) }
-                    <Controller
+        {/**Continue as Guest */}
+        <Form
+            onSubmit={ handleSubmit( onSubmit ) } >
+            <input fluid
+                type="email"
+                name="email"
+                placeholder='Email'
+            {...register("email")}></input>
+                
+            <Controller
                     name="Select country"
                     control={control}
                     render={({ field }) => (
@@ -60,7 +54,7 @@ export const ShippingAddressForm = () =>
                         options={ options } /> ) }
                         value={ value }
                         onChange={ changeHandler } ></Controller>
-                    
+                    <Divider />
                 <Form.Group widths='equal'>
                         <input fluid
                             placeholder='First name'
@@ -116,46 +110,9 @@ export const ShippingAddressForm = () =>
                         color:"red"} }>{ errors.phoneNo.message }</span> ) }  
                 <div>
                     <Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } /></Link>
-                    
                     <Button type='submit'> Continue to payment</Button>
-                    
                 </div>
-            </Form> 
-            </Header>
-        </Segment> ) :
-            {/**If user has successfully logged in */}
-            ( <Form >
-                <input fluid
-                    placeholder='Email'
-                    type='email'
-                    name="email"
-                    value={ activeUser.email }
-                        { ...register( "email" ) } />
-                    {errors.email &&(<span style={ {
-                        color:"red"} } >{errors.email.message}</span>) }
-                <Header as="h5"> Select Country: </Header>
-                <Select options={ options } value={ value } placeholder="Select Country" onChange={ changeHandler } />
-                <Divider />
-                <Form.Group widths='equal'>
-                    <Form.Input fluid value={ activeUser.firstname } placeholder='First name' />
-                    <Form.Input fluid value={ activeUser.lastname } placeholder='Last name' />
-                </Form.Group>
-                <Form.Input fluid placeholder='Street and house number' />
-                <Form.Input fluid placeholder='Apartment, suit, etc. (optional)' />
-                <Form.Group widths='equal'>
-                    <Form.Input fluid placeholder='Postal Code' />
-                    <Form.Input fluid placeholder='City' />
-                </Form.Group>
-                <Form.Input fluid placeholder='Phone number' />
-                <div>
-                    <Link to={ `/ShoppingCart` }>
-                        <Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } />
-                    </Link>
-                    <Link to={ `/Payment` }>
-                        <Button content='Continue to payment' icon='right arrow' labelPosition='right' onClick={ () => { console.log( "Continue to payment is clicked" ); } } />
-                    </Link>
-                </div>
-            </Form> ) }
+            </Form>
     </> );
 };
 

@@ -24,7 +24,7 @@ export const CheckoutGridComponent = () =>
               <Header as='h5' floated='right'> 
               <Label as='a' pointing onClick={ handLoginClick }>  <Icon size= "large" name='sign in' />{ show ? 'Continue as guest' : 'Log in'}</Label></Header>
         </Segment>
-            { show ? ( <div> <LoginForm /><ShippingAddress />
+            { show ? ( <div> <LoginForm />
             </div> )
               : ( <div >
                
