@@ -1,6 +1,6 @@
 import { actionTypes } from '../constants/actionType';
-const initialState = {shippingdetail:[]}
-export const shippingDetailsReducer = ( state = initialState, { type, payload } ) =>
+
+export const shippingDetailsReducer = ( state = {}, { type, payload } ) =>
 {
     switch ( type )
     {
