@@ -17,8 +17,6 @@ export const ShippingAddressForm = () =>
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
-    
     const onSubmit = (data) =>
     {
         console.log( data );
@@ -106,8 +104,8 @@ export const ShippingAddressForm = () =>
                         color:"red"} }>{ errors.phoneNo.message }</span> ) }  </Form.Field>
                    
                 <div>
-                    <Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "650px" } } /></Link>
-                    <Button type='submit'> Continue to payment</Button>
+                    <Link to={ `/ShoppingCart` }><Button content='Back to cart' icon='pause' labelPosition='left' style={ { marginRight: "700px" } } /></Link>
+                    <Button type='submit'> Continue</Button>
                 </div>
             </Form>
     </> );

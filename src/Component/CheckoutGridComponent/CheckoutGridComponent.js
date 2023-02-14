@@ -26,7 +26,7 @@ export const CheckoutGridComponent = () =>
             { show ? ( <div> <LoginForm />
             </div> )
               : ( <div >
-               
+                
                   <Segment> <ShippingAddress /></Segment>
                 </div> )
             }
