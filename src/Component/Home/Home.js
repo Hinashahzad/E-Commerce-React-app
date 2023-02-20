@@ -1,7 +1,7 @@
 import React from "react";
-import HeaderComponent from "../Header/HeaderComponent";
-import BodyComponent from "../Body/BodyComponent/BodyComponent";
-import FooterComponent from "../Footer/FooterComponent";
+import HeaderComponent from '../Header/Header';
+import Body from '../Body/Body/Body';
+import Footer from '../Footer/Footer';
 import { Segment } from "semantic-ui-react";
 
 const Home= ()=>
@@ -10,8 +10,8 @@ const Home= ()=>
     return (
         <Segment>
                 <HeaderComponent />
-                <BodyComponent />
-                <FooterComponent />
+                <Body />
+                <Footer />
         </Segment>
     )
 

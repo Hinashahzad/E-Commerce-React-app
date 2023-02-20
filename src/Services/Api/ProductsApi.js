@@ -1,12 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {setProduct} from '../../Stores/action/productAction'
+import { addProduct } from "../../Component/features/product/productSlice";
 
-/**
- * Functional Component: Callining Fake api through axios
- * Dispatch all the Products into the Redux SetProduct
- */
+
 const ProductsApi = () =>
 {
     const dispatch = useDispatch();
@@ -18,7 +15,7 @@ const ProductsApi = () =>
             {
                 console.log( "Error", error );
             } );
-        dispatch(setProduct( ( response.data ))) ;
+        dispatch( addProduct( response.data ) );
     }
     useEffect( () =>
     {

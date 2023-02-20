@@ -38,6 +38,7 @@ npm install semantic-ui-react semantic-ui-css
 npm install react-router-dom
 npm install reack-hook-form
 npm install axios
+npm install @reduxjs/toolkit
 npm install redux react-redux
 npm install immutability-helper --save
 npm install react-select-country-list --save
@@ -52,3 +53,4 @@ npm install yup
 
 **Server:** Node, Express
 
+RTK query 

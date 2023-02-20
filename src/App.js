@@ -1,31 +1,31 @@
 // Parent Functional Component
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
-import ProductDetails from './Services/Api/SingleProductApi';
 import Home from "./Component/Home/Home";
-import LoginForm from "./Container/LoginForm";
-import RegistrationForm from "./Container/RegistrationForm";
-import ActiveUserHeader from "./Component/Header/ActiveUserHeader";
-import ShoppingCardModal from './Component/ShoppingCardModal/ShoppingCardModal';
-import CheckoutComponent from "./Component/CheckoutComponent/CheckoutComponent";
-import { PaymentComponent } from "./Component/PaymentComponent/PaymentComponent";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SingleProductApi from './Services/Api/SingleProductApi';
+import ShoppingCart from "./Component/features/shoppingCart/ShoppingCart";
+import ShoppingCartModal from "./Component/features/shoppingCart/ShoppingCartModal";
+import LoginForm from './Component/features/user/LoginForm';
+import RegistrationForm from "./Component/features/user/RegistrationForm";
+import Checkout from "./Component/Checkout/Checkout";
+import Payment from './Component/Payment/Payment';
 
 function App ()
 {
     return (
         <Segment>
-         <Router>
+             <Router>
                 <Routes>
                     <Route path="/" element={ <Home /> }></Route>
                     <Route path="/Home" element={ <Home /> }></Route>
                     <Route path="/Login" element={ <LoginForm /> }></Route>
                     <Route path ="/Registration" element={<RegistrationForm />}></Route>
-                    <Route path="/product/:productId" element={ <ProductDetails /> } />
-                    <Route path="/activeUser" element={ <ActiveUserHeader /> } />
-                    <Route path="/ShoppingCart" element={ <ShoppingCardModal /> } />
-                    <Route path="/ShoppingCart/Checkout" element={ <CheckoutComponent /> } />
-                    <Route path="/Payment" element={ <PaymentComponent /> } />
+                    <Route path="/product/:productId" element={ <SingleProductApi /> } />
+                    <Route path="ShoppingCart" element={ <ShoppingCart /> } />
+                    <Route path="shoppingCartModal" element={<ShoppingCartModal />}></Route>
+                    <Route path="/ShoppingCart/Checkout" element={ <Checkout /> } />
+                    <Route path="/Payment" element={ <Payment/> } />
                 </Routes>     
     </Router>
         </Segment>

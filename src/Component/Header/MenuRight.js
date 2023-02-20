@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const MenuRight = () =>
 {
-    const shoppingCart = useSelector( ( state ) => state.card.products );
+    const shoppingCartItems = useSelector( ( state ) => state.shoppingCart.cart );
     return (
         <div>
             <Menu secondary>
@@ -27,7 +27,7 @@ const MenuRight = () =>
                                 name='shop'
                                 size="large"/>
                             <Label color='red' floating>
-                            {Object.keys(shoppingCart).length}
+                            {Object.keys(shoppingCartItems).length}
                             </Label>
                         </Menu.Item>
                         </Link>

@@ -7,7 +7,7 @@ import { useForm, Controller  } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from '../../Validations/Validation';
-import { shippingDetails } from '../../Stores/action/ShippingDetailsAction';
+import { updateShippingDetails } from '../features/user/userSlice';
 export const ShippingAddressForm = () =>
 {
     
@@ -20,7 +20,7 @@ export const ShippingAddressForm = () =>
     const onSubmit = (data) =>
     {
         console.log( data );
-        dispatch( shippingDetails( data ) );
+        dispatch( updateShippingDetails( data ) );
         navigate("/Payment")
     }
     return ( <>

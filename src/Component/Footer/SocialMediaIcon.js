@@ -1,6 +1,6 @@
 import React from 'react'
 import { Segment, Input, Icon } from 'semantic-ui-react'
-import FooterMiddleComponent from './FooterMiddleComponent';
+import FooterMiddle from './FooterMiddle';
 
 const SocialMediaIcon = () => (
     <div>
@@ -12,7 +12,7 @@ const SocialMediaIcon = () => (
                 <Icon name= "youtube" size='huge'></Icon>
             </Segment>
             <Segment clearing >
-                <FooterMiddleComponent />
+                <FooterMiddle />
             </Segment>
             <Segment clearing >
                 <Input action='Subscribe' placeholder='Email...' />
