@@ -68,5 +68,7 @@ export const { addToCart,
     updateCartTotalAmount,
     openModal,
     closeModal,
-applyDiscount} = shoppingCartSlice.actions;
+    applyDiscount } = shoppingCartSlice.actions;
+
 export default shoppingCartSlice.reducer;
+/** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */

@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Segment, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import { getProducts } from './productSlice';
 export const Product = () =>
 {
-    const products = useSelector( ( state ) => state.product.products );
+    const products = useSelector( getProducts );
     console.log(products);
     
     const renderList = products.map( ( product ) =>

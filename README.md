@@ -40,6 +40,7 @@ npm install reack-hook-form
 npm install axios
 npm install @reduxjs/toolkit
 npm install redux react-redux
+npm install redux-thunk
 npm install immutability-helper --save
 npm install react-select-country-list --save
 npm install --save @types/react-select
