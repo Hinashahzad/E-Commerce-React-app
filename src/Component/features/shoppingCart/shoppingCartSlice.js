@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     cart: [], 
     cartTotalAmount: 0, 
-    productQuantity: 0, 
+    productQuantity: 1, 
     openCardModal: false,
     modalDimmer: undefined,
     cartDiscount:0,
@@ -26,6 +26,24 @@ const shoppingCartSlice = createSlice( {
             }
             
         },
+        incrementCartQuantity: (state, {payload} ) =>
+        {
+            const itemIndex = state.cart.findIndex(
+                ( item ) => item.id === payload.id );
+            if ( itemIndex >= 0 )
+            {
+                state.cart[ itemIndex ].productQuantity += 1;
+            }
+        },
+        decrementCartQuantity: (state, {payload} ) =>
+        {
+            const itemIndex = state.cart.findIndex(
+                ( item ) => item.id === payload.id );
+            if ( itemIndex >= 0 )
+            {
+                state.cart[ itemIndex ].productQuantity -= 1;
+            }
+        },
         updateCardQuantity: (state, { payload } ) =>
         {
             state.productQuantity = payload;
@@ -46,8 +64,6 @@ const shoppingCartSlice = createSlice( {
         },
         applyDiscount: (state, {payload}) =>
         {
-            
-
             if ( payload==="DISCOUNT" )
             {
                 state.cartTotalAmount -= 0.05;
@@ -59,6 +75,13 @@ const shoppingCartSlice = createSlice( {
                 state.cartDiscount =0.0
             }
             
+        },
+        resetCartProductQuantity: (state) =>
+        {
+            state.productQuantity = 0;
+        }, 
+        deleteCart: (state) => {
+            state.cart = []
         }
     }
 } );
@@ -68,7 +91,10 @@ export const { addToCart,
     updateCartTotalAmount,
     openModal,
     closeModal,
-    applyDiscount } = shoppingCartSlice.actions;
+    applyDiscount,
+    resetCartProductQuantity,
+    incrementCartQuantity,
+    decrementCartQuantity} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
 /** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */

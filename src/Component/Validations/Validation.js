@@ -25,7 +25,7 @@ export const UserRegistrationSchema = yup.object( {
         lastname: yup.string().optional(),
         email: yup.string().email().required().matches( /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ),
         password:yup.string().required().min(4, "Minimum Password Length is 4 digit").max(10, "Maximum Password Length is 10 digit"),
-} );
+} )
 
 
 

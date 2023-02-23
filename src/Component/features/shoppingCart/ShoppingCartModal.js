@@ -40,7 +40,7 @@ export const ShoppingCartModal = () =>
                     dispatch( updateCartTotalAmount( productTotal ) );
                 }
         }> CONTINUE SHOPPING </Button></Link>
-                <Link to ="/ShoppingCart">
+                <Link to ="/Checkout">
                 <Button secondary onClick={ () =>
                 {
                     dispatch( closeModal() );

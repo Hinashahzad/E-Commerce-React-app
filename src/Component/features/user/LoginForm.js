@@ -14,12 +14,9 @@ const LoginForm = () =>
     resolver: yupResolver(LoginSchema)
     });
   //const activeUser = useSelector( ( state ) => state.activeUser );
-  const registerUser = useSelector( ( state ) => state.user.users );
+  const registerUser = useSelector( ( state ) => state.user.registeredUsers );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-
-
     const onSubmit = (data) =>
     {
         registerUser.map( ( user ) =>

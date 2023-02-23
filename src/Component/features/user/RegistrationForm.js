@@ -12,7 +12,7 @@ const RegistrationForm = () =>
 { 
   const { register, handleSubmit, formState: { errors }, reset } = useForm(
     { resolver: yupResolver( UserRegistrationSchema ) } );
-  const users = useSelector( ( state ) => state.user.users );
+  const users = useSelector( ( state ) => state.user.registeredUsers );
   const dispatch = useDispatch(); 
   const LOCAL_STORAGE_KEY = "users"; 
   
@@ -20,7 +20,6 @@ const RegistrationForm = () =>
   const onSubmit = ( data ) =>
   {
     dispatch( addUser( [ ...users, { id: uuidv1(), ...data } ] ) );
-    //dispatch( UserAction( [ ...users, { id: uuidv1(), ...data } ] ) );
     localStorage.setItem( LOCAL_STORAGE_KEY, JSON.stringify( [ ...users, { id: uuidv1(), ...data } ] ) )
     reset();
    }

@@ -2,10 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Segment, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
-import { getProducts } from './productSlice';
 export const Product = () =>
 {
-    const products = useSelector( getProducts );
+    const products = useSelector( (state)=>state.product.products );
     console.log(products);
     
     const renderList = products.map( ( product ) =>
@@ -13,7 +12,8 @@ export const Product = () =>
         //Destructuring the products array
         const { id, image, title, price} = product;
         return (
-            <Segment color="purple" padded="very">
+            
+            <Segment color="purple" padded="very" key={product.id}>
                 <Link to={`/product/${id}`}>
                 <Card key={ id } >
                     <img src={image} width={250} height={345}></img>

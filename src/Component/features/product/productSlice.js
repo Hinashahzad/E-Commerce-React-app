@@ -3,17 +3,30 @@ import axios from "axios";
 
 //Fetching AsyncProducts using Redux thunk middleware
 export const fetchAsyncProducts = createAsyncThunk( "products/fetchAsyncProducts",
-    async () =>{
-        const response = await axios
-            .get( 'https://fakestoreapi.com/products/' )
-        return response.data;
+    async (id=null, {rejectWithValue} ) =>{                         // Second object is thunkApi={dispatch, getState, extra, requestId, signal, rejectWithValue(Value, meta)}
+        try
+        {
+            const response = await axios
+                .get( 'https://fakestoreapi.com/products/' );
+            return response.data;
+        }
+        catch ( error )
+        {
+            return rejectWithValue( "Unable to loading the Products" );
+        }
     } )
 //Fetching AsyncSingleProduct using Redux thunk middleware    
 export const fetchAsyncSingleProduct = createAsyncThunk( "singleProduct/fetchAsyncSingleProduct",
-    async (productId) =>
+    async (productId, {rejectWithValue}) =>
     {
+        try{
         const response = await axios.get( `https://fakestoreapi.com/products/${ productId }` );
-        return response.data;
+            return response.data;
+        }
+        catch ( error )
+        {
+            return rejectWithValue("Unable to fetch Product..")
+        }
     } );
 
 export const initialState = {
@@ -75,10 +88,10 @@ const productSlice = createSlice( {
                 state.products = payload;
                 
             } )
-            builder.addCase( fetchAsyncProducts.rejected, ( state, { error } ) =>
+            builder.addCase( fetchAsyncProducts.rejected, ( state, { payload } ) =>
             {
                 state.isLoading = false;
-                state.error = error.message;
+                state.error = payload;
             } )
             builder.addCase( fetchAsyncSingleProduct.pending, ( state ) => {
             state.isLoading = true;
@@ -88,10 +101,10 @@ const productSlice = createSlice( {
                 state.isLoading = false;
                 state.singleProduct = payload;
             } )
-            builder.addCase( fetchAsyncSingleProduct.rejected, ( state, {error} ) =>
+            builder.addCase( fetchAsyncSingleProduct.rejected, ( state, {payload} ) =>
             {
                 state.isLoading = false;
-                state.error = error.message;
+                state.error = payload;
             } )
     }
 } );

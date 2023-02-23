@@ -1,38 +1,29 @@
 import React from "react";
 import {  useDispatch, useSelector } from 'react-redux';
-import { Segment, Button, Table, Dimmer, Loader, Grid, Card, Header} from 'semantic-ui-react'
+import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Card, Header} from 'semantic-ui-react'
 import OrderSummary from '../../OrderSummary/OrderSummary';
+import { incrementCartQuantity, decrementCartQuantity } from "./shoppingCartSlice";
 
 
 const ShoppingCartComponent = () =>
 {
     const shoppingCartItems = useSelector( ( state ) => state.shoppingCart.cart );
     const dispatch = useDispatch();
-    const renderList = shoppingCartItems.map( ( item ) =>
-    {
-        const { image, price, productQuantity } = item;
-       return ( <>
-           <Table.Row>
-            <Table.Cell>
-            <img src={image} width={100} height={100}></img>
-            </Table.Cell>
-            <Table.Cell singleLine> ${ price }</Table.Cell>
-            <Table.Cell>
-                <Button.Group basic size='large'>
-                    <Button> { productQuantity }</Button>
-                </Button.Group>
-            </Table.Cell>
-            <Table.Cell textAlign='right'>
-                   $ {price*productQuantity}
-            </Table.Cell>
-        </Table.Row>
-       </> )
-    })
     return ( 
-        <div>
-    <Grid columns={2}>
-            <Grid.Column width={8}>
-            <Table celled padded color="black" textAlign="center" >
+        <>
+            { Object.keys( shoppingCartItems ).length === 0 ?
+                ( <Segment textAlign="center" fluid="true">
+                 <Message icon>
+                    <Icon name='circle notched' loading />
+                    <Message.Content>
+                    <Message.Header>There is no item in shopping bag<Icon name ="shopping bag" size="large"></Icon></Message.Header>
+                    </Message.Content>
+                </Message>
+                </Segment> ) :
+                ( <div key={shoppingCartItems.id}>
+                    <Grid columns={2}>
+                    <Grid.Column width={8}>
+                    <Table celled padded color="black" textAlign="center" >
                 <Table.Header>
                 <Table.Row>
                 <Table.HeaderCell>PRODUCT</Table.HeaderCell>
@@ -41,8 +32,36 @@ const ShoppingCartComponent = () =>
                 <Table.HeaderCell>TOTAL</Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>
-            <Table.Body>
-                    {renderList}
+                    <Table.Body>
+                    { shoppingCartItems.map( ( item ) =>
+                         <Table.Row>
+                            <Table.Cell>
+                            <img src={item.image} width={100} height={100}></img>
+                            </Table.Cell>
+                            <Table.Cell singleLine> ${ item.price }</Table.Cell>
+                            <Table.Cell>
+                            <Button.Group basic size='large'>
+                                <Button icon='plus'
+                                        onClick={ () =>
+                                        {
+                                            console.log( "Button clicked" );
+                                            dispatch( incrementCartQuantity(item) );
+                                        } } />
+                                <Button>{ item.productQuantity}</Button>
+                                <Button icon='minus' onClick={ () =>
+                                {
+                                    if ( item.productQuantity > 1 )
+                                    { dispatch(decrementCartQuantity(item)) }
+                                } } ></Button>
+                            </Button.Group >   
+                            </Table.Cell>
+                            <Table.Cell textAlign='right'>
+                                $ {item.price*item.productQuantity}
+                            </Table.Cell>
+                            </Table.Row>
+                            
+                   )}
+                       
             </Table.Body>
             </Table>
             </Grid.Column>
@@ -58,8 +77,8 @@ const ShoppingCartComponent = () =>
                                 : ( <OrderSummary/> ) }
     </Grid.Column>
   </Grid>
-          
-     </div>);
+                        </div>)}
+     </>);
 };
 export default ShoppingCartComponent;
 
