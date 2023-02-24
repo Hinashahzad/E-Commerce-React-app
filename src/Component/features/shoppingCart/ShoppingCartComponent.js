@@ -1,13 +1,15 @@
 import React from "react";
 import {  useDispatch, useSelector } from 'react-redux';
-import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Card, Header} from 'semantic-ui-react'
+import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Header} from 'semantic-ui-react'
 import OrderSummary from '../../OrderSummary/OrderSummary';
 import { incrementCartQuantity, decrementCartQuantity } from "./shoppingCartSlice";
+import { updateCartTotalAmount, updateCardQuantity } from "./shoppingCartSlice";
 
 
 const ShoppingCartComponent = () =>
 {
     const shoppingCartItems = useSelector( ( state ) => state.shoppingCart.cart );
+    const cartTotal = useSelector( ( state ) => state.shoppingCart.cartTotal );
     const dispatch = useDispatch();
     return ( 
         <>
@@ -45,18 +47,22 @@ const ShoppingCartComponent = () =>
                                         onClick={ () =>
                                         {
                                             console.log( "Button clicked" );
-                                            dispatch( incrementCartQuantity(item) );
+                                            dispatch( incrementCartQuantity( item ) );
+                                            //dispatch(updateCartTotalAmount(item.price));
                                         } } />
                                 <Button>{ item.productQuantity}</Button>
                                 <Button icon='minus' onClick={ () =>
                                 {
                                     if ( item.productQuantity > 1 )
-                                    { dispatch(decrementCartQuantity(item)) }
+                                    {
+                                        dispatch( decrementCartQuantity( item ) );
+                                        //dispatch(updateCartTotalAmount(item.price));
+                                    }
                                 } } ></Button>
                             </Button.Group >   
                             </Table.Cell>
                             <Table.Cell textAlign='right'>
-                                $ {item.price*item.productQuantity}
+                                $ { cartTotal } 
                             </Table.Cell>
                             </Table.Row>
                             

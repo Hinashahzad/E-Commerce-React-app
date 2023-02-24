@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     cart: [], 
-    cartTotalAmount: 0, 
+    cartTotalAmount: 0,
+    cartTotal:0,
     productQuantity: 1, 
     openCardModal: false,
     modalDimmer: undefined,
@@ -28,11 +29,14 @@ const shoppingCartSlice = createSlice( {
         },
         incrementCartQuantity: (state, {payload} ) =>
         {
+            console.log("Payload ki quantity is", payload.productQuantity);
             const itemIndex = state.cart.findIndex(
                 ( item ) => item.id === payload.id );
             if ( itemIndex >= 0 )
             {
                 state.cart[ itemIndex ].productQuantity += 1;
+                //state.productQuantity = payload.productQuantity + 1;
+                state.cart[itemIndex].cartTotal = state.cart[itemIndex].productQuantity * payload.price;
             }
         },
         decrementCartQuantity: (state, {payload} ) =>
@@ -42,12 +46,19 @@ const shoppingCartSlice = createSlice( {
             if ( itemIndex >= 0 )
             {
                 state.cart[ itemIndex ].productQuantity -= 1;
+                //state.productQuantity = payload.productQuantity - 1;
+                state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
             }
         },
         updateCardQuantity: (state, { payload } ) =>
         {
             state.productQuantity = payload;
         },
+        updateCartTotal: (state, {payload}) =>
+        {
+            state.cartTotal = payload;
+        },
+
         updateCartTotalAmount: ( state, { payload } ) =>
         {
             state.cartTotalAmount += payload;
@@ -94,7 +105,8 @@ export const { addToCart,
     applyDiscount,
     resetCartProductQuantity,
     incrementCartQuantity,
-    decrementCartQuantity} = shoppingCartSlice.actions;
+    decrementCartQuantity,
+    updateCartTotal} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
 /** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */

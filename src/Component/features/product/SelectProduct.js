@@ -6,7 +6,9 @@ import Footer from '../../Footer/Footer';
 import MenuExampleTabular from '../../MenuExampleTabular/MenuExampleTabular';
 import{ addToCart,
     updateCardQuantity,
-    resetCartProductQuantity} from '../shoppingCart/shoppingCartSlice';
+    resetCartProductQuantity,
+    updateCartTotalAmount,
+    updateCartTotal} from '../shoppingCart/shoppingCartSlice';
 import { openModal } from '../shoppingCart/shoppingCartSlice';
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -22,6 +24,9 @@ const SelectProduct = () =>
     const { productId } = useParams();
     const productQuantity = useSelector( ( state ) => state.product.productQuantity ); // Name of the reducer in store and initial state
     const product = useSelector( ( state ) => state.product.singleProduct );
+    const productTotal = useSelector( ( state ) => state.product.productTotal );
+    const cartTotal = useSelector( ( state ) => state.shoppingCart.cartTotal );
+    console.log("Product total is ", productTotal);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
@@ -38,9 +43,10 @@ const SelectProduct = () =>
     
     const handelAddToBag = () =>
     {
-       
         dispatch( updateCardQuantity( productQuantity ) );
-        dispatch( addToCart( { productQuantity, ...product } ) );
+        dispatch( updateCartTotal( productTotal) );
+        //dispatch( updateCartSubTotal( productTotal ) );
+        dispatch( addToCart( { productQuantity, cartTotal, ...product } ) );
         dispatch( openModal() );
         navigate( '/ShoppingCartModal' );
         dispatch( updateProductTotal( product.price ) );
@@ -79,8 +85,7 @@ const SelectProduct = () =>
                                 <Button icon='plus'
                                     onClick={ () =>
                                     {
-                                        dispatch( increaseProductQuantity() );
-                                        
+                                        dispatch( increaseProductQuantity() ); 
                                     } } />
                                 <Button>{ productQuantity}</Button>
                                 <Button icon='minus' onClick={ () =>
@@ -88,6 +93,7 @@ const SelectProduct = () =>
                                     if ( productQuantity > 1 )
                                     {
                                         dispatch( decreaseProductQuantity() );
+                                        
                                         
                                     }
                                 } } ></Button>
