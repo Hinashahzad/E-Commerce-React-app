@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Modal,  Divider, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import { resetProductQuantity } from '../product/productSlice';
-import { updateCartTotalAmount } from './shoppingCartSlice';
+import { updateCartTotalAmount, resetCartTotal , resetCartProductQuantity} from './shoppingCartSlice';
 export const ShoppingCartModal = () =>
 {
     const cartItems = useSelector( ( state ) => state.shoppingCart.cart );
@@ -36,16 +36,18 @@ export const ShoppingCartModal = () =>
                 <Link to={`/` }><Button onClick={ () =>
                 {
                     dispatch( closeModal());
-                    dispatch( resetProductQuantity() );
+                    dispatch( resetCartProductQuantity() );
                     dispatch( updateCartTotalAmount( productTotal ) );
+                    dispatch( resetCartTotal() );
                 }
         }> CONTINUE SHOPPING </Button></Link>
                 <Link to ="/Checkout">
                 <Button secondary onClick={ () =>
                 {
                     dispatch( closeModal() );
-                    dispatch( resetProductQuantity() );
+                    dispatch( resetCartProductQuantity() );
                     dispatch( updateCartTotalAmount( productTotal ) );
+                    dispatch( resetCartTotal() );
                 } }> CHECK OUT</Button></Link>
                 </Modal.Actions>
         </Modal> 

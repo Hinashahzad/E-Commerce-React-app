@@ -19,10 +19,12 @@ const shoppingCartSlice = createSlice( {
             if ( itemIndex >= 0 )
             {
                 state.cart[ itemIndex ].productQuantity += state.productQuantity;
+                state.cart[ itemIndex ].cartTotal += state.productQuantity * payload.price;
             }
             else
             {
-                const tempProduct ={...payload, quantity:state.productQuantity}
+                console.log("Else part is running ...");
+                const tempProduct ={...payload, quantity:state.productQuantity, cartTotal:state.productQuantity*payload.price}
                 state.cart.push( tempProduct );
             }
             
@@ -41,14 +43,18 @@ const shoppingCartSlice = createSlice( {
         },
         decrementCartQuantity: (state, {payload} ) =>
         {
-            const itemIndex = state.cart.findIndex(
-                ( item ) => item.id === payload.id );
-            if ( itemIndex >= 0 )
+            if ( payload.productQuantity > 1 )
             {
-                state.cart[ itemIndex ].productQuantity -= 1;
-                //state.productQuantity = payload.productQuantity - 1;
-                state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
+                const itemIndex = state.cart.findIndex(
+                ( item ) => item.id === payload.id );
+                if ( itemIndex >= 0 )
+                    {
+                        state.cart[ itemIndex ].productQuantity -= 1;
+                        //state.productQuantity = payload.productQuantity - 1;
+                        state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
+                    }
             }
+            
         },
         updateCardQuantity: (state, { payload } ) =>
         {
@@ -56,7 +62,7 @@ const shoppingCartSlice = createSlice( {
         },
         updateCartTotal: (state, {payload}) =>
         {
-            state.cartTotal = payload;
+             state.cartTotal = state.productQuantity * payload;
         },
 
         updateCartTotalAmount: ( state, { payload } ) =>
@@ -89,10 +95,22 @@ const shoppingCartSlice = createSlice( {
         },
         resetCartProductQuantity: (state) =>
         {
-            state.productQuantity = 0;
+            state.productQuantity = 1;
         }, 
         deleteCart: (state) => {
             state.cart = []
+        }, 
+        increment: (state, {payload}) =>
+        {
+            state.productQuantity += 1;
+        }, 
+        decrement: (state, {payload}) =>
+        {
+            state.productQuantity -= 1;
+        },
+        resetCartTotal: ( state ) =>
+        {
+            state.cartTotal = 0;
         }
     }
 } );
@@ -106,7 +124,8 @@ export const { addToCart,
     resetCartProductQuantity,
     incrementCartQuantity,
     decrementCartQuantity,
-    updateCartTotal} = shoppingCartSlice.actions;
+    updateCartTotal,
+increment, decrement,resetCartTotal } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
 /** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */

@@ -6,18 +6,17 @@ import Footer from '../../Footer/Footer';
 import MenuExampleTabular from '../../MenuExampleTabular/MenuExampleTabular';
 import{ addToCart,
     updateCardQuantity,
-    resetCartProductQuantity,
-    updateCartTotalAmount,
-    updateCartTotal} from '../shoppingCart/shoppingCartSlice';
+    updateCartTotal,
+    increment,
+    decrement} from '../shoppingCart/shoppingCartSlice';
 import { openModal } from '../shoppingCart/shoppingCartSlice';
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { fetchAsyncSingleProduct } from './productSlice';
 import { removeSelectedProduct } from './productSlice';
-import{ increaseProductQuantity,
+import { increaseProductQuantity,
         decreaseProductQuantity,
-        resetProductQuantity,
-        updateProductTotal } from './productSlice';
+        resetProductQuantity } from './productSlice';
         
 const SelectProduct = () =>
 {
@@ -44,12 +43,11 @@ const SelectProduct = () =>
     const handelAddToBag = () =>
     {
         dispatch( updateCardQuantity( productQuantity ) );
-        dispatch( updateCartTotal( productTotal) );
         //dispatch( updateCartSubTotal( productTotal ) );
         dispatch( addToCart( { productQuantity, cartTotal, ...product } ) );
         dispatch( openModal() );
         navigate( '/ShoppingCartModal' );
-        dispatch( updateProductTotal( product.price ) );
+        //dispatch( updateProductTotal( product.price ) );
         dispatch( resetProductQuantity() );
         //dispatch( resetCartProductQuantity() );
     }
@@ -86,6 +84,9 @@ const SelectProduct = () =>
                                     onClick={ () =>
                                     {
                                         dispatch( increaseProductQuantity() ); 
+                                        dispatch( increment() );
+                                        //dispatch( updateProductTotal( product.price ) );
+                                        dispatch( updateCartTotal( product.price) );
                                     } } />
                                 <Button>{ productQuantity}</Button>
                                 <Button icon='minus' onClick={ () =>
@@ -93,8 +94,9 @@ const SelectProduct = () =>
                                     if ( productQuantity > 1 )
                                     {
                                         dispatch( decreaseProductQuantity() );
-                                        
-                                        
+                                        dispatch( decrement() );
+                                        //dispatch( updateProductTotal( product.price ) );
+                                        dispatch( updateCartTotal( product.price) );
                                     }
                                 } } ></Button>
             </Button.Group >   
