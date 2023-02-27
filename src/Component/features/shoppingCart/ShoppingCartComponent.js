@@ -2,14 +2,13 @@ import React from "react";
 import {  useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Header} from 'semantic-ui-react'
 import OrderSummary from '../../OrderSummary/OrderSummary';
-import { incrementCartQuantity, decrementCartQuantity } from "./shoppingCartSlice";
+import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "./shoppingCartSlice";
 import { updateCartTotalAmount, updateCardQuantity } from "./shoppingCartSlice";
 
 
 const ShoppingCartComponent = () =>
 {
     const shoppingCartItems = useSelector( ( state ) => state.shoppingCart.cart );
-    //const cartTotal = useSelector( ( state ) => state.shoppingCart.cartTotal );
     const dispatch = useDispatch();
     return ( 
         <>
@@ -58,7 +57,12 @@ const ShoppingCartComponent = () =>
                             </Button.Group >   
                             </Table.Cell>
                             <Table.Cell textAlign='right'>
-                                $ { item.cartTotal } 
+                                $ { item.cartTotal }
+                                <br/><br/>
+                                <span> <Icon name="delete" size="big" style={ { color: "red" } } onClick={ () =>
+                                {
+                                    dispatch( deleteItem(item) );
+                                }}></Icon></span>
                             </Table.Cell>
                             </Table.Row>
                             

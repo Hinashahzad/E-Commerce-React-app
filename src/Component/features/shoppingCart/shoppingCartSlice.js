@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
     cart: [], 
     cartTotalAmount: 0,
@@ -8,6 +9,7 @@ const initialState = {
     modalDimmer: undefined,
     cartDiscount:0,
 }
+
 const shoppingCartSlice = createSlice( {
     name: "shoppingCart", 
     initialState, 
@@ -23,22 +25,19 @@ const shoppingCartSlice = createSlice( {
             }
             else
             {
-                console.log("Else part is running ...");
                 const tempProduct ={...payload, quantity:state.productQuantity, cartTotal:state.productQuantity*payload.price}
                 state.cart.push( tempProduct );
             }
-            
         },
         incrementCartQuantity: (state, {payload} ) =>
         {
-            console.log("Payload ki quantity is", payload.productQuantity);
             const itemIndex = state.cart.findIndex(
                 ( item ) => item.id === payload.id );
             if ( itemIndex >= 0 )
             {
                 state.cart[ itemIndex ].productQuantity += 1;
-                //state.productQuantity = payload.productQuantity + 1;
-                state.cart[itemIndex].cartTotal = state.cart[itemIndex].productQuantity * payload.price;
+                state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
+                state.cartTotalAmount += state.productQuantity * payload.price;
             }
         },
         decrementCartQuantity: (state, {payload} ) =>
@@ -49,35 +48,38 @@ const shoppingCartSlice = createSlice( {
                 ( item ) => item.id === payload.id );
                 if ( itemIndex >= 0 )
                     {
-                        state.cart[ itemIndex ].productQuantity -= 1;
-                        //state.productQuantity = payload.productQuantity - 1;
-                        state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
+                    state.cart[ itemIndex ].productQuantity -= 1;
+                    state.cart[ itemIndex ].cartTotal = state.cart[ itemIndex ].productQuantity * payload.price;
+                    state.cartTotalAmount -= state.productQuantity * payload.price;
                     }
             }
-            
         },
-        updateCardQuantity: (state, { payload } ) =>
+        deleteItem: (state, {payload}) =>
         {
-            state.productQuantity = payload;
-        },
+            console.log( payload.id );
+            state.cart = state.cart.filter( ( item ) => item.id !== payload.id );
+        }, 
         updateCartTotal: (state, {payload}) =>
         {
              state.cartTotal = state.productQuantity * payload;
         },
-
-        updateCartTotalAmount: ( state, { payload } ) =>
+        updateCartTotalAmount: (state, {payload}) =>
         {
-            state.cartTotalAmount += payload;
-        }, 
+             state.cartTotalAmount = payload;
+        },
         openModal: (state) =>
         {
             state.openCardModal = true;
             state.modalDimmer = "blurring";
+            
+            state.productQuantity = 1;
         },
-        closeModal: (state) =>
+        resetShoppingCart: (state) =>
         {
             state.openCardModal = false;
             state.modalDimmer = undefined;
+            state.productQuantity = 1;
+            state.cartTotal = 0;
         },
         applyDiscount: (state, {payload}) =>
         {
@@ -91,41 +93,41 @@ const shoppingCartSlice = createSlice( {
                 state.cartTotalAmount -= 0;
                 state.cartDiscount =0.0
             }
-            
         },
-        resetCartProductQuantity: (state) =>
-        {
-            state.productQuantity = 1;
-        }, 
         deleteCart: (state) => {
             state.cart = []
         }, 
-        increment: (state, {payload}) =>
+        increaseProductQuantity: (state, { payload }) =>
         {
             state.productQuantity += 1;
+            state.cartTotal = state.productQuantity * payload.price;
         }, 
-        decrement: (state, {payload}) =>
+        decreaseProductQuantity: ( state,{payload} ) =>
         {
-            state.productQuantity -= 1;
+            if ( state.productQuantity > 1 )
+            {
+                state.productQuantity -= 1;
+                state.cartTotal = state.productQuantity * payload.price;
+            }
         },
-        resetCartTotal: ( state ) =>
-        {
-            state.cartTotal = 0;
-        }
+        
     }
 } );
-
-export const { addToCart,
+export const {
+    addToCart,
     updateCardQuantity,
     updateCartTotalAmount,
     openModal,
     closeModal,
     applyDiscount,
-    resetCartProductQuantity,
     incrementCartQuantity,
     decrementCartQuantity,
     updateCartTotal,
-increment, decrement,resetCartTotal } = shoppingCartSlice.actions;
+    increaseProductQuantity,
+    decreaseProductQuantity,
+    resetCartTotal,
+    resetShoppingCart,
+    deleteItem} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
 /** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */

@@ -35,7 +35,6 @@ export const initialState = {
     error:null,
     singleProduct: [], 
     productQuantity: 1,
-    productTotal: 0,
     activeTab:"Details",  //For display details(product description and category), Sizes
 }
 const productSlice = createSlice( {
@@ -53,19 +52,7 @@ const productSlice = createSlice( {
         removeSelectedProduct: (state) =>       //Action No 3: RemoveSelected Product
         {
             state.singleProduct= {}
-        }, 
-        increaseProductQuantity: (state) =>     //Action No 4: increased product quantity
-        {
-           state.productQuantity +=1
-        },
-        decreaseProductQuantity: ( state ) =>  //Action No 5: Decreased Product quantity
-        {
-            state.productQuantity -=1
-        },
-        resetProductQuantity: ( state ) =>    //Action No 3: Reset Product quantity to 1
-        {
-            state.productQuantity=1
-        }, 
+        },  
         updateProductTotal: ( state, { payload } ) =>
         {
             state.productTotal = state.productQuantity * payload;
@@ -73,7 +60,9 @@ const productSlice = createSlice( {
         setActiveTab: ( state, { payload } ) =>
         {
             state.activeTab = payload;
-        }
+        }, 
+        
+
        
     }, 
     /**EXTRA REDUCERS TO MANAGE THE ASYNCRONOUS ACTIONS FOR API CALL FOR BOTH SINGLE PRODUCT AND ALL PRODUCTS */

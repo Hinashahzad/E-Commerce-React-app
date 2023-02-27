@@ -1,31 +1,32 @@
-import { Grid, Segment, Card, Header,Dimmer, Loader, Button } from 'semantic-ui-react';
+import{
+    Grid,
+    Segment,
+    Card,
+    Header,
+    Dimmer,
+    Loader,
+    Button} from 'semantic-ui-react';
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HeaderComponent from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 import MenuExampleTabular from '../../MenuExampleTabular/MenuExampleTabular';
-import{ addToCart,
-    updateCardQuantity,
-    updateCartTotal,
-    increment,
-    decrement} from '../shoppingCart/shoppingCartSlice';
-import { openModal } from '../shoppingCart/shoppingCartSlice';
+import{
+    addToCart,
+    increaseProductQuantity,
+    decreaseProductQuantity } from '../shoppingCart/shoppingCartSlice';
 import { useNavigate } from "react-router-dom";
+import { openModal } from '../shoppingCart/shoppingCartSlice';
 import { useParams } from "react-router-dom";
 import { fetchAsyncSingleProduct } from './productSlice';
 import { removeSelectedProduct } from './productSlice';
-import { increaseProductQuantity,
-        decreaseProductQuantity,
-        resetProductQuantity } from './productSlice';
         
 const SelectProduct = () =>
 {
     const { productId } = useParams();
-    const productQuantity = useSelector( ( state ) => state.product.productQuantity ); // Name of the reducer in store and initial state
+    const productQuantity = useSelector( ( state ) => state.shoppingCart.productQuantity );
     const product = useSelector( ( state ) => state.product.singleProduct );
-    const productTotal = useSelector( ( state ) => state.product.productTotal );
     const cartTotal = useSelector( ( state ) => state.shoppingCart.cartTotal );
-    console.log("Product total is ", productTotal);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
@@ -42,14 +43,9 @@ const SelectProduct = () =>
     
     const handelAddToBag = () =>
     {
-        dispatch( updateCardQuantity( productQuantity ) );
-        //dispatch( updateCartSubTotal( productTotal ) );
         dispatch( addToCart( { productQuantity, cartTotal, ...product } ) );
         dispatch( openModal() );
         navigate( '/ShoppingCartModal' );
-        //dispatch( updateProductTotal( product.price ) );
-        dispatch( resetProductQuantity() );
-        //dispatch( resetCartProductQuantity() );
     }
     return ( <div>
         {/**HEADER COMPONENT */}
@@ -83,21 +79,13 @@ const SelectProduct = () =>
                                 <Button icon='plus'
                                     onClick={ () =>
                                     {
-                                        dispatch( increaseProductQuantity() ); 
-                                        dispatch( increment() );
-                                        //dispatch( updateProductTotal( product.price ) );
-                                        dispatch( updateCartTotal( product.price) );
+                                        dispatch( increaseProductQuantity(product) );
                                     } } />
                                 <Button>{ productQuantity}</Button>
                                 <Button icon='minus' onClick={ () =>
                                 {
-                                    if ( productQuantity > 1 )
-                                    {
-                                        dispatch( decreaseProductQuantity() );
-                                        dispatch( decrement() );
-                                        //dispatch( updateProductTotal( product.price ) );
-                                        dispatch( updateCartTotal( product.price) );
-                                    }
+                                        dispatch( decreaseProductQuantity(product) );
+                                    
                                 } } ></Button>
             </Button.Group >   
             <pre><Button.Group basic size='large' padded="very">

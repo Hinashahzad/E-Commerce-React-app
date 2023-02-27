@@ -1,16 +1,14 @@
 import React from 'react';
-import { closeModal } from './shoppingCartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal,  Divider, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
-import { resetProductQuantity } from '../product/productSlice';
-import { updateCartTotalAmount, resetCartTotal , resetCartProductQuantity} from './shoppingCartSlice';
+
+import { resetShoppingCart} from './shoppingCartSlice';
 export const ShoppingCartModal = () =>
 {
     const cartItems = useSelector( ( state ) => state.shoppingCart.cart );
     const modalOpen = useSelector( ( state ) => state.shoppingCart.openCardModal );  
     const modaldimmer = useSelector( ( state ) => state.shoppingCart.modalDimmer );  
-    const productTotal = useSelector( ( state ) => state.product.productTotal );
     
     const dispatch = useDispatch();
     let renderList = cartItems.map( ( item ) =>
@@ -29,25 +27,19 @@ export const ShoppingCartModal = () =>
         </> )
     })
     return ( <>
-         <Modal dimmer={modaldimmer} open={modalOpen} onClose={() => dispatch(closeModal())}>
+         <Modal dimmer={modaldimmer} open={modalOpen} onClose={() => dispatch( resetShoppingCart() )}>
                 <Modal.Header>The following product has been added to Shopping Cart</Modal.Header>
                 {renderList}
                 <Modal.Actions>
                 <Link to={`/` }><Button onClick={ () =>
                 {
-                    dispatch( closeModal());
-                    dispatch( resetCartProductQuantity() );
-                    dispatch( updateCartTotalAmount( productTotal ) );
-                    dispatch( resetCartTotal() );
+                    dispatch( resetShoppingCart() );
                 }
         }> CONTINUE SHOPPING </Button></Link>
                 <Link to ="/Checkout">
                 <Button secondary onClick={ () =>
                 {
-                    dispatch( closeModal() );
-                    dispatch( resetCartProductQuantity() );
-                    dispatch( updateCartTotalAmount( productTotal ) );
-                    dispatch( resetCartTotal() );
+                   dispatch( resetShoppingCart() );
                 } }> CHECK OUT</Button></Link>
                 </Modal.Actions>
         </Modal> 

@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table, Button } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ApplyDiscount from '../ApplyDiscount/ApplyDiscount';
+import { updateCartTotalAmount } from '../features/shoppingCart/shoppingCartSlice';
 
 export const OrderSummary = () =>
 {
-  const cardTotalAmount = useSelector( ( state ) => state.shoppingCart.cartTotalAmount );
+  const shoppingCart = useSelector( ( state ) => state.shoppingCart.cart );
+  const cartTotalAmount = useSelector( ( state ) => state.shoppingCart.cartTotalAmount );
   const discount = useSelector( ( state ) => state.shoppingCart.cartDiscount );
+  const dispatch = useDispatch();
+  
+  useEffect( () =>
+  {
+    let sum = 0;
+    shoppingCart.map( ( item ) =>
+    {
+       sum += item.cartTotal;
+    } )
+    dispatch( updateCartTotalAmount( sum ) );
+  }, [dispatch])
   return ( <div>
       <ApplyDiscount />
         <Table celled color='black' striped  padded textAlign='center'>
@@ -19,7 +32,7 @@ export const OrderSummary = () =>
     <Table.Body>
       <Table.Row>
             <Table.Cell> Subtotal </Table.Cell>
-            <Table.Cell> ${cardTotalAmount} </Table.Cell>
+            <Table.Cell> ${cartTotalAmount} </Table.Cell>
       </Table.Row>
       <Table.Row>
             <Table.Cell>FBR service charges</Table.Cell>
@@ -35,7 +48,7 @@ export const OrderSummary = () =>
         </Table.Row>
         <Table.Row>
             <Table.Cell singleLine><b>ORDER TOTAL</b></Table.Cell>
-          <Table.Cell>${ cardTotalAmount+1+(cardTotalAmount *4)/100 - discount}</Table.Cell>
+          <Table.Cell>${ cartTotalAmount+1+(cartTotalAmount *4)/100 - discount}</Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell colSpan='2'>
