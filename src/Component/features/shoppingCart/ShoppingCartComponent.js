@@ -3,8 +3,6 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Header} from 'semantic-ui-react'
 import OrderSummary from '../../OrderSummary/OrderSummary';
 import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "./shoppingCartSlice";
-import { updateCartTotalAmount, updateCardQuantity } from "./shoppingCartSlice";
-
 
 const ShoppingCartComponent = () =>
 {

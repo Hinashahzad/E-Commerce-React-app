@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { Icon, Segment, Step } from 'semantic-ui-react'
 import CheckoutGrid from '../CheckoutGrid/CheckoutGrid';
 import HeaderComponent from '../Header/Header';
