@@ -7,7 +7,7 @@ import { useForm, Controller  } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from '../../Validations/Validation';
-import { updateShippingDetails } from '../features/user/userSlice';
+import { updateShippingDetails } from '../../Store/userSlice';
 export const ShippingAddressForm = () =>
 {
     

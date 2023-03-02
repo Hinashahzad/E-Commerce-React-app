@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Segment, Grid, Header,  Label,  Icon} from 'semantic-ui-react'
 import ShippingAddress from '../ShippingAddress/ShippingAddress';
-import LoginForm from '../features/user/LoginForm';
-import { showLogin } from '../features/user/userSlice';
+import LoginForm from '../../Container/User/LoginForm';
+import { showLogin } from '../../Store/userSlice';
 import CompleteOrderDetail  from '../CompleteOrderDetail/CompleteOrderDetail';
 
 const CheckoutGrid = () =>

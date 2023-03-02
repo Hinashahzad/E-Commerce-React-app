@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Input, Segment } from 'semantic-ui-react'
-import { applyDiscount } from '../features/shoppingCart/shoppingCartSlice';
+import { applyDiscount } from '../../Store/shoppingCartSlice';
 import { useDispatch, useSelector } from 'react-redux'
 
 

@@ -1,8 +1,8 @@
 import React from "react";
 import {  useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Header} from 'semantic-ui-react'
-import OrderSummary from '../../OrderSummary/OrderSummary';
-import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "./shoppingCartSlice";
+import OrderSummary from '../../Component/OrderSummary/OrderSummary';
+import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "../../Store/shoppingCartSlice";
 
 const ShoppingCartComponent = () =>
 {

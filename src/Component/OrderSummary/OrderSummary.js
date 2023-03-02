@@ -3,7 +3,7 @@ import { Table, Button } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import ApplyDiscount from '../ApplyDiscount/ApplyDiscount';
-import { updateCartTotalAmount } from '../features/shoppingCart/shoppingCartSlice';
+import { updateCartTotalAmount } from '../../Store/shoppingCartSlice';
 
 export const OrderSummary = () =>
 {

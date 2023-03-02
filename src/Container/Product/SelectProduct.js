@@ -8,18 +8,18 @@ import{
     Button} from 'semantic-ui-react';
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import HeaderComponent from '../../Header/Header';
-import Footer from '../../Footer/Footer';
-import MenuExampleTabular from '../../MenuExampleTabular/MenuExampleTabular';
+import HeaderComponent from '../../Component/Header/Header';
+import Footer from '../../Component/Footer/Footer';
+import MenuExampleTabular from '../../Component/MenuExampleTabular/MenuExampleTabular';
 import{
     addToCart,
     increaseProductQuantity,
-    decreaseProductQuantity } from '../shoppingCart/shoppingCartSlice';
+    decreaseProductQuantity } from '../../Store/shoppingCartSlice';
 import { useNavigate } from "react-router-dom";
-import { openModal } from '../shoppingCart/shoppingCartSlice';
+import { openModal } from '../../Store/shoppingCartSlice';
 import { useParams } from "react-router-dom";
-import { fetchAsyncSingleProduct } from './productSlice';
-import { removeSelectedProduct } from './productSlice';
+import { fetchAsyncSingleProduct } from '../../Store/productSlice';
+import { removeSelectedProduct } from '../../Store/productSlice';
         
 const SelectProduct = () =>
 {

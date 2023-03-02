@@ -3,8 +3,8 @@ import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { v1 as uuidv1 } from 'uuid';
-import LocalStorage from '../../Container/LocalStorage';
-import { addUser } from "./userSlice";
+import LocalStorage from '../LocalStorage';
+import { addUser } from "../../Store/userSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserRegistrationSchema } from "../../Validations/Validation";
 
