@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from '../Component/Home/Home';
 import LoginForm from '../Container/User/LoginForm';
 import RegistrationForm from '../Container/User/RegistrationForm';
-import SelectProduct from '../Container/Product/SelectProduct';
-import ShoppingCart from '../Container/ShoppingCart/ShoppingCart';
-import ShoppingCartModal from '../Container/ShoppingCart/ShoppingCartModal';
+import SingleProductDetail from '../Component/SingleProductDetail/JS index';
+import ShoppingCartModal from '../Container/ShoppingCartModal/JS index';
 import Checkout from '../Component/Checkout/Checkout';
-import Payment from '../Component/Payment/Payment';
+import Payment from '../Component/Payment/JS index';
+import ShoppingBag from '../Component/ShoppingBag/JS index';
 
 const Navigators = () => {
     return ( 
@@ -17,10 +17,10 @@ const Navigators = () => {
                     <Route path="/Home" element={ <Home /> }></Route>
                     <Route path="/Login" element={ <LoginForm /> }></Route>
                     <Route path ="/Registration" element={<RegistrationForm />}></Route>
-                    <Route path="/product/:productId" element={ <SelectProduct /> } />
-                    <Route path="ShoppingCart" element={ <ShoppingCart /> } />
+                    <Route path="/product/:productId" element={ <SingleProductDetail /> } />
+                    <Route path="ShoppingBag" element={ <ShoppingBag /> } />
                     <Route path="shoppingCartModal" element={<ShoppingCartModal />}></Route>
-                    <Route path="/ShoppingCart/Checkout" element={ <Checkout /> } />
+                    <Route path="/ShoppingBag/Checkout" element={ <Checkout /> } />
                     <Route path="/Checkout" element={ <Checkout /> } />
                     <Route path="/Payment" element={ <Payment/> } />
                 </Routes>     

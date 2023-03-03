@@ -1,16 +1,16 @@
 import React from "react";
-import HeaderComponent from '../Header/Header';
-import Footer from '../Footer/Footer';
+import HeaderBar from "../Header/HeaderBar/JS index";
 import { Segment } from "semantic-ui-react";
-import Products from "../../Container/Product/Products";
+import Products from "../../Container/Products/JS index";
+import FooterBar from "../Footer/FooterBar/JS index";
 
 const Home= ()=>
 {
     return (
         <Segment>
-                <HeaderComponent />
+                <HeaderBar />
                 <Products />
-                <Footer />
+                <FooterBar />
         </Segment>
     )
 
