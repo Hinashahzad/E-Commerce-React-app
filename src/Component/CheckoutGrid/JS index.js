@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Segment, Grid, Header,  Label,  Icon} from 'semantic-ui-react'
 import ShippingAddressForm from '../../Container/ShippingAddressForm/JS index';
-import LoginForm from '../../Container/User/LoginForm';
+import LoginForm from '../../Container/LoginForm/JS index';
 import { showLogin } from '../../Store/UserSlice/JS index';
 import CompleteOrderDetail  from '../../Container/CompleteOrderDetail/JS index';
 

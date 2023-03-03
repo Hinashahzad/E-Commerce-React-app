@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from '../Component/Home/Home';
-import LoginForm from '../Container/User/LoginForm';
-import RegistrationForm from '../Container/User/RegistrationForm';
+import LoginForm from '../Container/LoginForm/JS index';
+import RegistrationForm from '../Container/RegistrationForm/JS index';
 import SingleProductDetail from '../Component/SingleProductDetail/JS index';
 import ShoppingCartModal from '../Container/ShoppingCartModal/JS index';
 import Checkout from '../Component/Checkout/Checkout';
