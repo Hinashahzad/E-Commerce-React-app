@@ -1,32 +1,6 @@
 
 # E-Commerce React Application
 
-This is the web based application for a variety of different products. 
-User can view the individual products by selecting the products. 
-User can add the product into the Shopping cart and further purchase it. 
-Additionally, User can register himself/herself on the Website and can used his/her Login credentials for this E-commerce website. 
-
-
-## API Reference
-
-#### Get all items
-
-```http
-  GET 'https://fakestoreapi.com/products/'
-```
-
-
-#### Get item
-
-```http
-  GET `https://fakestoreapi.com/products/${productId}`
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-
 
 
 ## Installation
@@ -47,14 +21,20 @@ npm install --save @types/react-select
 npm install @hookform/resolvers
 npm install yup
 ```
+# Table of contents
+- [About_this_App](#About_this_App)
+
+## About_this_App
+This is the web based application for a variety of different products. 
+User can view the individual products by selecting the products. 
+User can add the product into the Shopping cart and further purchase it. 
+Additionally, User can register himself/herself on the Website and can used his/her Login credentials for this E-commerce website. 
+
     
 ## Tech Stack
 
 **Client:** React, Redux, HTML, CSS Framework `react.semantic-ui`
 
 **Server:** Node, Express
-
-RTK query 
-
 
 https://makesol.visualstudio.com/tcm2tms
