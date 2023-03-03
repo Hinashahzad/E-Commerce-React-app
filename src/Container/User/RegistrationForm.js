@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { v1 as uuidv1 } from 'uuid';
 import LocalStorage from '../LocalStorage';
-import { addUser } from "../../Store/userSlice";
+import { addUser } from "../../Store/UserSlice/JS index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserRegistrationSchema } from "../../Validations/Validation";
 

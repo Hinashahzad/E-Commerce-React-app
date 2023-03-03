@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 import SizeTableComponent from '../SizeTable/SizeTable';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveTab } from '../../Store/productSlice';
+import { setActiveTab } from '../../Store/ProductSlice/JS index';
 
 const ProductSizeDetail = () =>
 {

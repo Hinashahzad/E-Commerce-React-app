@@ -3,7 +3,7 @@ import { Form, Button } from "semantic-ui-react";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from "react-redux";
 import LocalStorage from '../LocalStorage';
-import { activeUser } from "../../Store/userSlice";
+import { activeUser } from "../../Store/UserSlice/JS index";
 import {useNavigate} from 'react-router-dom';
 import { LoginSchema } from "../../Validations/Validation";
 import { yupResolver } from "@hookform/resolvers/yup";

@@ -13,12 +13,12 @@ import ProductSizeDetail from '../../Component/ProductSizeDetail/JS index';
 import{
     addToCart,
     increaseProductQuantity,
-    decreaseProductQuantity } from '../../Store/shoppingCartSlice';
+    decreaseProductQuantity } from '../../Store/ShoppingCartSlice/JS index';
 import { useNavigate } from "react-router-dom";
-import { openModal } from '../../Store/shoppingCartSlice';
+import { openModal } from '../../Store/ShoppingCartSlice/JS index';
 import { useParams } from "react-router-dom";
-import { fetchAsyncSingleProduct } from '../../Store/productSlice';
-import { removeSelectedProduct } from '../../Store/productSlice';
+import { fetchAsyncSingleProduct } from '../../Store/ProductSlice/JS index';
+import { removeSelectedProduct } from '../../Store/ProductSlice/JS index';
         
 const ProductDetail = () =>
 {

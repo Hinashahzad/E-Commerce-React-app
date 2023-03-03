@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Modal,  Divider, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
-import { resetShoppingCart} from '../../Store/shoppingCartSlice';
+import { resetShoppingCart} from '../../Store/ShoppingCartSlice/JS index';
 export const ShoppingCartModal = () =>
 {
     const cartItems = useSelector( ( state ) => state.shoppingCart.cart );

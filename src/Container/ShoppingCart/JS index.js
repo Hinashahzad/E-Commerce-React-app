@@ -2,7 +2,7 @@ import React from "react";
 import {  useDispatch, useSelector } from 'react-redux';
 import { Segment, Button, Icon, Message, Table, Dimmer, Loader, Grid, Header} from 'semantic-ui-react'
 import OrderSummary from "../OrderSummary/JS index";
-import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "../../Store/shoppingCartSlice";
+import { incrementCartQuantity, decrementCartQuantity, deleteItem } from "../../Store/ShoppingCartSlice/JS index";
 
 const ShoppingCart = () =>
 {

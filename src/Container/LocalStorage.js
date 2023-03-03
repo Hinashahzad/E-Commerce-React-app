@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from "react";
-import { addUser } from '../Store/userSlice';
+import { addUser } from '../Store/UserSlice/JS index';
 
 const LocalStorage = () =>
 {

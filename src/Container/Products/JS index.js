@@ -2,7 +2,7 @@ import React,{useEffect} from "react";
 import { Grid, Segment, Card } from 'semantic-ui-react'
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { fetchAsyncProducts } from "../../Store/productSlice";
+import { fetchAsyncProducts } from "../../Store/ProductSlice/JS index";
 //import { useGetProductsQuery } from '../../../Services/Api/productsApi';
 const Products = () =>
 {
