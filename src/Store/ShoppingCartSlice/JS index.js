@@ -58,6 +58,7 @@ const shoppingCartSlice = createSlice( {
         {
             console.log( payload.id );
             state.cart = state.cart.filter( ( item ) => item.id !== payload.id );
+            state.cartTotalAmount = state.cartTotalAmount - payload.cartTotal;
         }, 
         updateCartTotal: (state, {payload}) =>
         {

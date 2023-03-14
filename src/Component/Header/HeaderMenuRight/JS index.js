@@ -22,7 +22,7 @@ const HeaderMenuRight = () =>
                 </Link>
                 <Menu.Menu position='right'>
                     <Link to ={`/ShoppingBag`}>
-                    <Menu.Item as='a'>
+                    <Menu.Item>
                              <Icon
                                 name='shop'
                                 size="large"/>

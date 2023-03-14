@@ -25,6 +25,7 @@ const ProductDetail = () =>
     const { productId } = useParams();
     const productQuantity = useSelector( ( state ) => state.shoppingCart.productQuantity );
     const product = useSelector( ( state ) => state.product.singleProduct );
+    console.log(product);
     const cartTotal = useSelector( ( state ) => state.shoppingCart.cartTotal );
     const navigate = useNavigate();
     const dispatch = useDispatch();

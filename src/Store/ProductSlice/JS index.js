@@ -34,7 +34,6 @@ export const initialState = {
     isLoading: false,
     error:null,
     singleProduct: [], 
-    productQuantity: 1,
     activeTab:"Details",  //For display details(product description and category), Sizes
 }
 const productSlice = createSlice( {
@@ -52,18 +51,11 @@ const productSlice = createSlice( {
         removeSelectedProduct: (state) =>       //Action No 3: RemoveSelected Product
         {
             state.singleProduct= {}
-        },  
-        updateProductTotal: ( state, { payload } ) =>
-        {
-            state.productTotal = state.productQuantity * payload;
-        }, 
+        },
         setActiveTab: ( state, { payload } ) =>
         {
             state.activeTab = payload;
         }, 
-        
-
-       
     }, 
     /**EXTRA REDUCERS TO MANAGE THE ASYNCRONOUS ACTIONS FOR API CALL FOR BOTH SINGLE PRODUCT AND ALL PRODUCTS */
     extraReducers:  (builder) =>{
@@ -103,7 +95,6 @@ export const {  addProduct,
                 increaseProductQuantity,
                 decreaseProductQuantity,
                 resetProductQuantity,
-                updateProductTotal,
     setActiveTab } = productSlice.actions;
 /** IMPORTANT : WANT TO GET THE VALUE FROM THE  STORE WE CAN WRITE THE FUNCTION HERE AS WELL */
 export const getProducts = ( state ) => state.product.products;

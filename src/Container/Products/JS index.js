@@ -12,6 +12,7 @@ const Products = () =>
     
     useEffect( () =>
     {
+        console.log("UseEffect is running .. . ");
         dispatch(fetchAsyncProducts());
     }, [dispatch] );
   
